@@ -59,3 +59,8 @@ Interested in Web Development and Software Development.
 ## 🚀 Project Status
 
 Project ini masih dalam tahap pengembangan dan akan terus diperbarui dengan fitur-fitur baru.
+
+## 📸 Tampilan Aplikasi
+
+### Dashboard
+![Dashboard Tania Mutiara Laundry](docs/dashboard.png)
