@@ -1,189 +1,529 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tania Laundry</title>
+@extends('layouts.app')
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+@section('title', 'Dashboard - Tania Mutiara Laundry')
 
-        body {
-            background: #f4f7fb;
-        }
+@section('content')
 
-        .sidebar {
-            width: 230px;
-            height: 100vh;
-            background: #2563eb;
-            position: fixed;
-            left: 0;
-            top: 0;
-            color: white;
-            padding: 25px 20px;
-        }
 
-        .sidebar h2 {
-            margin-bottom: 35px;
-        }
+<section class="hero">
 
-        .sidebar a {
-            display: block;
-            color: white;
-            text-decoration: none;
-            padding: 12px;
-            margin-bottom: 8px;
-            border-radius: 6px;
-        }
+    <div>
 
-        .sidebar a:hover {
-            background: #1d4ed8;
-        }
+        <div class="hero-badge">
+            ✨ Selamat Datang di Sistem Laundry
+        </div>
 
-        .content {
-            margin-left: 230px;
-            padding: 30px;
-        }
 
-        .header {
-            margin-bottom: 30px;
-        }
+        <h1>
+            Tania Mutiara
+            <span>Laundry</span>
+        </h1>
 
-        .header h1 {
-            color: #1f2937;
-        }
 
-        .header p {
-            margin-top: 5px;
-            color: #6b7280;
-        }
+        <p>
+            Kelola pelanggan, transaksi, pembayaran,
+            layanan dan proses laundry dengan lebih mudah,
+            cepat, aman dan terorganisir.
+        </p>
 
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
 
-        .card {
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
+        <div class="hero-quote">
 
-        .card h3 {
-            color: #6b7280;
-            font-size: 15px;
-            margin-bottom: 15px;
-        }
+            “Bersih, Wangi, Rapi —
+            Karena Setiap Pakaian Layak Mendapatkan
+            Perawatan Terbaik.”
 
-        .card h2 {
-            color: #2563eb;
-            font-size: 28px;
-        }
+        </div>
 
-        .table-container {
-            margin-top: 30px;
-            background: white;
-            padding: 25px;
-            border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th,
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #ddd;
-            text-align: left;
-        }
-
-        th {
-            background: #f1f5f9;
-        }
-    </style>
-</head>
-
-<body>
-
-    <div class="sidebar">
-        <h2>🧺 Tania Laundry</h2>
-
-        <a href="/">Dashboard</a>
-        <a href="#">Pelanggan</a>
-        <a href="#">Transaksi</a>
-        <a href="#">Layanan</a>
-        <a href="#">Status Laundry</a>
-        <a href="#">Laporan</a>
     </div>
 
-    <div class="content">
+</section>
 
-        <div class="header">
-            <h1>Dashboard Laundry</h1>
-            <p>Selamat datang di Sistem Informasi Tania Laundry</p>
-        </div>
 
-        <div class="cards">
 
-            <div class="card">
-                <h3>Total Pelanggan</h3>
-                <h2>0</h2>
-            </div>
+<div class="stats-grid">
 
-            <div class="card">
-                <h3>Pesanan Masuk</h3>
-                <h2>0</h2>
-            </div>
 
-            <div class="card">
-                <h3>Laundry Selesai</h3>
-                <h2>0</h2>
-            </div>
+    <div class="stat-card">
 
-            <div class="card">
-                <h3>Pendapatan</h3>
-                <h2>Rp 0</h2>
+        <div class="stat-head">
+
+            <small>
+                Total Pelanggan
+            </small>
+
+            <div class="stat-icon">
+                👥
             </div>
 
         </div>
 
-        <div class="table-container">
-            <h2>Transaksi Terbaru</h2>
+        <h2>
+            {{ $totalPelanggan }}
+        </h2>
+
+        <p>
+            Pelanggan terdaftar
+        </p>
+
+    </div>
+
+
+
+    <div class="stat-card">
+
+        <div class="stat-head">
+
+            <small>
+                Pesanan Aktif
+            </small>
+
+            <div class="stat-icon">
+                🧺
+            </div>
+
+        </div>
+
+        <h2>
+            {{ $pesananMasuk }}
+        </h2>
+
+        <p>
+            Laundry sedang diproses
+        </p>
+
+    </div>
+
+
+
+    <div class="stat-card">
+
+        <div class="stat-head">
+
+            <small>
+                Laundry Selesai
+            </small>
+
+            <div class="stat-icon">
+                ✅
+            </div>
+
+        </div>
+
+        <h2>
+            {{ $laundrySelesai }}
+        </h2>
+
+        <p>
+            Pesanan telah selesai
+        </p>
+
+    </div>
+
+
+
+    <div class="stat-card">
+
+        <div class="stat-head">
+
+            <small>
+                Total Pendapatan
+            </small>
+
+            <div class="stat-icon">
+                💰
+            </div>
+
+        </div>
+
+        <h2>
+
+            Rp {{ number_format(
+                $pendapatan,
+                0,
+                ',',
+                '.'
+            ) }}
+
+        </h2>
+
+        <p>
+            Pendapatan transaksi lunas
+        </p>
+
+    </div>
+
+
+</div>
+
+
+
+<div class="dashboard-grid">
+
+
+    <div class="panel">
+
+
+        <div class="panel-header">
+
+            <div>
+
+                <h2>
+                    🧾 Transaksi Terbaru
+                </h2>
+
+                <div class="panel-description">
+
+                    Aktivitas transaksi terbaru
+                    Tania Mutiara Laundry.
+
+                </div>
+
+            </div>
+
+
+            <a
+                href="{{ route('transaksi.index') }}"
+                class="btn btn-primary"
+            >
+                Lihat Semua →
+            </a>
+
+        </div>
+
+
+
+        <div class="table-responsive">
 
             <table>
+
+
                 <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Pelanggan</th>
-                        <th>Layanan</th>
-                        <th>Total</th>
-                        <th>Status</th>
-                    </tr>
+
+                <tr>
+
+                    <th>Kode</th>
+
+                    <th>Pelanggan</th>
+
+                    <th>Layanan</th>
+
+                    <th>Total</th>
+
+                    <th>Status</th>
+
+                </tr>
+
                 </thead>
 
+
                 <tbody>
+
+
+                @forelse(
+                    $transaksiTerbaru
+                    as $transaksi
+                )
+
+
                     <tr>
-                        <td colspan="5" style="text-align:center;">
-                            Belum ada transaksi
+
+
+                        <td>
+
+                            <strong style="color:#2563eb;">
+
+                                {{
+                                    $transaksi
+                                    ->kode_transaksi
+                                }}
+
+                            </strong>
+
                         </td>
+
+
+                        <td>
+
+                            {{
+                                $transaksi
+                                ->pelanggan
+                                ->nama ?? '-'
+                            }}
+
+                        </td>
+
+
+                        <td>
+
+                            {{
+                                $transaksi
+                                ->layanan
+                                ->nama_layanan ?? '-'
+                            }}
+
+                        </td>
+
+
+                        <td>
+
+                            <strong>
+
+                                Rp {{ number_format(
+                                    $transaksi->total,
+                                    0,
+                                    ',',
+                                    '.'
+                                ) }}
+
+                            </strong>
+
+                        </td>
+
+
+                        <td>
+
+
+                            @if(
+                                in_array(
+                                    $transaksi->status_laundry,
+                                    [
+                                        'Selesai',
+                                        'Diambil',
+                                        'Dikirim'
+                                    ]
+                                )
+                            )
+
+                                <span
+                                    class="badge badge-green"
+                                >
+
+                                    {{
+                                        $transaksi
+                                        ->status_laundry
+                                    }}
+
+                                </span>
+
+
+                            @else
+
+
+                                <span
+                                    class="badge badge-blue"
+                                >
+
+                                    {{
+                                        $transaksi
+                                        ->status_laundry
+                                    }}
+
+                                </span>
+
+
+                            @endif
+
+
+                        </td>
+
+
                     </tr>
+
+
+                @empty
+
+
+                    <tr>
+
+                        <td
+                            colspan="5"
+                            style="
+                                text-align:center;
+                                padding:35px;
+                            "
+                        >
+
+                            🧺 Belum ada transaksi laundry.
+
+                        </td>
+
+                    </tr>
+
+
+                @endforelse
+
+
                 </tbody>
+
+
             </table>
 
         </div>
 
+
     </div>
 
-</body>
-</html>
+
+
+    <div class="panel">
+
+
+        <div class="panel-header">
+
+            <h2>
+                ⚡ Menu Cepat
+            </h2>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+
+            <a
+                href="{{ route('transaksi.index') }}"
+                class="quick-action"
+            >
+
+                <div class="quick-icon">
+                    ➕
+                </div>
+
+                <div>
+
+                    <strong>
+                        Transaksi Baru
+                    </strong>
+
+                    <small>
+                        Tambahkan pesanan laundry
+                    </small>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="{{ route('pelanggan.index') }}"
+                class="quick-action"
+            >
+
+                <div class="quick-icon">
+                    👤
+                </div>
+
+                <div>
+
+                    <strong>
+                        Tambah Pelanggan
+                    </strong>
+
+                    <small>
+                        Kelola data pelanggan
+                    </small>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="{{ route('status.index') }}"
+                class="quick-action"
+            >
+
+                <div class="quick-icon">
+                    🔄
+                </div>
+
+                <div>
+
+                    <strong>
+                        Status Laundry
+                    </strong>
+
+                    <small>
+                        Pantau proses cucian
+                    </small>
+
+                </div>
+
+            </a>
+
+
+
+            <a
+                href="{{ route('laporan.index') }}"
+                class="quick-action"
+            >
+
+                <div class="quick-icon">
+                    📄
+                </div>
+
+                <div>
+
+                    <strong>
+                        Laporan
+                    </strong>
+
+                    <small>
+                        Cetak laporan laundry
+                    </small>
+
+                </div>
+
+            </a>
+
+
+        </div>
+
+
+
+        <div
+            style="
+                margin-top:20px;
+                padding:16px;
+                background:#fff1f2;
+                border-radius:13px;
+                border:1px solid #fecdd3;
+            "
+        >
+
+            <small
+                style="
+                    color:#9f1239;
+                    font-weight:bold;
+                "
+            >
+
+                💳 Pembayaran Belum Lunas
+
+            </small>
+
+
+            <h2
+                style="
+                    color:#e11d48;
+                    margin-top:6px;
+                "
+            >
+
+                {{ $belumLunas }}
+
+            </h2>
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+@endsection
