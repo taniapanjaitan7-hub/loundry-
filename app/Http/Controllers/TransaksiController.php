@@ -10,45 +10,137 @@ use Illuminate\Support\Str;
 
 class TransaksiController extends Controller
 {
-    public function index()
+    /**
+     * Menampilkan daftar transaksi,
+     * pencarian, filter, dan statistik transaksi.
+     */
+    public function index(Request $request)
     {
-        $transaksis = Transaksi::with(['pelanggan', 'layanan'])
+        $search = $request->get('search');
+
+        $statusPembayaran =
+            $request->get('status_pembayaran');
+
+        $statusLaundry =
+            $request->get('status_laundry');
+
+
+        $transaksis = Transaksi::with([
+                'pelanggan',
+                'layanan'
+            ])
+
+            // Pencarian kode transaksi
+            // atau nama pelanggan.
+            ->when($search, function ($query, $search) {
+
+                $query->where(function ($q) use ($search) {
+
+                    $q->where(
+                        'kode_transaksi',
+                        'like',
+                        '%' . $search . '%'
+                    )
+
+                    ->orWhereHas(
+                        'pelanggan',
+                        function ($pelanggan) use ($search) {
+
+                            $pelanggan->where(
+                                'nama',
+                                'like',
+                                '%' . $search . '%'
+                            );
+                        }
+                    );
+                });
+            })
+
+            // Filter status pembayaran.
+            ->when(
+                $statusPembayaran,
+                function ($query, $statusPembayaran) {
+
+                    $query->where(
+                        'status_pembayaran',
+                        $statusPembayaran
+                    );
+                }
+            )
+
+            // Filter status laundry.
+            ->when(
+                $statusLaundry,
+                function ($query, $statusLaundry) {
+
+                    $query->where(
+                        'status_laundry',
+                        $statusLaundry
+                    );
+                }
+            )
+
             ->latest()
             ->get();
 
-        $pelanggans = Pelanggan::orderBy('nama')->get();
 
-        $layanans = Layanan::orderBy('nama_layanan')->get();
+        // Data pelanggan untuk form transaksi.
+        $pelanggans = Pelanggan::orderBy('nama')
+            ->get();
 
+
+        // Data layanan untuk form transaksi.
+        $layanans = Layanan::orderBy('nama_layanan')
+            ->get();
+
+
+        // Statistik transaksi.
         $totalTransaksi = Transaksi::count();
+
 
         $belumLunas = Transaksi::where(
             'status_pembayaran',
             'Belum Lunas'
         )->count();
 
+
         $pendapatan = Transaksi::where(
             'status_pembayaran',
             'Lunas'
         )->sum('total');
 
-        return view('transaksi.index', compact(
-            'transaksis',
-            'pelanggans',
-            'layanans',
-            'totalTransaksi',
-            'belumLunas',
-            'pendapatan'
-        ));
+
+        return view(
+            'transaksi.index',
+            compact(
+                'transaksis',
+                'pelanggans',
+                'layanans',
+                'totalTransaksi',
+                'belumLunas',
+                'pendapatan',
+                'search',
+                'statusPembayaran',
+                'statusLaundry'
+            )
+        );
     }
 
 
+    /**
+     * Menyimpan transaksi baru.
+     */
     public function store(Request $request)
     {
         $request->validate([
-            'pelanggan_id' => 'required|exists:pelanggans,id',
-            'layanan_id' => 'required|exists:layanans,id',
-            'berat' => 'required|numeric|min:0.1',
+            'pelanggan_id' =>
+                'required|exists:pelanggans,id',
+
+            'layanan_id' =>
+                'required|exists:layanans,id',
+
+            'berat' =>
+                'required|numeric|min:0.1',
 
             'jenis_pengambilan' =>
                 'required|in:ambil_sendiri,kirim',
@@ -60,34 +152,50 @@ class TransaksiController extends Controller
                 'required|in:langsung,nanti',
 
             'metode_pembayaran' =>
-                'nullable|required_if:cara_bayar,langsung',
+                'nullable|required_if:cara_bayar,langsung|in:Tunai,Transfer,QRIS',
 
-            'tanggal_selesai' => 'nullable|date',
-            'catatan' => 'nullable',
+            'tanggal_selesai' =>
+                'nullable|date',
+
+            'catatan' =>
+                'nullable|string',
         ]);
 
+
+        // Ambil layanan berdasarkan ID.
         $layanan = Layanan::findOrFail(
             $request->layanan_id
         );
 
+
+        // Harga per kilogram.
         $harga = $layanan->harga;
 
+
+        // Hitung total transaksi.
         $total = round(
             $harga * $request->berat
         );
 
-        $kode = 'TRX-' .
+
+        // Generate kode transaksi.
+        $kode =
+            'TRX-' .
             now()->format('YmdHis') .
             '-' .
             strtoupper(Str::random(3));
 
+
+        // Tentukan status pembayaran.
         $statusPembayaran =
             $request->cara_bayar === 'langsung'
                 ? 'Lunas'
                 : 'Belum Lunas';
 
+
         Transaksi::create([
-            'kode_transaksi' => $kode,
+            'kode_transaksi' =>
+                $kode,
 
             'pelanggan_id' =>
                 $request->pelanggan_id,
@@ -136,6 +244,7 @@ class TransaksiController extends Controller
                 $request->catatan,
         ]);
 
+
         return redirect()
             ->route('transaksi.index')
             ->with(
@@ -145,13 +254,20 @@ class TransaksiController extends Controller
     }
 
 
+    /**
+     * Menampilkan halaman edit transaksi.
+     */
     public function edit(Transaksi $transaksi)
     {
-        $pelanggans = Pelanggan::orderBy('nama')
-            ->get();
+        $pelanggans =
+            Pelanggan::orderBy('nama')
+                ->get();
 
-        $layanans = Layanan::orderBy('nama_layanan')
-            ->get();
+
+        $layanans =
+            Layanan::orderBy('nama_layanan')
+                ->get();
+
 
         return view(
             'transaksi.edit',
@@ -164,10 +280,14 @@ class TransaksiController extends Controller
     }
 
 
+    /**
+     * Memperbarui transaksi.
+     */
     public function update(
         Request $request,
         Transaksi $transaksi
     ) {
+
         $request->validate([
             'pelanggan_id' =>
                 'required|exists:pelanggans,id',
@@ -188,17 +308,22 @@ class TransaksiController extends Controller
                 'nullable|date',
 
             'catatan' =>
-                'nullable',
+                'nullable|string',
         ]);
+
 
         $layanan = Layanan::findOrFail(
             $request->layanan_id
         );
 
+
+        // Hitung kembali total jika
+        // layanan atau berat berubah.
         $total = round(
             $layanan->harga *
             $request->berat
         );
+
 
         $transaksi->update([
             'pelanggan_id' =>
@@ -231,6 +356,7 @@ class TransaksiController extends Controller
                 $request->catatan,
         ]);
 
+
         return redirect()
             ->route('transaksi.index')
             ->with(
@@ -240,14 +366,20 @@ class TransaksiController extends Controller
     }
 
 
+    /**
+     * Melakukan pembayaran transaksi
+     * yang sebelumnya belum lunas.
+     */
     public function bayar(
         Request $request,
         Transaksi $transaksi
     ) {
+
         $request->validate([
             'metode_pembayaran' =>
                 'required|in:Tunai,Transfer,QRIS',
         ]);
+
 
         $transaksi->update([
             'cara_bayar' =>
@@ -260,6 +392,7 @@ class TransaksiController extends Controller
                 'Lunas',
         ]);
 
+
         return redirect()
             ->route('transaksi.index')
             ->with(
@@ -269,19 +402,25 @@ class TransaksiController extends Controller
     }
 
 
+    /**
+     * Memperbarui status pengerjaan laundry.
+     */
     public function updateStatus(
         Request $request,
         Transaksi $transaksi
     ) {
+
         $request->validate([
             'status_laundry' =>
                 'required|in:Diterima,Dicuci,Dikeringkan,Disetrika,Selesai,Diambil,Dikirim',
         ]);
 
+
         $transaksi->update([
             'status_laundry' =>
                 $request->status_laundry,
         ]);
+
 
         return redirect()
             ->route('transaksi.index')
@@ -292,10 +431,15 @@ class TransaksiController extends Controller
     }
 
 
+    /**
+     * Menghapus transaksi.
+     */
     public function destroy(
         Transaksi $transaksi
     ) {
+
         $transaksi->delete();
+
 
         return redirect()
             ->route('transaksi.index')
