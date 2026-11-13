@@ -44,6 +44,10 @@
             background: #1d4ed8;
         }
 
+        .sidebar a.active {
+            background: #1e40af;
+        }
+
         .content {
             margin-left: 230px;
             padding: 30px;
@@ -99,6 +103,21 @@
             color: white;
         }
 
+        .btn-secondary {
+            background: #64748b;
+            color: white;
+        }
+
+        .search-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .search-form input {
+            flex: 1;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -127,6 +146,11 @@
             display: flex;
             gap: 5px;
         }
+
+        .hasil-pencarian {
+            margin-bottom: 15px;
+            color: #475569;
+        }
     </style>
 </head>
 
@@ -136,14 +160,29 @@
 
     <h2>🧺 Tania Laundry</h2>
 
-    <a href="{{ route('dashboard') }}">Dashboard</a>
+    <a href="{{ route('dashboard') }}">
+        Dashboard
+    </a>
 
-    <a href="{{ route('pelanggan.index') }}">Pelanggan</a>
+    <a href="{{ route('pelanggan.index') }}" class="active">
+        Pelanggan
+    </a>
 
-    <a href="#">Transaksi</a>
-    <a href="#">Layanan</a>
-    <a href="#">Status Laundry</a>
-    <a href="#">Laporan</a>
+    <a href="{{ route('transaksi.index') }}">
+        Transaksi
+    </a>
+
+    <a href="{{ route('layanan.index') }}">
+        Layanan
+    </a>
+
+    <a href="{{ route('status.index') }}">
+        Status Laundry
+    </a>
+
+    <a href="{{ route('laporan.index') }}">
+        Laporan
+    </a>
 
 </div>
 
@@ -151,7 +190,7 @@
 <div class="content">
 
     <h1>Data Pelanggan</h1>
-    <p>Kelola data pelanggan Tania Laundry.</p>
+    <p>Kelola dan cari data pelanggan Tania Laundry.</p>
 
     <br>
 
@@ -219,6 +258,44 @@
 
         <br>
 
+        <!-- PENCARIAN PELANGGAN -->
+        <form
+            action="{{ route('pelanggan.index') }}"
+            method="GET"
+            class="search-form"
+        >
+
+            <input
+                type="text"
+                name="search"
+                value="{{ request('search') }}"
+                placeholder="Cari nama, nomor HP, atau alamat..."
+            >
+
+            <button type="submit" class="btn btn-primary">
+                🔍 Cari
+            </button>
+
+            @if(request('search'))
+                <a
+                    href="{{ route('pelanggan.index') }}"
+                    class="btn btn-secondary"
+                >
+                    Reset
+                </a>
+            @endif
+
+        </form>
+
+
+        @if(request('search'))
+            <div class="hasil-pencarian">
+                Hasil pencarian untuk:
+                <strong>{{ request('search') }}</strong>
+            </div>
+        @endif
+
+
         <table>
 
             <thead>
@@ -284,7 +361,13 @@
 
                 <tr>
                     <td colspan="5" style="text-align:center;">
-                        Belum ada data pelanggan
+
+                        @if(request('search'))
+                            Data pelanggan tidak ditemukan.
+                        @else
+                            Belum ada data pelanggan.
+                        @endif
+
                     </td>
                 </tr>
 
