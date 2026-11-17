@@ -94,22 +94,37 @@ Route::middleware('auth')->group(function () {
     |--------------------------------------------------------------------------
     | TRANSAKSI
     |--------------------------------------------------------------------------
+    |
+    | show sekarang DIAKTIFKAN agar halaman
+    | detail transaksi / struk dapat dibuka.
+    |
     */
 
     Route::resource(
         'transaksi',
         TransaksiController::class
     )->except([
-        'create',
-        'show'
+        'create'
     ]);
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | PEMBAYARAN TRANSAKSI
+    |--------------------------------------------------------------------------
+    */
 
     Route::post(
         '/transaksi/{transaksi}/bayar',
         [TransaksiController::class, 'bayar']
     )->name('transaksi.bayar');
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | UPDATE STATUS TRANSAKSI
+    |--------------------------------------------------------------------------
+    */
 
     Route::post(
         '/transaksi/{transaksi}/status',

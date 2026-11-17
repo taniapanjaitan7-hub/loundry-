@@ -17,20 +17,15 @@ class TransaksiController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-
-        $statusPembayaran =
-            $request->get('status_pembayaran');
-
-        $statusLaundry =
-            $request->get('status_laundry');
-
+        $statusPembayaran = $request->get('status_pembayaran');
+        $statusLaundry = $request->get('status_laundry');
 
         $transaksis = Transaksi::with([
                 'pelanggan',
                 'layanan'
             ])
 
-            // Pencarian kode transaksi
+            // Pencarian berdasarkan kode transaksi
             // atau nama pelanggan.
             ->when($search, function ($query, $search) {
 
@@ -168,7 +163,7 @@ class TransaksiController extends Controller
         );
 
 
-        // Harga per kilogram.
+        // Harga layanan.
         $harga = $layanan->harga;
 
 
@@ -178,7 +173,7 @@ class TransaksiController extends Controller
         );
 
 
-        // Generate kode transaksi.
+        // Generate kode transaksi otomatis.
         $kode =
             'TRX-' .
             now()->format('YmdHis') .
@@ -194,6 +189,7 @@ class TransaksiController extends Controller
 
 
         Transaksi::create([
+
             'kode_transaksi' =>
                 $kode,
 
@@ -255,6 +251,25 @@ class TransaksiController extends Controller
 
 
     /**
+     * Menampilkan detail transaksi
+     * dan halaman cetak struk.
+     */
+    public function show(Transaksi $transaksi)
+    {
+        $transaksi->load([
+            'pelanggan',
+            'layanan'
+        ]);
+
+
+        return view(
+            'transaksi.show',
+            compact('transaksi')
+        );
+    }
+
+
+    /**
      * Menampilkan halaman edit transaksi.
      */
     public function edit(Transaksi $transaksi)
@@ -289,6 +304,7 @@ class TransaksiController extends Controller
     ) {
 
         $request->validate([
+
             'pelanggan_id' =>
                 'required|exists:pelanggans,id',
 
@@ -317,7 +333,7 @@ class TransaksiController extends Controller
         );
 
 
-        // Hitung kembali total jika
+        // Hitung ulang total jika
         // layanan atau berat berubah.
         $total = round(
             $layanan->harga *
@@ -326,6 +342,7 @@ class TransaksiController extends Controller
 
 
         $transaksi->update([
+
             'pelanggan_id' =>
                 $request->pelanggan_id,
 
@@ -376,12 +393,15 @@ class TransaksiController extends Controller
     ) {
 
         $request->validate([
+
             'metode_pembayaran' =>
                 'required|in:Tunai,Transfer,QRIS',
+
         ]);
 
 
         $transaksi->update([
+
             'cara_bayar' =>
                 'langsung',
 
@@ -390,6 +410,7 @@ class TransaksiController extends Controller
 
             'status_pembayaran' =>
                 'Lunas',
+
         ]);
 
 
@@ -411,14 +432,18 @@ class TransaksiController extends Controller
     ) {
 
         $request->validate([
+
             'status_laundry' =>
                 'required|in:Diterima,Dicuci,Dikeringkan,Disetrika,Selesai,Diambil,Dikirim',
+
         ]);
 
 
         $transaksi->update([
+
             'status_laundry' =>
                 $request->status_laundry,
+
         ]);
 
 
