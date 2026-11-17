@@ -13,31 +13,36 @@ use App\Http\Controllers\LaporanController;
 
 /*
 |--------------------------------------------------------------------------
-| LOGIN ADMIN
+| AUTHENTICATION
 |--------------------------------------------------------------------------
 */
 
-Route::get(
-    '/login',
-    [AuthController::class, 'showLogin']
-)->name('login');
+Route::middleware('guest')->group(function () {
 
+    Route::get(
+        '/login',
+        [AuthController::class, 'showLogin']
+    )->name('login');
 
-Route::post(
-    '/login',
-    [AuthController::class, 'login']
-)->name('login.process');
+    Route::post(
+        '/login',
+        [AuthController::class, 'login']
+    )->name('login.process');
+
+});
 
 
 Route::post(
     '/logout',
     [AuthController::class, 'logout']
-)->name('logout');
+)
+    ->middleware('auth')
+    ->name('logout');
 
 
 /*
 |--------------------------------------------------------------------------
-| HALAMAN YANG HARUS LOGIN
+| HALAMAN YANG WAJIB LOGIN
 |--------------------------------------------------------------------------
 */
 

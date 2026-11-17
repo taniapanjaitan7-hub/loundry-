@@ -7,6 +7,12 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
+    /*
+    |--------------------------------------------------------------------------
+    | TAMPILKAN LOGIN
+    |--------------------------------------------------------------------------
+    */
+
     public function showLogin()
     {
         if (Auth::check()) {
@@ -16,41 +22,93 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | PROSES LOGIN
+    |--------------------------------------------------------------------------
+    */
+
     public function login(Request $request)
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required',
-        ], [
-            'email.required' => 'Email wajib diisi.',
-            'email.email' => 'Format email tidak valid.',
-            'password.required' => 'Password wajib diisi.',
-        ]);
+        $credentials = $request->validate(
+            [
+                'email' => [
+                    'required',
+                    'email'
+                ],
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+                'password' => [
+                    'required'
+                ],
+            ],
+            [
+                'email.required' =>
+                    'Email wajib diisi.',
+
+                'email.email' =>
+                    'Format email tidak valid.',
+
+                'password.required' =>
+                    'Password wajib diisi.',
+            ]
+        );
+
+
+        $remember = $request->boolean('remember');
+
+
+        if (Auth::attempt($credentials, $remember)) {
+
+            $request
+                ->session()
+                ->regenerate();
+
 
             return redirect()
                 ->intended(route('dashboard'))
-                ->with('success', 'Login berhasil. Selamat datang di Tania Mutiara Laundry.');
+                ->with(
+                    'success',
+                    'Login berhasil. Selamat datang di Tania Mutiara Laundry.'
+                );
         }
+
 
         return back()
             ->withErrors([
-                'email' => 'Email atau password salah.',
+                'email' =>
+                    'Email atau password yang Anda masukkan salah.'
             ])
             ->onlyInput('email');
     }
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | LOGOUT
+    |--------------------------------------------------------------------------
+    */
 
     public function logout(Request $request)
     {
         Auth::logout();
 
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
+
+        $request
+            ->session()
+            ->invalidate();
+
+
+        $request
+            ->session()
+            ->regenerateToken();
+
 
         return redirect()
             ->route('login')
-            ->with('success', 'Anda berhasil logout.');
+            ->with(
+                'success',
+                'Anda berhasil logout.'
+            );
     }
 }
