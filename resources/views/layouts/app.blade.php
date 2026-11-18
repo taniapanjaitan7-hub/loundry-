@@ -2,7 +2,6 @@
 
 <html lang="id">
 
-
 <head>
 
     <meta charset="UTF-8">
@@ -12,14 +11,11 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-
     <title>
-
         @yield(
             'title',
             'Tania Mutiara Laundry'
         )
-
     </title>
 
 
@@ -34,15 +30,87 @@
 
     <style>
 
-        /* =============================
-           ADMIN PROFILE
-        ============================= */
+        /* =========================================
+           SIDEBAR LAYOUT
+        ========================================= */
+
+        .sidebar {
+
+            display: flex !important;
+
+            flex-direction: column;
+
+            height: 100vh;
+
+            overflow: hidden;
+
+            padding-bottom: 15px;
+
+        }
+
+
+        .sidebar nav {
+
+            flex: 1;
+
+            overflow-y: auto;
+
+            overflow-x: hidden;
+
+            padding-right: 2px;
+
+        }
+
+
+        .sidebar nav::-webkit-scrollbar {
+
+            width: 4px;
+
+        }
+
+
+        .sidebar nav::-webkit-scrollbar-thumb {
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .20
+                );
+
+            border-radius: 20px;
+
+        }
+
+
+
+        /* =========================================
+           ADMIN AREA
+        ========================================= */
+
+        .sidebar-bottom {
+
+            margin-top: auto;
+
+            flex-shrink: 0;
+
+        }
+
 
         .admin-profile {
 
-            margin-top: 25px;
+            display: flex;
 
-            padding: 14px;
+            align-items: center;
+
+            gap: 10px;
+
+            width: 100%;
+
+            padding: 10px;
+
+            margin-top: 12px;
 
             background:
                 rgba(
@@ -61,31 +129,30 @@
                     .15
                 );
 
-            border-radius: 12px;
+            border-radius: 14px;
+
+            backdrop-filter: blur(8px);
+
+            -webkit-backdrop-filter:
+                blur(8px);
 
             color: white;
 
         }
 
 
-        .admin-profile-title {
 
-            display: flex;
-
-            align-items: center;
-
-            gap: 10px;
-
-            margin-bottom: 10px;
-
-        }
-
+        /* =========================================
+           AVATAR
+        ========================================= */
 
         .admin-avatar {
 
-            width: 40px;
+            width: 38px;
 
-            height: 40px;
+            height: 38px;
+
+            min-width: 38px;
 
             display: flex;
 
@@ -93,7 +160,7 @@
 
             justify-content: center;
 
-            flex-shrink: 0;
+            border-radius: 11px;
 
             background:
                 rgba(
@@ -103,14 +170,23 @@
                     .18
                 );
 
-            border-radius: 50%;
+            font-size: 17px;
 
-            font-size: 19px;
+            font-weight: bold;
+
+            color: white;
 
         }
 
 
+
+        /* =========================================
+           ADMIN INFO
+        ========================================= */
+
         .admin-info {
+
+            flex: 1;
 
             min-width: 0;
 
@@ -119,11 +195,17 @@
         }
 
 
-        .admin-info strong {
+        .admin-name {
 
             display: block;
 
-            font-size: 13px;
+            width: 100%;
+
+            color: white;
+
+            font-size: 12px;
+
+            font-weight: 700;
 
             white-space: nowrap;
 
@@ -134,42 +216,75 @@
         }
 
 
-        .admin-info span {
+        .admin-role {
 
             display: block;
 
-            margin-top: 3px;
+            margin-top: 2px;
 
-            font-size: 11px;
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .70
+                );
 
-            opacity: .8;
+            font-size: 9px;
 
         }
 
 
         .admin-email {
 
-            font-size: 10px !important;
+            display: block;
 
-            margin-top: 4px !important;
+            width: 100%;
+
+            margin-top: 2px;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .60
+                );
+
+            font-size: 8px;
+
+            white-space: nowrap;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
 
         }
 
 
-        /* =============================
+
+        /* =========================================
            LOGOUT
-        ============================= */
+        ========================================= */
 
         .logout-form {
 
-            margin-top: 12px;
+            margin: 0;
+
+            padding: 0;
+
+            flex-shrink: 0;
 
         }
 
 
         .logout-button {
 
-            width: 100%;
+            width: 36px;
+
+            height: 36px;
+
+            padding: 0;
 
             display: flex;
 
@@ -177,42 +292,95 @@
 
             justify-content: center;
 
-            gap: 8px;
-
-            padding: 11px 14px;
-
             border: none;
 
-            border-radius: 9px;
+            border-radius: 10px;
 
-            background: #dc2626;
+            background:
+                rgba(
+                    239,
+                    68,
+                    68,
+                    .18
+                );
 
-            color: white;
+            color: #fecaca;
 
-            font-size: 13px;
-
-            font-weight: 600;
+            font-size: 16px;
 
             cursor: pointer;
 
-            transition: .2s;
+            transition:
+                background .2s,
+                color .2s,
+                transform .2s;
 
         }
 
 
         .logout-button:hover {
 
-            background: #b91c1c;
+            background: #ef4444;
+
+            color: white;
 
             transform:
-                translateY(-1px);
+                translateX(2px);
 
         }
 
 
-        /* =============================
+
+        /* =========================================
+           SIDEBAR FOOTER
+        ========================================= */
+
+        .sidebar-mini-footer {
+
+            margin-top: 8px;
+
+            padding: 0 5px;
+
+            text-align: center;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .55
+                );
+
+            font-size: 9px;
+
+            line-height: 1.4;
+
+        }
+
+
+        .sidebar-mini-footer strong {
+
+            display: block;
+
+            color:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .75
+                );
+
+            font-size: 9px;
+
+            font-weight: 600;
+
+        }
+
+
+
+        /* =========================================
            ERROR
-        ============================= */
+        ========================================= */
 
         .alert-error-layout {
 
@@ -228,8 +396,59 @@
 
         }
 
-    </style>
 
+
+        /* =========================================
+           RESPONSIVE HEIGHT
+        ========================================= */
+
+        @media(max-height: 700px) {
+
+            .sidebar nav a {
+
+                padding-top: 9px !important;
+
+                padding-bottom: 9px !important;
+
+            }
+
+
+            .admin-profile {
+
+                padding: 8px;
+
+            }
+
+
+            .admin-avatar {
+
+                width: 34px;
+
+                height: 34px;
+
+                min-width: 34px;
+
+            }
+
+
+            .logout-button {
+
+                width: 32px;
+
+                height: 32px;
+
+            }
+
+
+            .sidebar-mini-footer {
+
+                display: none;
+
+            }
+
+        }
+
+    </style>
 
 </head>
 
@@ -244,7 +463,9 @@
 <aside class="sidebar">
 
 
-    <!-- BRAND -->
+    <!-- =====================================
+         BRAND
+    ====================================== -->
 
     <div class="brand">
 
@@ -280,7 +501,9 @@
 
 
 
-    <!-- MENU -->
+    <!-- =====================================
+         MENU LABEL
+    ====================================== -->
 
     <div class="menu-label">
 
@@ -290,19 +513,22 @@
 
 
 
+    <!-- =====================================
+         NAVIGATION
+    ====================================== -->
+
     <nav>
 
 
+        <!-- DASHBOARD -->
+
         <a
-
             href="{{ route('dashboard') }}"
-
             class="{{
                 request()->routeIs('dashboard')
                 ? 'active'
                 : ''
             }}"
-
         >
 
             <span class="nav-icon">
@@ -317,16 +543,15 @@
 
 
 
+        <!-- PELANGGAN -->
+
         <a
-
             href="{{ route('pelanggan.index') }}"
-
             class="{{
                 request()->routeIs('pelanggan.*')
                 ? 'active'
                 : ''
             }}"
-
         >
 
             <span class="nav-icon">
@@ -341,16 +566,15 @@
 
 
 
+        <!-- TRANSAKSI -->
+
         <a
-
             href="{{ route('transaksi.index') }}"
-
             class="{{
                 request()->routeIs('transaksi.*')
                 ? 'active'
                 : ''
             }}"
-
         >
 
             <span class="nav-icon">
@@ -365,16 +589,15 @@
 
 
 
+        <!-- LAYANAN -->
+
         <a
-
             href="{{ route('layanan.index') }}"
-
             class="{{
                 request()->routeIs('layanan.*')
                 ? 'active'
                 : ''
             }}"
-
         >
 
             <span class="nav-icon">
@@ -389,16 +612,15 @@
 
 
 
+        <!-- STATUS LAUNDRY -->
+
         <a
-
             href="{{ route('status.index') }}"
-
             class="{{
                 request()->routeIs('status.*')
                 ? 'active'
                 : ''
             }}"
-
         >
 
             <span class="nav-icon">
@@ -413,16 +635,15 @@
 
 
 
+        <!-- LAPORAN -->
+
         <a
-
             href="{{ route('laporan.index') }}"
-
             class="{{
                 request()->routeIs('laporan.*')
                 ? 'active'
                 : ''
             }}"
-
         >
 
             <span class="nav-icon">
@@ -440,44 +661,70 @@
 
 
 
-    <!-- ADMIN -->
+    <!-- =====================================
+         BAGIAN BAWAH SIDEBAR
+    ====================================== -->
 
-    @auth
+    <div class="sidebar-bottom">
 
 
-        <div class="admin-profile">
+        @auth
 
 
-            <div class="admin-profile-title">
+            <!-- ADMIN PROFILE -->
 
+            <div class="admin-profile">
+
+
+                <!-- AVATAR -->
 
                 <div class="admin-avatar">
 
-                    👤
+                    {{
+                        strtoupper(
+                            substr(
+                                auth()->user()->name,
+                                0,
+                                1
+                            )
+                        )
+                    }}
 
                 </div>
 
 
+
+                <!-- ADMIN INFO -->
+
                 <div class="admin-info">
 
 
-                    <strong>
+                    <span class="admin-name">
 
-                        {{ auth()->user()->name }}
+                        {{
+                            auth()->user()->name
+                        }}
 
-                    </strong>
+                    </span>
 
 
-                    <span>
+                    <span class="admin-role">
 
                         Administrator
 
                     </span>
 
 
-                    <span class="admin-email">
+                    <span
+                        class="admin-email"
+                        title="{{
+                            auth()->user()->email
+                        }}"
+                    >
 
-                        {{ auth()->user()->email }}
+                        {{
+                            auth()->user()->email
+                        }}
 
                     </span>
 
@@ -485,69 +732,72 @@
                 </div>
 
 
-            </div>
 
+                <!-- LOGOUT -->
 
+                <form
 
-            <form
+                    action="{{ route('logout') }}"
 
-                action="{{ route('logout') }}"
+                    method="POST"
 
-                method="POST"
+                    class="logout-form"
 
-                class="logout-form"
-
-                onsubmit="
-                    return confirm(
-                        'Yakin ingin keluar dari Tania Mutiara Laundry?'
-                    )
-                "
-
-            >
-
-
-                @csrf
-
-
-                <button
-
-                    type="submit"
-
-                    class="logout-button"
+                    onsubmit="
+                        return confirm(
+                            'Yakin ingin keluar dari Tania Mutiara Laundry?'
+                        )
+                    "
 
                 >
 
-                    🚪 Logout
 
-                </button>
+                    @csrf
 
 
-            </form>
+                    <button
+
+                        type="submit"
+
+                        class="logout-button"
+
+                        title="Logout"
+
+                        aria-label="Logout"
+
+                    >
+
+                        🚪
+
+                    </button>
+
+
+                </form>
+
+
+            </div>
+
+
+        @endauth
+
+
+
+        <!-- MINI FOOTER -->
+
+        <div class="sidebar-mini-footer">
+
+
+            <strong>
+
+                Bersih • Wangi • Rapi
+
+            </strong>
+
+
+            Tania Mutiara Laundry
 
 
         </div>
-
-
-    @endauth
-
-
-
-    <div class="sidebar-footer">
-
-
-        <strong>
-
-            Bersih • Wangi • Rapi
-
-        </strong>
-
-
-        <span>
-
-            Perawatan terbaik untuk
-            pakaian Anda.
-
-        </span>
 
 
     </div>
@@ -557,8 +807,14 @@
 
 
 
+<!-- =====================================
+     MAIN CONTENT
+====================================== -->
+
 <main class="main-content">
 
+
+    <!-- SUCCESS -->
 
     @if(session('success'))
 
@@ -574,6 +830,8 @@
 
 
 
+    <!-- ERROR -->
+
     @if(session('error'))
 
 
@@ -588,9 +846,13 @@
 
 
 
+    <!-- PAGE CONTENT -->
+
     @yield('content')
 
 
+
+    <!-- MAIN FOOTER -->
 
     <footer class="footer">
 
