@@ -6,608 +6,325 @@
 @push('styles')
 
 <style>
-
-    /* =========================================================
-       EDIT LAYANAN PREMIUM
-    ========================================================= */
-
     .edit-service-page {
         width: 100%;
         max-width: 1050px;
         margin: 0 auto;
     }
 
-
-    /* =========================================================
-       HERO
-    ========================================================= */
-
     .edit-service-hero {
         position: relative;
         overflow: hidden;
-
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        gap: 25px;
-
-        margin-bottom: 25px;
+        gap: 24px;
+        margin-bottom: 24px;
         padding: 30px;
-
         border-radius: 22px;
-
-        color: white;
-
-        background:
-            linear-gradient(
-                135deg,
-                #1e3a8a 0%,
-                #2563eb 55%,
-                #0ea5e9 100%
-            );
-
-        box-shadow:
-            0 16px 38px
-            rgba(37,99,235,.18);
+        color: #fff;
+        background: linear-gradient(135deg, #1e3a8a, #2563eb 55%, #0ea5e9);
+        box-shadow: 0 16px 38px rgba(37, 99, 235, .18);
     }
-
 
     .edit-service-hero::before {
         content: "";
-
         position: absolute;
-
-        width: 260px;
-        height: 260px;
-
+        width: 250px;
+        height: 250px;
         right: -90px;
         top: -130px;
-
         border-radius: 50%;
-
-        background:
-            rgba(255,255,255,.10);
+        background: rgba(255, 255, 255, .10);
     }
 
-
-    .edit-service-hero::after {
-        content: "";
-
-        position: absolute;
-
-        width: 160px;
-        height: 160px;
-
-        right: 150px;
-        bottom: -120px;
-
-        border-radius: 50%;
-
-        background:
-            rgba(255,255,255,.06);
-    }
-
-
-    .edit-service-hero-content {
+    .hero-content {
         position: relative;
         z-index: 2;
     }
 
-
-    .edit-service-hero h1 {
-        margin:
-            0 0 8px;
-
+    .hero-content h1 {
+        margin: 0 0 8px;
         font-size: 28px;
     }
 
-
-    .edit-service-hero p {
-        margin: 0;
-
+    .hero-content p {
         max-width: 620px;
-
-        color:
-            rgba(255,255,255,.84);
-
+        margin: 0;
+        color: rgba(255, 255, 255, .84);
         font-size: 12px;
-
         line-height: 1.7;
     }
 
-
-    .edit-service-hero-icon {
+    .hero-icon {
         position: relative;
         z-index: 2;
-
         width: 95px;
         height: 95px;
-
         display: flex;
         align-items: center;
         justify-content: center;
-
         flex-shrink: 0;
-
-        border:
-            1px solid
-            rgba(255,255,255,.18);
-
         border-radius: 25px;
-
-        background:
-            rgba(255,255,255,.13);
-
-        backdrop-filter:
-            blur(12px);
-
-        font-size: 44px;
+        border: 1px solid rgba(255, 255, 255, .18);
+        background: rgba(255, 255, 255, .13);
+        font-size: 43px;
     }
 
-
-
-    /* =========================================================
-       ALERT
-    ========================================================= */
-
-    .edit-service-error {
+    .edit-alert {
         margin-bottom: 20px;
-
         padding: 14px 16px;
-
-        background: #fee2e2;
-
-        border:
-            1px solid #fecaca;
-
+        border: 1px solid #fecaca;
         border-radius: 11px;
-
+        background: #fee2e2;
         color: #991b1b;
-
         font-size: 11px;
     }
 
-
-    .edit-service-error ul {
-        margin:
-            8px 0 0;
-
+    .edit-alert ul {
+        margin: 8px 0 0;
         padding-left: 20px;
     }
 
-
-
-    /* =========================================================
-       GRID
-    ========================================================= */
-
-    .edit-service-grid {
+    .edit-grid {
         display: grid;
-
-        grid-template-columns:
-            minmax(0, 1.5fr)
-            minmax(260px, .65fr);
-
+        grid-template-columns: minmax(0, 1.5fr) minmax(270px, .7fr);
         gap: 20px;
-
         align-items: start;
     }
 
-
-
-    /* =========================================================
-       PANEL
-    ========================================================= */
-
-    .edit-service-panel {
-        padding: 24px;
-
-        background: white;
-
-        border:
-            1px solid #e8eef7;
-
+    .edit-panel,
+    .preview-panel {
+        padding: 23px;
+        background: #fff;
+        border: 1px solid #e8eef7;
         border-radius: 19px;
-
-        box-shadow:
-            0 8px 25px
-            rgba(15,23,42,.06);
+        box-shadow: 0 8px 25px rgba(15, 23, 42, .06);
     }
 
-
-    .edit-service-panel-header {
-        margin-bottom: 22px;
+    .panel-title {
+        margin-bottom: 21px;
     }
 
-
-    .edit-service-panel-header h2 {
-        margin:
-            0 0 5px;
-
+    .panel-title h2 {
+        margin: 0 0 5px;
         color: #0f172a;
-
-        font-size: 18px;
+        font-size: 17px;
     }
 
-
-    .edit-service-panel-header p {
+    .panel-title p {
         margin: 0;
-
         color: #94a3b8;
-
         font-size: 9px;
-
-        line-height: 1.5;
     }
 
-
-
-    /* =========================================================
-       FORM
-    ========================================================= */
-
-    .edit-form-group {
+    .edit-group {
         margin-bottom: 17px;
     }
 
-
-    .edit-form-group label {
+    .edit-group label {
         display: block;
-
         margin-bottom: 7px;
-
         color: #334155;
-
-        font-size: 11px;
-
+        font-size: 10px;
         font-weight: 700;
     }
 
-
-    .edit-form-group input {
+    .edit-control {
         width: 100%;
-
-        padding: 12px;
-
-        background: white;
-
-        border:
-            1px solid #cbd5e1;
-
+        padding: 11px 12px;
+        border: 1px solid #cbd5e1;
         border-radius: 9px;
-
         outline: none;
-
+        background: #fff;
         color: #1e293b;
-
         font-size: 11px;
-
         transition: .2s;
     }
 
-
-    .edit-form-group input:focus {
+    .edit-control:focus {
         border-color: #2563eb;
-
-        box-shadow:
-            0 0 0 3px
-            rgba(37,99,235,.09);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, .08);
     }
 
-
-    .edit-form-note {
-        margin-top: -5px;
-
+    .edit-note {
+        margin-top: 6px;
         color: #94a3b8;
-
         font-size: 8px;
-
         line-height: 1.5;
     }
 
-
-
-    /* =========================================================
-       BUTTON
-    ========================================================= */
-
-    .edit-service-actions {
+    .edit-actions {
         display: flex;
-
         gap: 8px;
-
-        margin-top: 23px;
-
+        margin-top: 22px;
         flex-wrap: wrap;
     }
 
-
-    .edit-service-btn {
+    .edit-btn {
         display: inline-flex;
-        align-items: center;
         justify-content: center;
-
-        gap: 6px;
-
-        padding: 10px 15px;
-
+        align-items: center;
+        gap: 5px;
+        padding: 10px 14px;
         border: none;
-
         border-radius: 9px;
-
         cursor: pointer;
-
         text-decoration: none;
-
-        font-size: 10px;
-
+        font-size: 9px;
         font-weight: 700;
-
         transition: .2s;
     }
 
-
-    .edit-service-btn:hover {
-        transform:
-            translateY(-1px);
+    .edit-btn:hover {
+        transform: translateY(-1px);
     }
-
 
     .btn-primary {
         background: #2563eb;
-
-        color: white;
+        color: #fff;
     }
-
-
-    .btn-primary:hover {
-        background: #1d4ed8;
-    }
-
 
     .btn-secondary {
         background: #64748b;
-
-        color: white;
+        color: #fff;
     }
 
-
-
-    /* =========================================================
-       SUMMARY
-    ========================================================= */
-
-    .service-summary-card {
-        padding: 22px;
-
-        background: white;
-
-        border:
-            1px solid #e8eef7;
-
-        border-radius: 19px;
-
-        box-shadow:
-            0 8px 25px
-            rgba(15,23,42,.06);
-    }
-
-
-    .service-summary-icon {
-        width: 60px;
-        height: 60px;
-
+    .preview-icon {
+        width: 62px;
+        height: 62px;
         display: flex;
-        align-items: center;
         justify-content: center;
-
+        align-items: center;
         margin-bottom: 15px;
-
         border-radius: 17px;
-
-        background:
-            linear-gradient(
-                135deg,
-                #dbeafe,
-                #e0f2fe
-            );
-
+        background: linear-gradient(135deg, #dbeafe, #e0f2fe);
         font-size: 28px;
     }
 
-
-    .service-summary-card h3 {
-        margin:
-            0 0 6px;
-
+    .preview-panel h3 {
+        margin: 0 0 4px;
         color: #0f172a;
-
-        font-size: 16px;
+        font-size: 17px;
     }
 
-
-    .service-summary-id {
+    .preview-id {
         margin-bottom: 18px;
-
         color: #94a3b8;
-
         font-size: 8px;
     }
 
-
-    .summary-item {
+    .preview-item {
         padding: 12px 0;
-
-        border-bottom:
-            1px solid #edf2f7;
+        border-bottom: 1px solid #edf2f7;
     }
 
-
-    .summary-item:last-child {
+    .preview-item:last-child {
         border-bottom: none;
     }
 
-
-    .summary-item small {
+    .preview-item small {
         display: block;
-
         margin-bottom: 5px;
-
         color: #64748b;
-
         font-size: 8px;
-
         font-weight: 700;
-
         text-transform: uppercase;
     }
 
-
-    .summary-item strong {
+    .preview-item strong {
         color: #0f172a;
-
         font-size: 11px;
     }
 
-
-    .summary-price {
+    .preview-price {
         color: #059669 !important;
-
-        font-size: 18px !important;
+        font-size: 19px !important;
     }
 
+    .preview-status {
+        color: #16a34a !important;
+    }
 
-
-    /* =========================================================
-       INFO
-    ========================================================= */
-
-    .edit-info-box {
+    .preview-info {
         margin-top: 16px;
-
-        padding: 12px;
-
-        background: #eff6ff;
-
-        border:
-            1px solid #dbeafe;
-
+        padding: 11px;
+        border: 1px solid #dbeafe;
         border-radius: 10px;
-
+        background: #eff6ff;
         color: #1d4ed8;
-
         font-size: 8px;
-
         line-height: 1.6;
     }
 
-
-
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
-
     @media(max-width: 850px) {
-
-        .edit-service-grid {
-            grid-template-columns:
-                1fr;
+        .edit-grid {
+            grid-template-columns: 1fr;
         }
-
     }
 
-
     @media(max-width: 650px) {
-
         .edit-service-hero {
-            align-items: flex-start;
-
             flex-direction: column;
+            align-items: flex-start;
         }
 
-
-        .edit-service-hero-icon {
+        .hero-icon {
             display: none;
         }
 
-
-        .edit-service-actions {
+        .edit-actions {
             flex-direction: column;
         }
 
-
-        .edit-service-actions
-        .edit-service-btn {
+        .edit-btn {
             width: 100%;
         }
-
     }
-
 </style>
 
 @endpush
 
 
-
 @section('content')
-
 
 <div class="edit-service-page">
 
-
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
-
+    <!-- HERO -->
     <section class="edit-service-hero">
 
-
-        <div class="edit-service-hero-content">
+        <div class="hero-content">
 
             <h1>
                 ✏️ Edit Layanan
             </h1>
 
             <p>
-                Perbarui nama layanan, harga, dan estimasi
-                pengerjaan agar informasi layanan
-                Tania Mutiara Laundry selalu sesuai.
+                Perbarui nama layanan, harga dan estimasi pengerjaan
+                agar informasi Tania Mutiara Laundry tetap akurat.
             </p>
 
         </div>
 
-
-        <div class="edit-service-hero-icon">
-
+        <div class="hero-icon">
             👕
-
         </div>
-
 
     </section>
 
 
-
-    <!-- =====================================================
-         ERROR
-    ====================================================== -->
-
+    <!-- ERROR -->
     @if($errors->any())
 
-        <div class="edit-service-error">
+        <div class="edit-alert">
 
             <strong>
                 Data layanan belum benar:
             </strong>
 
-
             <ul>
 
-                @foreach(
-                    $errors->all()
-                    as $error
-                )
+                @foreach($errors->all() as $error)
 
                     <li>
                         {{ $error }}
@@ -622,34 +339,22 @@
     @endif
 
 
+    <div class="edit-grid">
 
-    <!-- =====================================================
-         GRID
-    ====================================================== -->
+        <!-- FORM -->
+        <div class="edit-panel">
 
-    <div class="edit-service-grid">
-
-
-        <!-- =================================================
-             FORM EDIT
-        ================================================== -->
-
-        <div class="edit-service-panel">
-
-
-            <div class="edit-service-panel-header">
+            <div class="panel-title">
 
                 <h2>
-                    📝 Form Edit Layanan
+                    📝 Informasi Layanan
                 </h2>
 
                 <p>
-                    Ubah informasi layanan kemudian
-                    tekan tombol Simpan Perubahan.
+                    Ubah data kemudian simpan perubahan.
                 </p>
 
             </div>
-
 
 
             <form
@@ -663,203 +368,153 @@
             >
 
                 @csrf
-
                 @method('PUT')
 
 
-
-                <!-- NAMA -->
-
-                <div class="edit-form-group">
+                <!-- NAME -->
+                <div class="edit-group">
 
                     <label>
                         👕 Nama Layanan
                     </label>
 
-
                     <input
                         type="text"
                         name="nama_layanan"
+                        id="namaLayanan"
+                        class="edit-control"
                         value="{{
                             old(
                                 'nama_layanan',
                                 $layanan->nama_layanan
                             )
                         }}"
-                        placeholder="Contoh: Cuci Setrika"
+                        maxlength="255"
                         required
                     >
 
-
-                    <div class="edit-form-note">
-
-                        Gunakan nama layanan yang
-                        mudah dipahami pelanggan.
-
+                    <div class="edit-note">
+                        Contoh: Cuci Setrika, Cuci Kering,
+                        atau Laundry Express.
                     </div>
 
                 </div>
 
 
-
-                <!-- HARGA -->
-
-                <div class="edit-form-group">
+                <!-- PRICE -->
+                <div class="edit-group">
 
                     <label>
-                        💰 Harga Layanan
+                        💰 Harga
                     </label>
-
 
                     <input
                         type="number"
                         name="harga"
-                        id="harga"
+                        id="hargaLayanan"
+                        class="edit-control"
                         value="{{
                             old(
                                 'harga',
                                 $layanan->harga
                             )
                         }}"
-                        placeholder="Contoh: 10000"
                         min="0"
                         step="1"
                         required
                     >
 
-
-                    <div class="edit-form-note">
-
-                        Masukkan nominal angka tanpa
-                        titik atau tanda rupiah.
-
+                    <div class="edit-note">
+                        Masukkan angka tanpa titik dan tanpa
+                        tulisan Rp. Contoh: 10000.
                     </div>
 
                 </div>
 
 
-
-                <!-- ESTIMASI -->
-
-                <div class="edit-form-group">
+                <!-- ESTIMATION -->
+                <div class="edit-group">
 
                     <label>
                         ⏱ Estimasi Pengerjaan
                     </label>
 
-
                     <input
                         type="text"
                         name="estimasi"
-                        id="estimasi"
+                        id="estimasiLayanan"
+                        class="edit-control"
                         value="{{
                             old(
                                 'estimasi',
                                 $layanan->estimasi
                             )
                         }}"
+                        maxlength="100"
                         placeholder="Contoh: 2 Hari"
                     >
 
-
-                    <div class="edit-form-note">
-
-                        Contoh:
-                        1 Hari,
-                        2 Hari,
-                        3 Jam,
+                    <div class="edit-note">
+                        Contoh: 3 Jam, 1 Hari, 2 Hari,
                         atau Express.
-
                     </div>
 
                 </div>
 
 
-
-                <!-- ACTION -->
-
-                <div class="edit-service-actions">
-
+                <div class="edit-actions">
 
                     <button
                         type="submit"
-                        class="
-                            edit-service-btn
-                            btn-primary
-                        "
+                        class="edit-btn btn-primary"
                     >
-
                         💾 Simpan Perubahan
-
                     </button>
 
 
                     <a
-                        href="{{
-                            route(
-                                'layanan.index'
-                            )
-                        }}"
-                        class="
-                            edit-service-btn
-                            btn-secondary
-                        "
+                        href="{{ route('layanan.index') }}"
+                        class="edit-btn btn-secondary"
                     >
-
                         ← Kembali
-
                     </a>
-
 
                 </div>
 
-
             </form>
-
 
         </div>
 
 
+        <!-- LIVE PREVIEW -->
+        <aside class="preview-panel">
 
-        <!-- =================================================
-             SUMMARY
-        ================================================== -->
-
-        <aside class="service-summary-card">
-
-
-            <div class="service-summary-icon">
-
+            <div class="preview-icon">
                 🫧
-
             </div>
 
 
-            <h3>
+            <h3 id="previewNama">
                 {{ $layanan->nama_layanan }}
             </h3>
 
 
-            <div class="service-summary-id">
-
-                ID Layanan
-                #{{ $layanan->id }}
-
+            <div class="preview-id">
+                ID Layanan #{{ $layanan->id }}
             </div>
 
 
-
-            <div class="summary-item">
+            <div class="preview-item">
 
                 <small>
-                    Harga Saat Ini
+                    Preview Harga
                 </small>
 
-
-                <strong class="summary-price">
-
-                    Rp
-                    {{
+                <strong
+                    class="preview-price"
+                    id="previewHarga"
+                >
+                    Rp {{
                         number_format(
                             $layanan->harga,
                             0,
@@ -867,21 +522,18 @@
                             '.'
                         )
                     }}
-
                 </strong>
 
             </div>
 
 
-
-            <div class="summary-item">
+            <div class="preview-item">
 
                 <small>
-                    Estimasi Saat Ini
+                    Preview Estimasi
                 </small>
 
-
-                <strong>
+                <strong id="previewEstimasi">
 
                     {{
                         $layanan->estimasi
@@ -893,42 +545,159 @@
             </div>
 
 
-
-            <div class="summary-item">
+            <div class="preview-item">
 
                 <small>
-                    Status Layanan
+                    Status
                 </small>
 
-
-                <strong
-                    style="
-                        color:#16a34a;
-                    "
-                >
+                <strong class="preview-status">
                     ● Aktif
                 </strong>
 
             </div>
 
 
+            <div class="preview-info">
 
-            <div class="edit-info-box">
-
-                💡 Perubahan harga layanan
-                akan digunakan pada transaksi
-                baru setelah data disimpan.
+                💡 Preview di atas berubah otomatis ketika
+                kamu mengetik. Data database baru berubah
+                setelah tombol <strong>Simpan Perubahan</strong>
+                ditekan.
 
             </div>
 
-
         </aside>
-
 
     </div>
 
-
 </div>
 
-
 @endsection
+
+
+@push('scripts')
+
+<script>
+
+document.addEventListener(
+    'DOMContentLoaded',
+    function () {
+
+        const namaInput =
+            document.getElementById(
+                'namaLayanan'
+            );
+
+        const hargaInput =
+            document.getElementById(
+                'hargaLayanan'
+            );
+
+        const estimasiInput =
+            document.getElementById(
+                'estimasiLayanan'
+            );
+
+        const previewNama =
+            document.getElementById(
+                'previewNama'
+            );
+
+        const previewHarga =
+            document.getElementById(
+                'previewHarga'
+            );
+
+        const previewEstimasi =
+            document.getElementById(
+                'previewEstimasi'
+            );
+
+
+        function rupiah(value)
+        {
+            const number =
+                Number(value || 0);
+
+            return (
+                'Rp ' +
+                number.toLocaleString(
+                    'id-ID'
+                )
+            );
+        }
+
+
+        function updatePreview()
+        {
+            if (
+                namaInput
+                &&
+                previewNama
+            ) {
+
+                previewNama.textContent =
+                    namaInput.value.trim()
+                    || 'Nama Layanan';
+
+            }
+
+
+            if (
+                hargaInput
+                &&
+                previewHarga
+            ) {
+
+                previewHarga.textContent =
+                    rupiah(
+                        hargaInput.value
+                    );
+
+            }
+
+
+            if (
+                estimasiInput
+                &&
+                previewEstimasi
+            ) {
+
+                previewEstimasi.textContent =
+                    estimasiInput.value.trim()
+                    || 'Belum ditentukan';
+
+            }
+        }
+
+
+        [
+            namaInput,
+            hargaInput,
+            estimasiInput
+        ]
+        .forEach(
+            function (input) {
+
+                if (input) {
+
+                    input.addEventListener(
+                        'input',
+                        updatePreview
+                    );
+
+                }
+
+            }
+        );
+
+
+        updatePreview();
+
+    }
+);
+
+</script>
+
+@endpush

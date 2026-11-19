@@ -2,997 +2,505 @@
 
 @section('title', 'Layanan - Tania Mutiara Laundry')
 
-
 @push('styles')
-
 <style>
-
-    /* =========================================================
-       LAYANAN PREMIUM
-    ========================================================= */
-
     .service-page {
         width: 100%;
     }
 
-
-    /* =========================================================
-       HERO
-    ========================================================= */
-
     .service-hero {
         position: relative;
         overflow: hidden;
-
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        gap: 25px;
-
-        margin-bottom: 25px;
+        gap: 24px;
+        margin-bottom: 24px;
         padding: 30px;
-
         border-radius: 22px;
-
-        color: white;
-
-        background:
-            linear-gradient(
-                135deg,
-                #1e3a8a 0%,
-                #2563eb 55%,
-                #0ea5e9 100%
-            );
-
-        box-shadow:
-            0 16px 38px
-            rgba(37,99,235,.18);
+        color: #fff;
+        background: linear-gradient(135deg, #1e3a8a, #2563eb 55%, #0ea5e9);
+        box-shadow: 0 16px 38px rgba(37, 99, 235, .18);
     }
-
 
     .service-hero::before {
         content: "";
-
         position: absolute;
-
-        width: 260px;
-        height: 260px;
-
+        width: 250px;
+        height: 250px;
         right: -90px;
         top: -130px;
-
         border-radius: 50%;
-
-        background:
-            rgba(255,255,255,.10);
+        background: rgba(255, 255, 255, .10);
     }
-
-
-    .service-hero::after {
-        content: "";
-
-        position: absolute;
-
-        width: 160px;
-        height: 160px;
-
-        right: 150px;
-        bottom: -120px;
-
-        border-radius: 50%;
-
-        background:
-            rgba(255,255,255,.06);
-    }
-
 
     .service-hero-content {
         position: relative;
         z-index: 2;
-
-        max-width: 650px;
     }
 
-
     .service-hero h1 {
-        margin:
-            0 0 8px;
-
+        margin: 0 0 8px;
         font-size: 29px;
     }
 
-
     .service-hero p {
         margin: 0;
-
-        color:
-            rgba(255,255,255,.84);
-
+        max-width: 650px;
+        color: rgba(255, 255, 255, .84);
         font-size: 12px;
-
         line-height: 1.7;
     }
-
 
     .service-hero-icon {
         position: relative;
         z-index: 2;
-
-        width: 100px;
-        height: 100px;
-
+        width: 95px;
+        height: 95px;
         display: flex;
         align-items: center;
         justify-content: center;
-
         flex-shrink: 0;
-
-        border:
-            1px solid
-            rgba(255,255,255,.18);
-
-        border-radius: 27px;
-
-        background:
-            rgba(255,255,255,.13);
-
-        backdrop-filter:
-            blur(12px);
-
-        font-size: 47px;
+        border: 1px solid rgba(255, 255, 255, .18);
+        border-radius: 25px;
+        background: rgba(255, 255, 255, .13);
+        font-size: 43px;
     }
 
-
-
-    /* =========================================================
-       ALERT
-    ========================================================= */
+    .service-alert {
+        margin-bottom: 20px;
+        padding: 13px 15px;
+        border-radius: 11px;
+        font-size: 11px;
+    }
 
     .service-alert-success {
-        margin-bottom: 20px;
-
-        padding: 13px 15px;
-
         background: #dcfce7;
-
-        border:
-            1px solid #bbf7d0;
-
-        border-radius: 11px;
-
+        border: 1px solid #bbf7d0;
         color: #166534;
-
-        font-size: 11px;
     }
-
 
     .service-alert-error {
-        margin-bottom: 20px;
-
-        padding: 14px 16px;
-
         background: #fee2e2;
-
-        border:
-            1px solid #fecaca;
-
-        border-radius: 11px;
-
+        border: 1px solid #fecaca;
         color: #991b1b;
-
-        font-size: 11px;
     }
 
-
     .service-alert-error ul {
-        margin:
-            8px 0 0;
-
+        margin: 8px 0 0;
         padding-left: 20px;
     }
 
-
-
-    /* =========================================================
-       STATISTICS
-    ========================================================= */
-
-    .service-stats-grid {
+    .service-stats {
         display: grid;
-
-        grid-template-columns:
-            repeat(3, 1fr);
-
-        gap: 16px;
-
-        margin-bottom: 25px;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-bottom: 24px;
     }
 
-
-    .service-stat-card {
+    .service-stat {
         position: relative;
         overflow: hidden;
-
-        padding: 20px;
-
-        background: white;
-
-        border:
-            1px solid #e8eef7;
-
-        border-radius: 17px;
-
-        box-shadow:
-            0 7px 22px
-            rgba(15,23,42,.06);
-
+        padding: 19px;
+        background: #fff;
+        border: 1px solid #e8eef7;
+        border-radius: 16px;
+        box-shadow: 0 7px 22px rgba(15, 23, 42, .05);
         transition: .2s;
     }
 
-
-    .service-stat-card:hover {
-        transform:
-            translateY(-3px);
-
-        box-shadow:
-            0 14px 30px
-            rgba(15,23,42,.10);
+    .service-stat:hover {
+        transform: translateY(-3px);
     }
-
-
-    .service-stat-card::after {
-        content: "";
-
-        position: absolute;
-
-        width: 85px;
-        height: 85px;
-
-        right: -38px;
-        bottom: -38px;
-
-        border-radius: 50%;
-
-        background:
-            rgba(37,99,235,.06);
-    }
-
 
     .service-stat-top {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        margin-bottom: 13px;
+        margin-bottom: 12px;
     }
-
 
     .service-stat-top small {
         color: #64748b;
-
-        font-size: 9px;
-        font-weight: 700;
-
+        font-size: 8px;
+        font-weight: 800;
         text-transform: uppercase;
-
-        letter-spacing: .5px;
     }
-
 
     .service-stat-icon {
-        width: 42px;
-        height: 42px;
-
+        width: 39px;
+        height: 39px;
         display: flex;
-        align-items: center;
         justify-content: center;
-
-        border-radius: 12px;
-
-        background:
-            linear-gradient(
-                135deg,
-                #eff6ff,
-                #dbeafe
-            );
-
-        font-size: 19px;
+        align-items: center;
+        border-radius: 11px;
+        background: #eff6ff;
+        font-size: 18px;
     }
 
-
-    .service-stat-card h2 {
-        margin:
-            0 0 5px;
-
+    .service-stat h2 {
+        margin: 0 0 5px;
         color: #0f172a;
-
-        font-size: 27px;
+        font-size: 22px;
     }
 
-
-    .service-stat-card p {
+    .service-stat p {
         margin: 0;
-
         color: #94a3b8;
-
-        font-size: 9px;
+        font-size: 8px;
     }
 
-
-    .stat-price h2 {
+    .green h2 {
         color: #059669;
-
-        font-size: 21px;
     }
 
-
-    .stat-estimation h2 {
+    .blue h2 {
         color: #2563eb;
     }
 
+    .orange h2 {
+        color: #ea580c;
+    }
 
-
-    /* =========================================================
-       MAIN GRID
-    ========================================================= */
-
-    .service-main-grid {
+    .service-grid {
         display: grid;
-
-        grid-template-columns:
-            minmax(300px, .75fr)
-            minmax(0, 1.8fr);
-
+        grid-template-columns: minmax(300px, .72fr) minmax(0, 1.8fr);
         gap: 20px;
-
         align-items: start;
     }
 
-
-
-    /* =========================================================
-       PANEL
-    ========================================================= */
-
     .service-panel {
         padding: 22px;
-
-        background: white;
-
-        border:
-            1px solid #e8eef7;
-
+        background: #fff;
+        border: 1px solid #e8eef7;
         border-radius: 19px;
-
-        box-shadow:
-            0 8px 25px
-            rgba(15,23,42,.06);
+        box-shadow: 0 8px 25px rgba(15, 23, 42, .06);
     }
 
-
-    .service-panel-header {
+    .panel-header {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         gap: 12px;
-
         margin-bottom: 20px;
-
         flex-wrap: wrap;
     }
 
-
-    .service-panel-header h2 {
+    .panel-header h2 {
         margin: 0;
-
         color: #0f172a;
-
         font-size: 17px;
     }
 
-
-    .service-panel-header p {
-        margin:
-            5px 0 0;
-
+    .panel-header p {
+        margin: 5px 0 0;
         color: #94a3b8;
-
         font-size: 9px;
-
-        line-height: 1.5;
     }
 
+    .service-count {
+        display: inline-flex;
+        padding: 5px 9px;
+        border-radius: 20px;
+        background: #dcfce7;
+        color: #166534;
+        font-size: 8px;
+        font-weight: 800;
+    }
 
-
-    /* =========================================================
-       FORM
-    ========================================================= */
-
-    .service-form-group {
+    .form-group {
         margin-bottom: 15px;
     }
 
-
-    .service-form-group label {
+    .form-group label {
         display: block;
-
         margin-bottom: 7px;
-
         color: #334155;
-
-        font-size: 11px;
-
+        font-size: 10px;
         font-weight: 700;
     }
 
-
-    .service-form-group input {
+    .form-control {
         width: 100%;
-
         padding: 11px 12px;
-
-        background: white;
-
-        border:
-            1px solid #cbd5e1;
-
+        border: 1px solid #cbd5e1;
         border-radius: 9px;
-
-        outline: none;
-
+        background: #fff;
         color: #1e293b;
-
+        outline: none;
         font-size: 11px;
-
         transition: .2s;
     }
 
-
-    .service-form-group input:focus {
+    .form-control:focus {
         border-color: #2563eb;
-
-        box-shadow:
-            0 0 0 3px
-            rgba(37,99,235,.09);
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, .08);
     }
 
-
-    .service-form-note {
-        margin-top: -4px;
+    .form-note {
         margin-bottom: 16px;
-
         padding: 10px 11px;
-
         background: #f8fafc;
-
-        border:
-            1px solid #edf2f7;
-
         border-radius: 9px;
-
         color: #64748b;
-
         font-size: 8px;
-
-        line-height: 1.5;
+        line-height: 1.6;
     }
-
-
-
-    /* =========================================================
-       BUTTON
-    ========================================================= */
 
     .service-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-
         gap: 5px;
-
         padding: 9px 13px;
-
         border: none;
-
         border-radius: 9px;
-
         cursor: pointer;
-
         text-decoration: none;
-
         font-size: 9px;
-
         font-weight: 700;
-
         transition: .2s;
     }
 
-
     .service-btn:hover {
-        transform:
-            translateY(-1px);
+        transform: translateY(-1px);
     }
-
 
     .btn-primary {
         background: #2563eb;
-
-        color: white;
+        color: #fff;
     }
-
-
-    .btn-primary:hover {
-        background: #1d4ed8;
-    }
-
-
-    .btn-warning {
-        background: #f59e0b;
-
-        color: white;
-    }
-
-
-    .btn-danger {
-        background: #dc2626;
-
-        color: white;
-    }
-
 
     .btn-secondary {
         background: #64748b;
-
-        color: white;
+        color: #fff;
     }
 
+    .btn-warning {
+        background: #f59e0b;
+        color: #fff;
+    }
+
+    .btn-danger {
+        background: #dc2626;
+        color: #fff;
+    }
 
     .btn-save {
         width: 100%;
-
-        padding: 11px 16px;
-
-        font-size: 10px;
+        padding: 11px;
     }
-
-
-
-    /* =========================================================
-       SEARCH
-    ========================================================= */
 
     .service-search {
-        margin-bottom: 18px;
-
-        padding: 14px;
-
-        background: #f8fafc;
-
-        border:
-            1px solid #edf2f7;
-
-        border-radius: 13px;
-    }
-
-
-    .service-search-row {
         display: flex;
-
         gap: 7px;
-
-        align-items: center;
+        margin-bottom: 10px;
     }
 
-
-    .service-search-row input {
+    .service-search input {
         flex: 1;
-
-        min-width: 0;
-
-        padding: 10px 11px;
-
-        background: white;
-
-        border:
-            1px solid #cbd5e1;
-
-        border-radius: 8px;
-
-        outline: none;
-
-        color: #334155;
-
-        font-size: 10px;
     }
 
-
-    .service-search-row input:focus {
-        border-color: #2563eb;
-
-        box-shadow:
-            0 0 0 3px
-            rgba(37,99,235,.07);
-    }
-
-
-    .search-info {
-        margin-top: 9px;
-
+    .search-result-info {
+        margin-bottom: 16px;
         color: #64748b;
-
         font-size: 8px;
     }
 
-
-
-    /* =========================================================
-       SERVICE CARDS
-    ========================================================= */
-
     .service-list {
         display: grid;
-
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 13px;
     }
-
 
     .service-card {
         position: relative;
         overflow: hidden;
-
         padding: 17px;
-
-        background: white;
-
-        border:
-            1px solid #e8eef7;
-
+        border: 1px solid #e8eef7;
         border-radius: 15px;
-
-        box-shadow:
-            0 5px 17px
-            rgba(15,23,42,.04);
-
+        background: #fff;
+        box-shadow: 0 5px 17px rgba(15, 23, 42, .04);
         transition: .2s;
     }
 
-
     .service-card:hover {
-        transform:
-            translateY(-2px);
-
+        transform: translateY(-2px);
         border-color: #bfdbfe;
-
-        box-shadow:
-            0 10px 22px
-            rgba(15,23,42,.08);
+        box-shadow: 0 10px 22px rgba(15, 23, 42, .08);
     }
-
-
-    .service-card::after {
-        content: "";
-
-        position: absolute;
-
-        width: 75px;
-        height: 75px;
-
-        right: -35px;
-        top: -35px;
-
-        border-radius: 50%;
-
-        background:
-            rgba(37,99,235,.05);
-    }
-
 
     .service-card-top {
         display: flex;
-        justify-content: space-between;
+        gap: 11px;
         align-items: flex-start;
-
-        gap: 12px;
-
         margin-bottom: 14px;
     }
 
-
-    .service-card-icon {
+    .service-icon {
         width: 42px;
         height: 42px;
-
         display: flex;
-        align-items: center;
         justify-content: center;
-
+        align-items: center;
         flex-shrink: 0;
-
-        background:
-            linear-gradient(
-                135deg,
-                #dbeafe,
-                #e0f2fe
-            );
-
         border-radius: 12px;
-
+        background: linear-gradient(135deg, #dbeafe, #e0f2fe);
         font-size: 19px;
     }
 
-
-    .service-card-title {
-        flex: 1;
-    }
-
-
-    .service-card-title h3 {
-        margin:
-            0 0 4px;
-
+    .service-title h3 {
+        margin: 0 0 4px;
         color: #0f172a;
-
         font-size: 13px;
     }
 
-
-    .service-card-title small {
+    .service-title small {
         color: #94a3b8;
-
         font-size: 8px;
     }
-
 
     .service-price {
         margin-bottom: 12px;
-
         color: #059669;
-
         font-size: 18px;
-
         font-weight: 800;
     }
 
-
-    .service-price small {
-        color: #64748b;
-
+    .service-price span {
+        color: #94a3b8;
         font-size: 8px;
-
         font-weight: 500;
     }
 
-
-    .service-card-detail {
+    .service-detail {
         display: flex;
         justify-content: space-between;
-        align-items: center;
-
         gap: 10px;
-
-        margin-bottom: 14px;
-
         padding: 10px;
-
-        background: #f8fafc;
-
-        border:
-            1px solid #edf2f7;
-
+        margin-bottom: 14px;
         border-radius: 9px;
+        background: #f8fafc;
     }
 
-
-    .service-card-detail span {
+    .service-detail small {
         color: #64748b;
-
         font-size: 8px;
     }
 
-
-    .service-card-detail strong {
+    .service-detail strong {
         color: #1d4ed8;
-
         font-size: 9px;
     }
 
-
-    .service-card-actions {
+    .service-actions {
         display: flex;
-
         gap: 6px;
-
         flex-wrap: wrap;
     }
 
-
-    .service-card-actions form {
+    .service-actions form {
         margin: 0;
     }
 
-
-
-    /* =========================================================
-       BADGE
-    ========================================================= */
-
-    .service-badge {
-        display: inline-flex;
-        align-items: center;
-
-        padding: 5px 8px;
-
-        background: #dcfce7;
-
-        border-radius: 20px;
-
-        color: #166534;
-
-        font-size: 8px;
-
-        font-weight: 700;
-    }
-
-
-
-    /* =========================================================
-       EMPTY
-    ========================================================= */
-
-    .service-empty {
-        grid-column:
-            1 / -1;
-
-        padding: 45px 20px;
-
-        background: #f8fafc;
-
-        border:
-            1px dashed #cbd5e1;
-
+    .empty-box {
+        grid-column: 1 / -1;
+        padding: 40px 20px;
+        border: 1px dashed #cbd5e1;
         border-radius: 14px;
-
+        background: #f8fafc;
         text-align: center;
-
         color: #94a3b8;
     }
 
-
-    .service-empty span {
+    .empty-box span {
         display: block;
-
         margin-bottom: 8px;
-
-        font-size: 40px;
+        font-size: 35px;
     }
 
-
-    .service-empty h3 {
-        margin:
-            0 0 5px;
-
+    .empty-box strong {
         color: #475569;
-
-        font-size: 14px;
+        font-size: 12px;
     }
 
-
-    .service-empty p {
-        margin: 0;
-
+    .empty-box p {
+        margin: 6px 0 0;
         font-size: 9px;
     }
 
-
-
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
-
-    @media(max-width: 1100px) {
-
-        .service-main-grid {
-            grid-template-columns:
-                1fr;
+    @media(max-width: 1150px) {
+        .service-stats {
+            grid-template-columns: repeat(2, 1fr);
         }
 
+        .service-grid {
+            grid-template-columns: 1fr;
+        }
     }
 
-
-    @media(max-width: 800px) {
-
-        .service-stats-grid {
-            grid-template-columns:
-                1fr;
-        }
-
-
+    @media(max-width: 750px) {
+        .service-stats,
         .service-list {
-            grid-template-columns:
-                1fr;
+            grid-template-columns: 1fr;
         }
-
-    }
-
-
-    @media(max-width: 650px) {
 
         .service-hero {
-            align-items: flex-start;
-
             flex-direction: column;
+            align-items: flex-start;
         }
-
 
         .service-hero-icon {
             display: none;
         }
 
-
-        .service-search-row {
+        .service-search {
             flex-direction: column;
-
-            align-items: stretch;
         }
-
-
-        .service-search-row
-        .service-btn {
-            width: 100%;
-        }
-
     }
-
 </style>
-
 @endpush
-
 
 
 @section('content')
 
-
 @php
 
-    /*
-    |--------------------------------------------------------------------------
-    | STATISTIK LAYANAN
-    |--------------------------------------------------------------------------
-    */
+    $jumlahLayanan =
+        $totalLayanan
+        ?? $layanans->count();
 
-    $totalLayanan =
-        $layanans->count();
-
-
-    $rataHarga =
-        $totalLayanan > 0
+    $hargaRataRata =
+        $rataHarga
+        ?? (
+            $jumlahLayanan > 0
             ? $layanans->avg('harga')
-            : 0;
+            : 0
+        );
 
-
-    $layananTermahal =
-        $totalLayanan > 0
+    $termahal =
+        $layananTermahal
+        ?? (
+            $jumlahLayanan > 0
             ? $layanans->sortByDesc('harga')->first()
-            : null;
+            : null
+        );
+
+    $termurah =
+        $layananTermurah
+        ?? (
+            $jumlahLayanan > 0
+            ? $layanans->sortBy('harga')->first()
+            : null
+        );
 
 @endphp
 
 
-
 <div class="service-page">
 
-
-    <!-- =====================================================
-         HERO
-    ====================================================== -->
-
+    <!-- HERO -->
     <section class="service-hero">
-
 
         <div class="service-hero-content">
 
@@ -1001,60 +509,42 @@
             </h1>
 
             <p>
-                Kelola jenis layanan, harga, dan estimasi
-                pengerjaan Tania Mutiara Laundry agar proses
-                transaksi menjadi lebih cepat dan terstruktur.
+                Kelola jenis layanan, harga dan estimasi pengerjaan
+                Tania Mutiara Laundry agar proses transaksi lebih
+                cepat, konsisten dan mudah dipantau.
             </p>
 
         </div>
 
-
         <div class="service-hero-icon">
-
             🫧
-
         </div>
-
 
     </section>
 
 
-
-    <!-- =====================================================
-         SUCCESS
-    ====================================================== -->
-
+    <!-- SUCCESS -->
     @if(session('success'))
 
-        <div class="service-alert-success">
-
+        <div class="service-alert service-alert-success">
             ✓ {{ session('success') }}
-
         </div>
 
     @endif
 
 
-
-    <!-- =====================================================
-         ERRORS
-    ====================================================== -->
-
+    <!-- ERROR -->
     @if($errors->any())
 
-        <div class="service-alert-error">
+        <div class="service-alert service-alert-error">
 
             <strong>
                 Data layanan belum benar:
             </strong>
 
-
             <ul>
 
-                @foreach(
-                    $errors->all()
-                    as $error
-                )
+                @foreach($errors->all() as $error)
 
                     <li>
                         {{ $error }}
@@ -1069,18 +559,10 @@
     @endif
 
 
+    <!-- STATS -->
+    <div class="service-stats">
 
-    <!-- =====================================================
-         STATS
-    ====================================================== -->
-
-    <div class="service-stats-grid">
-
-
-        <!-- TOTAL -->
-
-        <div class="service-stat-card">
-
+        <div class="service-stat">
 
             <div class="service-stat-top">
 
@@ -1094,30 +576,18 @@
 
             </div>
 
-
             <h2>
-                {{ $totalLayanan }}
+                {{ $jumlahLayanan }}
             </h2>
 
-
             <p>
-                Jenis layanan yang tersedia
+                Jenis layanan tersedia
             </p>
-
 
         </div>
 
 
-
-        <!-- AVERAGE PRICE -->
-
-        <div
-            class="
-                service-stat-card
-                stat-price
-            "
-        >
-
+        <div class="service-stat green">
 
             <div class="service-stat-top">
 
@@ -1131,40 +601,18 @@
 
             </div>
 
-
             <h2>
-
-                Rp
-                {{
-                    number_format(
-                        $rataHarga,
-                        0,
-                        ',',
-                        '.'
-                    )
-                }}
-
+                Rp {{ number_format($hargaRataRata, 0, ',', '.') }}
             </h2>
 
-
             <p>
-                Rata-rata harga seluruh layanan
+                Rata-rata seluruh layanan
             </p>
-
 
         </div>
 
 
-
-        <!-- MOST EXPENSIVE -->
-
-        <div
-            class="
-                service-stat-card
-                stat-estimation
-            "
-        >
-
+        <div class="service-stat blue">
 
             <div class="service-stat-top">
 
@@ -1178,68 +626,64 @@
 
             </div>
 
-
             <h2>
-
-                @if($layananTermahal)
-
-                    Rp
-                    {{
-                        number_format(
-                            $layananTermahal->harga,
-                            0,
-                            ',',
-                            '.'
-                        )
-                    }}
-
-                @else
-
-                    Rp 0
-
-                @endif
-
+                Rp {{
+                    number_format(
+                        $termahal?->harga ?? 0,
+                        0,
+                        ',',
+                        '.'
+                    )
+                }}
             </h2>
 
-
             <p>
-
-                @if($layananTermahal)
-
-                    {{ $layananTermahal->nama_layanan }}
-
-                @else
-
-                    Belum ada layanan
-
-                @endif
-
+                {{ $termahal?->nama_layanan ?? 'Belum ada layanan' }}
             </p>
-
 
         </div>
 
 
+        <div class="service-stat orange">
+
+            <div class="service-stat-top">
+
+                <small>
+                    Harga Terendah
+                </small>
+
+                <div class="service-stat-icon">
+                    🏷️
+                </div>
+
+            </div>
+
+            <h2>
+                Rp {{
+                    number_format(
+                        $termurah?->harga ?? 0,
+                        0,
+                        ',',
+                        '.'
+                    )
+                }}
+            </h2>
+
+            <p>
+                {{ $termurah?->nama_layanan ?? 'Belum ada layanan' }}
+            </p>
+
+        </div>
+
     </div>
 
 
+    <div class="service-grid">
 
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
-
-    <div class="service-main-grid">
-
-
-        <!-- =================================================
-             FORM TAMBAH
-        ================================================== -->
-
+        <!-- FORM TAMBAH -->
         <div class="service-panel">
 
-
-            <div class="service-panel-header">
-
+            <div class="panel-header">
 
                 <div>
 
@@ -1248,65 +692,51 @@
                     </h2>
 
                     <p>
-                        Tambahkan jenis layanan laundry baru.
+                        Tambahkan layanan laundry baru.
                     </p>
 
                 </div>
 
-
             </div>
 
 
-
             <form
-                action="{{
-                    route(
-                        'layanan.store'
-                    )
-                }}"
+                action="{{ route('layanan.store') }}"
                 method="POST"
             >
 
                 @csrf
 
 
-
-                <!-- NAME -->
-
-                <div class="service-form-group">
-
+                <div class="form-group">
 
                     <label>
                         👕 Nama Layanan
                     </label>
 
-
                     <input
                         type="text"
                         name="nama_layanan"
+                        class="form-control"
                         value="{{ old('nama_layanan') }}"
                         placeholder="Contoh: Cuci Setrika"
+                        maxlength="255"
                         required
                     >
-
 
                 </div>
 
 
-
-                <!-- PRICE -->
-
-                <div class="service-form-group">
-
+                <div class="form-group">
 
                     <label>
-                        💰 Harga Layanan
+                        💰 Harga
                     </label>
-
 
                     <input
                         type="number"
                         name="harga"
+                        class="form-control"
                         value="{{ old('harga') }}"
                         placeholder="Contoh: 10000"
                         min="0"
@@ -1314,73 +744,52 @@
                         required
                     >
 
-
                 </div>
 
 
-
-                <!-- ESTIMATION -->
-
-                <div class="service-form-group">
-
+                <div class="form-group">
 
                     <label>
-                        ⏱ Estimasi Pengerjaan
+                        ⏱ Estimasi
                     </label>
-
 
                     <input
                         type="text"
                         name="estimasi"
+                        class="form-control"
                         value="{{ old('estimasi') }}"
                         placeholder="Contoh: 2 Hari"
+                        maxlength="100"
                     >
 
-
                 </div>
 
 
+                <div class="form-note">
 
-                <div class="service-form-note">
-
-                    💡 Gunakan nama layanan yang mudah
-                    dipahami pelanggan. Harga akan digunakan
-                    ketika membuat transaksi laundry.
+                    💡 Harga cukup ditulis dengan angka,
+                    misalnya <strong>10000</strong>.
+                    Jangan menambahkan tulisan "Rp" pada input harga.
 
                 </div>
-
 
 
                 <button
                     type="submit"
-                    class="
-                        service-btn
-                        btn-primary
-                        btn-save
-                    "
+                    class="service-btn btn-primary btn-save"
                 >
-
                     💾 Simpan Layanan
-
                 </button>
 
-
             </form>
-
 
         </div>
 
 
-
-        <!-- =================================================
-             LIST
-        ================================================== -->
-
+        <!-- DAFTAR -->
         <div class="service-panel">
 
-
-            <div class="service-panel-header">
-
+            <div class="panel-header">
 
                 <div>
 
@@ -1389,145 +798,99 @@
                     </h2>
 
                     <p>
-                        Lihat dan kelola semua layanan laundry.
+                        Cari, edit atau hapus layanan laundry.
                     </p>
 
                 </div>
 
-
-                <span class="service-badge">
-
-                    ●
-                    {{ $totalLayanan }}
-                    Layanan
-
+                <span class="service-count">
+                    ● {{ $jumlahLayanan }} Layanan
                 </span>
 
-
             </div>
 
 
-
-            <!-- =============================================
-                 CLIENT SEARCH
-            ============================================== -->
-
+            <!-- SEARCH -->
             <div class="service-search">
 
+                <input
+                    type="text"
+                    id="serviceSearch"
+                    class="form-control"
+                    placeholder="Cari nama, harga atau estimasi..."
+                >
 
-                <div class="service-search-row">
-
-
-                    <input
-                        type="text"
-                        id="serviceSearch"
-                        placeholder="Cari nama layanan atau estimasi..."
-                    >
-
-
-                    <button
-                        type="button"
-                        id="serviceReset"
-                        class="
-                            service-btn
-                            btn-secondary
-                        "
-                    >
-
-                        Reset
-
-                    </button>
-
-
-                </div>
-
-
-                <div class="search-info">
-
-                    🔍 Pencarian dilakukan langsung
-                    pada daftar layanan di halaman ini.
-
-                </div>
-
+                <button
+                    type="button"
+                    id="serviceReset"
+                    class="service-btn btn-secondary"
+                >
+                    Reset
+                </button>
 
             </div>
 
 
+            <div class="search-result-info">
 
-            <!-- =============================================
-                 SERVICE CARDS
-            ============================================== -->
+                Menampilkan
+                <strong id="visibleServiceCount">
+                    {{ $jumlahLayanan }}
+                </strong>
+                dari
+                <strong>
+                    {{ $jumlahLayanan }}
+                </strong>
+                layanan.
 
+            </div>
+
+
+            <!-- SERVICE LIST -->
             <div
                 class="service-list"
                 id="serviceList"
             >
 
-
-                @forelse(
-                    $layanans
-                    as $layanan
-                )
-
+                @forelse($layanans as $layanan)
 
                     <div
                         class="service-card"
-
                         data-search="{{
                             strtolower(
                                 $layanan->nama_layanan
                                 . ' '
-                                . ($layanan->estimasi ?? '')
-                                . ' '
                                 . $layanan->harga
+                                . ' '
+                                . ($layanan->estimasi ?? '')
                             )
                         }}"
                     >
 
-
                         <div class="service-card-top">
 
-
-                            <div class="service-card-icon">
-
+                            <div class="service-icon">
                                 👕
-
                             </div>
 
-
-
-                            <div class="service-card-title">
-
+                            <div class="service-title">
 
                                 <h3>
-
-                                    {{
-                                        $layanan
-                                            ->nama_layanan
-                                    }}
-
+                                    {{ $layanan->nama_layanan }}
                                 </h3>
 
-
                                 <small>
-
-                                    ID Layanan
-                                    #{{ $layanan->id }}
-
+                                    ID #{{ $layanan->id }}
                                 </small>
 
-
                             </div>
-
 
                         </div>
 
 
-
                         <div class="service-price">
 
-                            Rp
-                            {{
+                            Rp {{
                                 number_format(
                                     $layanan->harga,
                                     0,
@@ -1536,39 +899,27 @@
                                 )
                             }}
 
-                            <small>
-                                / layanan
-                            </small>
-
-                        </div>
-
-
-
-                        <div class="service-card-detail">
-
-
                             <span>
-                                ⏱ Estimasi
+                                / layanan
                             </span>
 
+                        </div>
+
+
+                        <div class="service-detail">
+
+                            <small>
+                                ⏱ Estimasi
+                            </small>
 
                             <strong>
-
-                                {{
-                                    $layanan
-                                        ->estimasi
-                                    ?? 'Belum ditentukan'
-                                }}
-
+                                {{ $layanan->estimasi ?? 'Belum ditentukan' }}
                             </strong>
-
 
                         </div>
 
 
-
-                        <div class="service-card-actions">
-
+                        <div class="service-actions">
 
                             <a
                                 href="{{
@@ -1577,16 +928,10 @@
                                         $layanan
                                     )
                                 }}"
-                                class="
-                                    service-btn
-                                    btn-warning
-                                "
+                                class="service-btn btn-warning"
                             >
-
                                 ✏️ Edit
-
                             </a>
-
 
 
                             <form
@@ -1597,77 +942,51 @@
                                     )
                                 }}"
                                 method="POST"
-
-                                onsubmit="
-                                    return confirm(
-                                        'Yakin ingin menghapus layanan {{ addslashes($layanan->nama_layanan) }}?'
-                                    )
-                                "
+                                onsubmit="return confirm('Yakin ingin menghapus layanan ini?')"
                             >
 
                                 @csrf
-
                                 @method('DELETE')
-
 
                                 <button
                                     type="submit"
-                                    class="
-                                        service-btn
-                                        btn-danger
-                                    "
+                                    class="service-btn btn-danger"
                                 >
-
                                     🗑 Hapus
-
                                 </button>
-
 
                             </form>
 
-
                         </div>
-
 
                     </div>
 
-
                 @empty
 
-
-                    <div class="service-empty">
-
+                    <div class="empty-box">
 
                         <span>
                             🧺
                         </span>
 
-
-                        <h3>
+                        <strong>
                             Belum ada layanan
-                        </h3>
-
+                        </strong>
 
                         <p>
-                            Tambahkan layanan pertama
-                            melalui form di sebelah kiri.
+                            Tambahkan layanan menggunakan
+                            form di sebelah kiri.
                         </p>
-
 
                     </div>
 
-
                 @endforelse
-
 
             </div>
 
 
-
-            <!-- SEARCH EMPTY -->
-
             <div
-                class="service-empty"
+                class="empty-box"
                 id="searchEmpty"
                 style="display:none; margin-top:13px;"
             >
@@ -1676,28 +995,23 @@
                     🔍
                 </span>
 
-                <h3>
+                <strong>
                     Layanan tidak ditemukan
-                </h3>
+                </strong>
 
                 <p>
-                    Coba gunakan kata pencarian lainnya.
+                    Coba gunakan kata pencarian lain.
                 </p>
 
             </div>
 
-
         </div>
-
 
     </div>
 
-
 </div>
 
-
 @endsection
-
 
 
 @push('scripts')
@@ -1713,56 +1027,50 @@ document.addEventListener(
                 'serviceSearch'
             );
 
-
         const resetButton =
             document.getElementById(
                 'serviceReset'
             );
-
 
         const cards =
             document.querySelectorAll(
                 '.service-card'
             );
 
-
         const emptyBox =
             document.getElementById(
                 'searchEmpty'
             );
 
+        const visibleCounter =
+            document.getElementById(
+                'visibleServiceCount'
+            );
 
-        /*
-        |--------------------------------------------------------------------------
-        | FILTER SERVICE
-        |--------------------------------------------------------------------------
-        */
 
         function filterServices()
         {
+            if (!searchInput) {
+                return;
+            }
+
             const keyword =
                 searchInput
                     .value
                     .toLowerCase()
                     .trim();
 
-
             let visible =
                 0;
-
 
             cards.forEach(
                 function (card) {
 
                     const text =
-                        card.dataset.search
-                        || '';
-
+                        card.dataset.search || '';
 
                     if (
-                        text.includes(
-                            keyword
-                        )
+                        text.includes(keyword)
                     ) {
 
                         card.style.display =
@@ -1781,9 +1089,15 @@ document.addEventListener(
             );
 
 
-            if (
-                emptyBox
-            ) {
+            if (visibleCounter) {
+
+                visibleCounter.textContent =
+                    visible;
+
+            }
+
+
+            if (emptyBox) {
 
                 emptyBox.style.display =
                     (
@@ -1795,13 +1109,10 @@ document.addEventListener(
                     : 'none';
 
             }
-
         }
 
 
-        if (
-            searchInput
-        ) {
+        if (searchInput) {
 
             searchInput.addEventListener(
                 'input',
@@ -1810,12 +1121,6 @@ document.addEventListener(
 
         }
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | RESET SEARCH
-        |--------------------------------------------------------------------------
-        */
 
         if (
             resetButton
