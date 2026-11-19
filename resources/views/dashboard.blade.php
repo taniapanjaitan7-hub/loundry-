@@ -8,11 +8,37 @@
 <style>
 
     /* =========================================================
-       DASHBOARD
+       DASHBOARD PREMIUM
     ========================================================= */
 
     .dashboard-premium {
+        position: relative;
+
         width: 100%;
+
+        min-height:
+            calc(100vh - 120px);
+
+        padding: 20px;
+
+        overflow: hidden;
+
+        border-radius: 28px;
+
+        background:
+            linear-gradient(
+                rgba(244,247,251,.84),
+                rgba(244,247,251,.94)
+            ),
+            url("{{ asset('images/laundry-bg.png') }}");
+
+        background-size: cover;
+
+        background-position: center;
+
+        background-repeat: no-repeat;
+
+        background-attachment: fixed;
     }
 
 
@@ -22,34 +48,47 @@
 
     .dashboard-hero {
         position: relative;
+
         overflow: hidden;
 
-        min-height: 270px;
+        min-height: 340px;
 
         display: flex;
+
         align-items: center;
+
         justify-content: space-between;
 
-        gap: 30px;
+        gap: 35px;
 
-        padding: 38px;
-        margin-bottom: 26px;
+        padding: 48px;
 
-        border-radius: 24px;
+        margin-bottom: 32px;
+
+        border-radius: 30px;
 
         color: white;
 
         background:
             linear-gradient(
-                135deg,
-                #1e3a8a 0%,
-                #2563eb 55%,
-                #0ea5e9 100%
-            );
+                105deg,
+                rgba(7,30,75,.96) 0%,
+                rgba(29,78,216,.88) 50%,
+                rgba(14,165,233,.60) 100%
+            ),
+            url("{{ asset('images/laundry-bg.png') }}");
+
+        background-size: cover;
+
+        background-position: center;
+
+        border:
+            1px solid
+            rgba(255,255,255,.18);
 
         box-shadow:
-            0 20px 45px
-            rgba(37, 99, 235, .18);
+            0 25px 60px
+            rgba(15,23,42,.25);
     }
 
 
@@ -58,16 +97,16 @@
 
         position: absolute;
 
-        width: 320px;
-        height: 320px;
-
-        right: -100px;
-        top: -150px;
-
-        border-radius: 50%;
+        inset: 0;
 
         background:
-            rgba(255,255,255,.10);
+            radial-gradient(
+                circle at 82% 28%,
+                rgba(255,255,255,.16),
+                transparent 26%
+            );
+
+        pointer-events: none;
     }
 
 
@@ -76,284 +115,422 @@
 
         position: absolute;
 
-        width: 230px;
-        height: 230px;
+        width: 360px;
 
-        right: 170px;
-        bottom: -170px;
+        height: 360px;
+
+        right: -170px;
+
+        top: -190px;
 
         border-radius: 50%;
 
         background:
-            rgba(255,255,255,.07);
+            rgba(255,255,255,.08);
     }
 
 
-    .hero-content {
+    .dashboard-hero-content {
         position: relative;
-        z-index: 2;
 
-        max-width: 700px;
+        z-index: 3;
+
+        max-width: 760px;
     }
 
 
-    .hero-top {
+    .dashboard-hero-top {
         display: flex;
+
         align-items: center;
 
         gap: 10px;
 
         flex-wrap: wrap;
 
-        margin-bottom: 18px;
+        margin-bottom: 22px;
     }
 
 
-    .hero-badge,
-    .hero-date {
+    .dashboard-hero-badge,
+    .dashboard-hero-date {
         display: inline-flex;
+
         align-items: center;
-        gap: 6px;
 
-        padding: 8px 13px;
+        gap: 7px;
 
-        border-radius: 30px;
-
-        font-size: 11px;
-
-        background:
-            rgba(255,255,255,.13);
+        padding:
+            10px 15px;
 
         border:
             1px solid
-            rgba(255,255,255,.18);
+            rgba(255,255,255,.22);
 
-        backdrop-filter: blur(10px);
+        border-radius: 30px;
+
+        background:
+            rgba(255,255,255,.14);
+
+        backdrop-filter:
+            blur(12px);
+
+        color: white;
+
+        font-size: 12px;
+
+        font-weight: 700;
+
+        box-shadow:
+            inset 0 1px 0
+            rgba(255,255,255,.10);
     }
 
 
     .dashboard-hero h1 {
-        margin: 0 0 12px;
+        margin:
+            0 0 18px;
+
+        max-width: 760px;
+
+        color: white;
 
         font-size:
             clamp(
-                32px,
-                4vw,
-                52px
+                44px,
+                5vw,
+                66px
             );
 
-        line-height: 1.05;
+        font-weight: 900;
 
-        letter-spacing: -1px;
+        line-height: 1.02;
+
+        letter-spacing: -2px;
+
+        text-shadow:
+            0 7px 25px
+            rgba(0,0,0,.24);
     }
 
 
     .dashboard-hero h1 span {
-        color: #bae6fd;
+        color: #d7f3ff;
+
+        text-shadow:
+            0 0 30px
+            rgba(186,230,253,.22);
     }
 
 
-    .hero-description {
-        max-width: 620px;
+    .dashboard-hero-description {
+        max-width: 690px;
 
         margin: 0;
 
         color:
-            rgba(255,255,255,.84);
+            rgba(255,255,255,.92);
 
-        font-size: 14px;
+        font-size: 15px;
 
-        line-height: 1.7;
+        font-weight: 500;
+
+        line-height: 1.8;
+
+        text-shadow:
+            0 2px 10px
+            rgba(0,0,0,.15);
     }
 
 
-    .hero-quote {
+    .dashboard-hero-quote {
         display: inline-block;
 
-        margin-top: 20px;
+        margin-top: 24px;
 
-        padding: 12px 15px;
-
-        background:
-            rgba(255,255,255,.10);
+        padding:
+            15px 19px;
 
         border-left:
-            3px solid #bae6fd;
+            4px solid #bae6fd;
 
         border-radius:
-            0 12px 12px 0;
-
-        color:
-            rgba(255,255,255,.9);
-
-        font-size: 12px;
-    }
-
-
-    .hero-decoration {
-        position: relative;
-        z-index: 2;
-
-        width: 170px;
-        height: 170px;
-
-        flex-shrink: 0;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        border-radius: 42px;
+            0 15px 15px 0;
 
         background:
             rgba(255,255,255,.13);
 
-        border:
-            1px solid
-            rgba(255,255,255,.18);
+        backdrop-filter:
+            blur(10px);
 
-        backdrop-filter: blur(15px);
+        color: white;
 
-        font-size: 78px;
+        font-size: 13px;
 
-        transform: rotate(4deg);
+        font-weight: 600;
+
+        line-height: 1.7;
+
+        box-shadow:
+            0 10px 25px
+            rgba(0,0,0,.08);
     }
 
+
+    /* =========================================================
+       HERO VISUAL
+    ========================================================= */
+
+    .dashboard-laundry-visual {
+        position: relative;
+
+        z-index: 3;
+
+        width: 210px;
+
+        height: 210px;
+
+        flex-shrink: 0;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        border:
+            1px solid
+            rgba(255,255,255,.28);
+
+        border-radius: 52px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,.22),
+                rgba(255,255,255,.09)
+            );
+
+        backdrop-filter:
+            blur(20px);
+
+        box-shadow:
+            0 28px 50px
+            rgba(0,0,0,.18);
+
+        transform:
+            rotate(3deg);
+
+        transition:
+            transform .3s ease;
+    }
+
+
+    .dashboard-laundry-visual:hover {
+        transform:
+            rotate(0deg)
+            scale(1.04);
+    }
+
+
+    .dashboard-laundry-visual span {
+        font-size: 96px;
+
+        filter:
+            drop-shadow(
+                0 12px 15px
+                rgba(0,0,0,.18)
+            );
+    }
+
+
+    .dashboard-laundry-visual small {
+        position: absolute;
+
+        left: 50%;
+
+        bottom: 18px;
+
+        transform:
+            translateX(-50%);
+
+        width: 100%;
+
+        color:
+            rgba(255,255,255,.82);
+
+        text-align: center;
+
+        font-size: 10px;
+
+        font-weight: 800;
+
+        letter-spacing: 1.2px;
+
+        text-transform: uppercase;
+    }
 
 
     /* =========================================================
        SECTION HEADING
     ========================================================= */
 
-    .section-heading {
+    .dashboard-section-heading {
         display: flex;
+
         justify-content: space-between;
+
         align-items: center;
 
         gap: 15px;
 
         margin:
-            4px 0 15px;
+            8px 0 18px;
 
         flex-wrap: wrap;
     }
 
 
-    .section-heading h2 {
+    .dashboard-section-heading h2 {
         margin: 0;
 
         color: #0f172a;
 
-        font-size: 18px;
+        font-size: 21px;
+
+        font-weight: 900;
+
+        letter-spacing: -.4px;
     }
 
 
-    .section-heading p {
-        margin: 5px 0 0;
+    .dashboard-section-heading p {
+        margin:
+            6px 0 0;
 
         color: #64748b;
 
-        font-size: 11px;
+        font-size: 12px;
+
+        line-height: 1.5;
     }
 
 
-
     /* =========================================================
-       STATISTIK UTAMA
+       STATISTIK
     ========================================================= */
 
-    .premium-stats-grid {
+    .dashboard-stats-grid {
         display: grid;
 
         grid-template-columns:
             repeat(4, 1fr);
 
-        gap: 16px;
+        gap: 17px;
 
-        margin-bottom: 27px;
+        margin-bottom: 30px;
     }
 
 
-    .premium-stat-card {
+    .dashboard-stat-card {
         position: relative;
+
         overflow: hidden;
 
-        padding: 21px;
-
-        background:
-            rgba(255,255,255,.97);
+        padding: 24px;
 
         border:
-            1px solid #e8eef7;
+            1px solid
+            rgba(255,255,255,.85);
 
-        border-radius: 18px;
+        border-radius: 22px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,.98),
+                rgba(248,250,252,.94)
+            );
 
         box-shadow:
-            0 8px 25px
-            rgba(15,23,42,.06);
+            0 12px 32px
+            rgba(15,23,42,.08);
 
-        transition: .2s;
+        backdrop-filter:
+            blur(10px);
+
+        transition:
+            transform .25s,
+            box-shadow .25s;
     }
 
 
-    .premium-stat-card:hover {
+    .dashboard-stat-card:hover {
         transform:
-            translateY(-4px);
+            translateY(-6px);
 
         box-shadow:
-            0 16px 35px
-            rgba(15,23,42,.10);
+            0 22px 45px
+            rgba(15,23,42,.13);
     }
 
 
-    .premium-stat-card::after {
+    .dashboard-stat-card::after {
         content: "";
 
         position: absolute;
 
-        width: 90px;
-        height: 90px;
+        width: 110px;
 
-        right: -40px;
-        bottom: -40px;
+        height: 110px;
+
+        right: -50px;
+
+        bottom: -50px;
 
         border-radius: 50%;
 
         background:
-            rgba(37,99,235,.05);
+            rgba(37,99,235,.06);
     }
 
 
-    .premium-stat-head {
+    .dashboard-stat-head {
         display: flex;
+
         justify-content: space-between;
+
         align-items: center;
 
-        margin-bottom: 15px;
+        margin-bottom: 16px;
     }
 
 
-    .premium-stat-head small {
+    .dashboard-stat-head small {
         color: #64748b;
 
         font-size: 10px;
-        font-weight: 700;
 
-        text-transform: uppercase;
+        font-weight: 800;
 
         letter-spacing: .5px;
+
+        text-transform: uppercase;
     }
 
 
-    .premium-stat-icon {
-        width: 43px;
-        height: 43px;
+    .dashboard-stat-icon {
+        width: 49px;
+
+        height: 49px;
 
         display: flex;
+
         align-items: center;
+
         justify-content: center;
 
-        border-radius: 13px;
+        border-radius: 15px;
 
         background:
             linear-gradient(
@@ -362,106 +539,133 @@
                 #dbeafe
             );
 
-        font-size: 20px;
+        font-size: 23px;
+
+        box-shadow:
+            0 7px 18px
+            rgba(37,99,235,.11);
     }
 
 
-    .premium-stat-card h2 {
-        margin: 0 0 6px;
+    .dashboard-stat-card h2 {
+        position: relative;
+
+        z-index: 2;
+
+        margin:
+            0 0 8px;
 
         color: #0f172a;
 
-        font-size: 27px;
+        font-size: 34px;
+
+        font-weight: 900;
     }
 
 
-    .premium-stat-card p {
+    .dashboard-stat-card p {
+        position: relative;
+
+        z-index: 2;
+
         margin: 0;
 
         color: #94a3b8;
 
-        font-size: 10px;
+        font-size: 11px;
+
+        line-height: 1.55;
     }
 
 
-    .stat-money h2 {
+    .dashboard-stat-money h2 {
         color: #059669;
 
-        font-size: 22px;
+        font-size: 26px;
     }
-
 
 
     /* =========================================================
-       ANALISIS HARI INI
+       ANALYSIS GRID
     ========================================================= */
 
-    .today-dashboard-grid {
+    .dashboard-analysis-grid {
         display: grid;
 
         grid-template-columns:
             minmax(0, 2fr)
-            minmax(260px, .75fr);
+            minmax(280px, .78fr);
 
-        gap: 20px;
+        gap: 21px;
 
-        margin-bottom: 27px;
+        margin-bottom: 30px;
     }
 
 
     /* =========================================================
-       GRAFIK
+       PANEL
     ========================================================= */
 
-    .chart-panel {
-        background: white;
-
-        padding: 23px;
+    .dashboard-panel {
+        padding: 25px;
 
         border:
-            1px solid #e8eef7;
+            1px solid
+            rgba(226,232,240,.96);
 
-        border-radius: 20px;
+        border-radius: 23px;
+
+        background:
+            rgba(255,255,255,.96);
 
         box-shadow:
-            0 8px 25px
-            rgba(15,23,42,.06);
+            0 12px 35px
+            rgba(15,23,42,.08);
+
+        backdrop-filter:
+            blur(10px);
     }
 
 
-    .chart-header {
+    .dashboard-panel-header {
         display: flex;
+
         justify-content: space-between;
+
         align-items: center;
 
         gap: 15px;
 
-        margin-bottom: 20px;
+        margin-bottom: 21px;
 
         flex-wrap: wrap;
     }
 
 
-    .chart-header h2 {
+    .dashboard-panel-header h2 {
         margin: 0;
 
         color: #0f172a;
 
-        font-size: 17px;
+        font-size: 19px;
+
+        font-weight: 900;
     }
 
 
-    .chart-header p {
-        margin: 5px 0 0;
+    .dashboard-panel-header p {
+        margin:
+            6px 0 0;
 
         color: #94a3b8;
 
-        font-size: 10px;
+        font-size: 11px;
     }
 
 
-    .chart-label {
-        padding: 7px 11px;
+    .dashboard-chart-label {
+        padding:
+            7px 11px;
 
         border-radius: 20px;
 
@@ -471,15 +675,20 @@
 
         font-size: 9px;
 
-        font-weight: bold;
+        font-weight: 800;
     }
 
 
-    .chart-wrapper {
+    /* =========================================================
+       CHART
+    ========================================================= */
+
+    .dashboard-chart-wrapper {
         position: relative;
 
         width: 100%;
-        height: 270px;
+
+        height: 285px;
     }
 
 
@@ -487,65 +696,74 @@
         display: block;
 
         width: 100%;
+
         height: 100%;
     }
 
 
-
     /* =========================================================
-       STATISTIK HARI INI
+       TODAY
     ========================================================= */
 
-    .today-summary {
+    .dashboard-today {
         display: flex;
 
         flex-direction: column;
 
-        gap: 15px;
+        gap: 16px;
     }
 
 
-    .today-card {
+    .dashboard-today-card {
         position: relative;
+
         overflow: hidden;
 
         flex: 1;
 
-        min-height: 130px;
+        min-height: 145px;
 
-        padding: 21px;
-
-        background: white;
+        padding: 23px;
 
         border:
-            1px solid #e8eef7;
+            1px solid
+            #e8eef7;
 
-        border-radius: 18px;
+        border-radius: 21px;
+
+        background:
+            rgba(255,255,255,.97);
 
         box-shadow:
-            0 8px 25px
-            rgba(15,23,42,.06);
+            0 10px 28px
+            rgba(15,23,42,.07);
 
-        transition: .2s;
+        transition: .25s;
     }
 
 
-    .today-card:hover {
+    .dashboard-today-card:hover {
         transform:
-            translateY(-3px);
+            translateY(-5px);
+
+        box-shadow:
+            0 18px 35px
+            rgba(15,23,42,.11);
     }
 
 
-    .today-card::after {
+    .dashboard-today-card::after {
         content: "";
 
         position: absolute;
 
-        width: 100px;
-        height: 100px;
+        width: 110px;
 
-        right: -45px;
-        bottom: -45px;
+        height: 110px;
+
+        right: -50px;
+
+        bottom: -50px;
 
         border-radius: 50%;
 
@@ -554,20 +772,21 @@
     }
 
 
-    .today-card-header {
+    .dashboard-today-head {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
 
-        gap: 10px;
+        justify-content: space-between;
+
+        align-items: center;
     }
 
 
-    .today-card-label {
+    .dashboard-today-label {
         color: #64748b;
 
-        font-size: 9px;
-        font-weight: 700;
+        font-size: 10px;
+
+        font-weight: 800;
 
         letter-spacing: .5px;
 
@@ -575,15 +794,18 @@
     }
 
 
-    .today-icon {
-        width: 40px;
-        height: 40px;
+    .dashboard-today-icon {
+        width: 46px;
+
+        height: 46px;
 
         display: flex;
+
         align-items: center;
+
         justify-content: center;
 
-        border-radius: 12px;
+        border-radius: 14px;
 
         background:
             linear-gradient(
@@ -592,257 +814,184 @@
                 #dbeafe
             );
 
-        font-size: 18px;
+        font-size: 21px;
     }
 
 
-    .today-card h2 {
+    .dashboard-today-card h2 {
         margin:
-            15px 0 5px;
+            16px 0 6px;
 
         color: #0f172a;
 
-        font-size: 28px;
+        font-size: 33px;
+
+        font-weight: 900;
     }
 
 
-    .today-card p {
+    .dashboard-today-card p {
         margin: 0;
 
         color: #94a3b8;
 
-        font-size: 9px;
+        font-size: 10px;
+
+        line-height: 1.5;
     }
 
 
-    .today-income {
+    .dashboard-today-income {
         background:
             linear-gradient(
                 135deg,
-                #ffffff,
-                #f0fdf4
+                rgba(255,255,255,.97),
+                rgba(240,253,244,.97)
             );
     }
 
 
-    .today-income h2 {
+    .dashboard-today-income h2 {
         color: #059669;
 
-        font-size: 22px;
+        font-size: 26px;
     }
-
-
-    .today-income .today-icon {
-        background:
-            linear-gradient(
-                135deg,
-                #dcfce7,
-                #bbf7d0
-            );
-    }
-
 
 
     /* =========================================================
-       STATUS LAUNDRY
+       STATUS
     ========================================================= */
 
-    .status-grid {
+    .dashboard-status-grid {
         display: grid;
 
         grid-template-columns:
             repeat(7, 1fr);
 
-        gap: 10px;
+        gap: 11px;
 
-        margin-bottom: 27px;
+        margin-bottom: 30px;
     }
 
 
-    .status-mini-card {
-        padding: 15px 10px;
-
-        background: white;
+    .dashboard-status-card {
+        padding:
+            19px 10px;
 
         border:
-            1px solid #e8eef7;
+            1px solid
+            rgba(226,232,240,.96);
 
-        border-radius: 14px;
+        border-radius: 17px;
+
+        background:
+            rgba(255,255,255,.95);
+
+        box-shadow:
+            0 7px 20px
+            rgba(15,23,42,.06);
+
+        backdrop-filter:
+            blur(8px);
 
         text-align: center;
 
-        box-shadow:
-            0 5px 18px
-            rgba(15,23,42,.05);
+        transition:
+            transform .25s,
+            box-shadow .25s;
     }
 
 
-    .status-mini-card span {
+    .dashboard-status-card:hover {
+        transform:
+            translateY(-5px);
+
+        box-shadow:
+            0 15px 30px
+            rgba(15,23,42,.11);
+    }
+
+
+    .dashboard-status-card span {
         display: block;
 
-        margin-bottom: 6px;
+        margin-bottom: 7px;
 
-        font-size: 18px;
+        font-size: 23px;
     }
 
 
-    .status-mini-card strong {
+    .dashboard-status-card strong {
         display: block;
 
         color: #0f172a;
 
-        font-size: 19px;
+        font-size: 24px;
+
+        font-weight: 900;
     }
 
 
-    .status-mini-card small {
+    .dashboard-status-card small {
         display: block;
 
-        margin-top: 4px;
+        margin-top: 5px;
 
         color: #64748b;
 
         font-size: 8px;
 
-        text-transform: uppercase;
+        font-weight: 700;
 
-        letter-spacing: .3px;
+        text-transform: uppercase;
     }
 
 
-
     /* =========================================================
-       MAIN GRID
+       BOTTOM GRID
     ========================================================= */
 
-    .premium-dashboard-grid {
+    .dashboard-bottom-grid {
         display: grid;
 
         grid-template-columns:
             minmax(0, 2fr)
-            minmax(280px, .8fr);
+            minmax(290px, .85fr);
 
-        gap: 20px;
+        gap: 21px;
 
         align-items: start;
     }
-
-
-    .premium-panel {
-        background: white;
-
-        padding: 22px;
-
-        border:
-            1px solid #e8eef7;
-
-        border-radius: 20px;
-
-        box-shadow:
-            0 8px 25px
-            rgba(15,23,42,.06);
-    }
-
-
-    .premium-panel-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        gap: 15px;
-
-        margin-bottom: 20px;
-
-        flex-wrap: wrap;
-    }
-
-
-    .premium-panel-header h2 {
-        margin: 0;
-
-        color: #0f172a;
-
-        font-size: 17px;
-    }
-
-
-    .panel-description {
-        margin-top: 5px;
-
-        color: #94a3b8;
-
-        font-size: 10px;
-    }
-
-
-
-    /* =========================================================
-       BUTTON
-    ========================================================= */
-
-    .dashboard-btn {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-
-        gap: 5px;
-
-        padding: 9px 13px;
-
-        border-radius: 9px;
-
-        text-decoration: none;
-
-        font-size: 10px;
-        font-weight: 600;
-
-        transition: .2s;
-    }
-
-
-    .dashboard-btn-primary {
-        background: #2563eb;
-
-        color: white;
-    }
-
-
-    .dashboard-btn-primary:hover {
-        background: #1d4ed8;
-
-        transform:
-            translateY(-1px);
-    }
-
 
 
     /* =========================================================
        TABLE
     ========================================================= */
 
-    .premium-table-responsive {
+    .dashboard-table-responsive {
         width: 100%;
 
         overflow-x: auto;
     }
 
 
-    .premium-table {
+    .dashboard-table {
         width: 100%;
 
-        min-width: 680px;
+        min-width: 700px;
 
         border-collapse: collapse;
     }
 
 
-    .premium-table th {
-        padding: 11px 10px;
-
-        background: #f8fafc;
+    .dashboard-table th {
+        padding:
+            13px 11px;
 
         border-bottom:
             1px solid #e2e8f0;
+
+        background: #f8fafc;
 
         color: #64748b;
 
@@ -850,14 +999,17 @@
 
         font-size: 9px;
 
+        font-weight: 800;
+
         text-transform: uppercase;
 
-        letter-spacing: .4px;
+        letter-spacing: .5px;
     }
 
 
-    .premium-table td {
-        padding: 14px 10px;
+    .dashboard-table td {
+        padding:
+            15px 11px;
 
         border-bottom:
             1px solid #f1f5f9;
@@ -868,64 +1020,120 @@
     }
 
 
-    .premium-table tbody tr:hover {
+    .dashboard-table tbody tr {
+        transition: .2s;
+    }
+
+
+    .dashboard-table tbody tr:hover {
         background: #f8fafc;
     }
 
 
-    .transaction-code {
+    .dashboard-transaction-code {
         color: #2563eb;
 
-        font-weight: 700;
+        font-weight: 800;
     }
 
 
-    .transaction-total {
+    .dashboard-total {
         color: #0f172a;
 
-        font-weight: 700;
+        font-weight: 800;
     }
-
 
 
     /* =========================================================
        BADGE
     ========================================================= */
 
-    .premium-badge {
+    .dashboard-badge {
         display: inline-flex;
+
         align-items: center;
 
-        padding: 5px 9px;
+        padding:
+            6px 9px;
 
         border-radius: 20px;
 
         font-size: 8px;
 
-        font-weight: 700;
+        font-weight: 800;
     }
 
 
-    .premium-badge-green {
+    .dashboard-badge-green {
         background: #dcfce7;
 
         color: #166534;
     }
 
 
-    .premium-badge-blue {
+    .dashboard-badge-blue {
         background: #dbeafe;
 
         color: #1d4ed8;
     }
 
 
+    /* =========================================================
+       BUTTON
+    ========================================================= */
+
+    .dashboard-btn {
+        display: inline-flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 5px;
+
+        padding:
+            10px 14px;
+
+        border-radius: 10px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #2563eb,
+                #1d4ed8
+            );
+
+        color: white;
+
+        text-decoration: none;
+
+        font-size: 10px;
+
+        font-weight: 800;
+
+        box-shadow:
+            0 7px 15px
+            rgba(37,99,235,.16);
+
+        transition: .2s;
+    }
+
+
+    .dashboard-btn:hover {
+        transform:
+            translateY(-2px);
+
+        box-shadow:
+            0 10px 20px
+            rgba(37,99,235,.22);
+    }
+
 
     /* =========================================================
        QUICK MENU
     ========================================================= */
 
-    .quick-action-list {
+    .dashboard-quick-list {
         display: flex;
 
         flex-direction: column;
@@ -934,50 +1142,59 @@
     }
 
 
-    .premium-quick-action {
+    .dashboard-quick-action {
         display: flex;
+
         align-items: center;
 
         gap: 12px;
 
-        padding: 13px;
-
-        background: #f8fafc;
+        padding: 14px;
 
         border:
             1px solid #edf2f7;
 
-        border-radius: 13px;
+        border-radius: 14px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #f8fafc,
+                #ffffff
+            );
 
         color: #0f172a;
 
         text-decoration: none;
 
-        transition: .2s;
+        transition: .22s;
     }
 
 
-    .premium-quick-action:hover {
-        background: #eff6ff;
-
+    .dashboard-quick-action:hover {
         border-color: #bfdbfe;
 
+        background: #eff6ff;
+
         transform:
-            translateX(3px);
+            translateX(4px);
     }
 
 
-    .premium-quick-icon {
-        width: 40px;
-        height: 40px;
+    .dashboard-quick-icon {
+        width: 45px;
+
+        height: 45px;
 
         display: flex;
+
         align-items: center;
+
         justify-content: center;
 
         flex-shrink: 0;
 
-        border-radius: 11px;
+        border-radius: 13px;
 
         background:
             linear-gradient(
@@ -986,38 +1203,43 @@
                 #e0f2fe
             );
 
-        font-size: 18px;
+        font-size: 21px;
     }
 
 
-    .premium-quick-action strong {
+    .dashboard-quick-action strong {
         display: block;
 
-        margin-bottom: 3px;
+        margin-bottom: 4px;
 
-        font-size: 11px;
+        font-size: 12px;
     }
 
 
-    .premium-quick-action small {
+    .dashboard-quick-action small {
         color: #94a3b8;
 
-        font-size: 8px;
+        font-size: 9px;
     }
-
 
 
     /* =========================================================
        PAYMENT WARNING
     ========================================================= */
 
-    .payment-warning {
+    .dashboard-warning {
         position: relative;
+
         overflow: hidden;
 
-        margin-top: 16px;
+        margin-top: 17px;
 
-        padding: 18px;
+        padding: 20px;
+
+        border:
+            1px solid #fecdd3;
+
+        border-radius: 17px;
 
         background:
             linear-gradient(
@@ -1025,70 +1247,64 @@
                 #fff1f2,
                 #fff7ed
             );
-
-        border:
-            1px solid #fecdd3;
-
-        border-radius: 15px;
     }
 
 
-    .payment-warning::after {
+    .dashboard-warning::after {
         content: "💳";
 
         position: absolute;
 
         right: 15px;
+
         top: 13px;
 
-        font-size: 40px;
+        font-size: 43px;
 
         opacity: .12;
     }
 
 
-    .payment-warning small {
+    .dashboard-warning small {
         color: #9f1239;
 
         font-size: 9px;
 
-        font-weight: 700;
+        font-weight: 800;
     }
 
 
-    .payment-warning h2 {
-        margin: 7px 0 4px;
+    .dashboard-warning h2 {
+        margin:
+            8px 0 5px;
 
         color: #e11d48;
 
-        font-size: 27px;
+        font-size: 33px;
+
+        font-weight: 900;
     }
 
 
-    .payment-warning p {
+    .dashboard-warning p {
         margin: 0;
 
         color: #9f1239;
 
-        font-size: 8px;
-
-        opacity: .75;
+        font-size: 9px;
     }
 
 
+    .dashboard-empty {
+        padding:
+            40px !important;
 
-    /* =========================================================
-       EMPTY
-    ========================================================= */
+        color:
+            #94a3b8 !important;
 
-    .empty-dashboard {
-        padding: 35px !important;
-
-        text-align: center !important;
-
-        color: #94a3b8 !important;
+        text-align:
+            center !important;
     }
-
 
 
     /* =========================================================
@@ -1097,19 +1313,19 @@
 
     @media(max-width: 1200px) {
 
-        .premium-stats-grid {
+        .dashboard-stats-grid {
             grid-template-columns:
-                repeat(2, 1fr);
+                repeat(2,1fr);
         }
 
 
-        .status-grid {
+        .dashboard-status-grid {
             grid-template-columns:
-                repeat(4, 1fr);
+                repeat(4,1fr);
         }
 
 
-        .premium-dashboard-grid {
+        .dashboard-bottom-grid {
             grid-template-columns:
                 1fr;
         }
@@ -1119,17 +1335,17 @@
 
     @media(max-width: 1000px) {
 
-        .today-dashboard-grid {
+        .dashboard-analysis-grid {
             grid-template-columns:
                 1fr;
         }
 
 
-        .today-summary {
+        .dashboard-today {
             display: grid;
 
             grid-template-columns:
-                repeat(2, 1fr);
+                repeat(2,1fr);
         }
 
     }
@@ -1137,43 +1353,71 @@
 
     @media(max-width: 760px) {
 
-        .dashboard-hero {
-            min-height: auto;
+        .dashboard-premium {
+            padding: 10px;
 
-            padding: 25px;
+            background-attachment:
+                scroll;
         }
 
 
-        .hero-decoration {
+        .dashboard-hero {
+            min-height: auto;
+
+            padding:
+                31px 24px;
+
+            border-radius: 22px;
+        }
+
+
+        .dashboard-laundry-visual {
             display: none;
         }
 
 
-        .premium-stats-grid {
-            grid-template-columns:
-                1fr;
-        }
-
-
-        .today-summary {
-            grid-template-columns:
-                1fr;
-        }
-
-
-        .status-grid {
-            grid-template-columns:
-                repeat(2, 1fr);
-        }
-
-
         .dashboard-hero h1 {
-            font-size: 34px;
+            font-size: 40px;
+
+            letter-spacing: -1px;
         }
 
 
-        .chart-wrapper {
-            height: 220px;
+        .dashboard-hero-description {
+            font-size: 13px;
+        }
+
+
+        .dashboard-hero-quote {
+            font-size: 12px;
+        }
+
+
+        .dashboard-stats-grid {
+            grid-template-columns:
+                1fr;
+        }
+
+
+        .dashboard-today {
+            grid-template-columns:
+                1fr;
+        }
+
+
+        .dashboard-status-grid {
+            grid-template-columns:
+                repeat(2,1fr);
+        }
+
+
+        .dashboard-chart-wrapper {
+            height: 225px;
+        }
+
+
+        .dashboard-section-heading h2 {
+            font-size: 18px;
         }
 
     }
@@ -1197,23 +1441,28 @@
     <section class="dashboard-hero">
 
 
-        <div class="hero-content">
+        <div class="dashboard-hero-content">
 
 
-            <div class="hero-top">
+            <div class="dashboard-hero-top">
 
 
-                <div class="hero-badge">
+                <div class="dashboard-hero-badge">
 
                     ✨ Selamat Datang,
-                    {{ auth()->user()->name ?? 'Administrator' }}
+
+                    {{
+                        auth()->user()->name
+                        ?? 'Administrator'
+                    }}
 
                 </div>
 
 
-                <div class="hero-date">
+                <div class="dashboard-hero-date">
 
                     📅
+
                     {{
                         now()->translatedFormat(
                             'd F Y'
@@ -1239,17 +1488,18 @@
 
 
 
-            <p class="hero-description">
+            <p class="dashboard-hero-description">
 
-                Kelola seluruh aktivitas laundry mulai dari pelanggan,
-                transaksi, pembayaran, layanan hingga proses pengerjaan
-                dalam satu sistem yang lebih cepat, modern dan terorganisir.
+                Kelola seluruh aktivitas laundry mulai dari
+                pelanggan, transaksi, pembayaran, layanan,
+                hingga proses pengerjaan dalam satu sistem
+                yang modern, cepat, rapi dan terorganisir.
 
             </p>
 
 
 
-            <div class="hero-quote">
+            <div class="dashboard-hero-quote">
 
                 “Bersih, Wangi, Rapi —
                 Karena Setiap Pakaian Layak Mendapatkan
@@ -1262,9 +1512,15 @@
 
 
 
-        <div class="hero-decoration">
+        <div class="dashboard-laundry-visual">
 
-            🧺
+            <span>
+                👕
+            </span>
+
+            <small>
+                Laundry Service
+            </small>
 
         </div>
 
@@ -1274,10 +1530,10 @@
 
 
     <!-- =====================================================
-         RINGKASAN OPERASIONAL
+         RINGKASAN
     ====================================================== -->
 
-    <div class="section-heading">
+    <div class="dashboard-section-heading">
 
         <div>
 
@@ -1286,7 +1542,8 @@
             </h2>
 
             <p>
-                Informasi utama operasional Tania Mutiara Laundry.
+                Informasi utama operasional
+                Tania Mutiara Laundry.
             </p>
 
         </div>
@@ -1295,31 +1552,33 @@
 
 
 
-    <div class="premium-stats-grid">
+    <div class="dashboard-stats-grid">
 
 
         <!-- TOTAL PELANGGAN -->
 
-        <div class="premium-stat-card">
+        <div class="dashboard-stat-card">
 
-            <div class="premium-stat-head">
+            <div class="dashboard-stat-head">
 
                 <small>
                     Total Pelanggan
                 </small>
 
-                <div class="premium-stat-icon">
+                <div class="dashboard-stat-icon">
                     👥
                 </div>
 
             </div>
 
+
             <h2>
                 {{ $totalPelanggan }}
             </h2>
 
+
             <p>
-                Pelanggan yang telah terdaftar
+                Pelanggan yang telah terdaftar.
             </p>
 
         </div>
@@ -1328,75 +1587,85 @@
 
         <!-- PESANAN AKTIF -->
 
-        <div class="premium-stat-card">
+        <div class="dashboard-stat-card">
 
-            <div class="premium-stat-head">
+            <div class="dashboard-stat-head">
 
                 <small>
                     Pesanan Aktif
                 </small>
 
-                <div class="premium-stat-icon">
+                <div class="dashboard-stat-icon">
                     🫧
                 </div>
 
             </div>
 
+
             <h2>
                 {{ $pesananMasuk }}
             </h2>
 
+
             <p>
-                Laundry yang sedang diproses
+                Laundry yang sedang diproses.
             </p>
 
         </div>
 
 
 
-        <!-- LAUNDRY SELESAI -->
+        <!-- SELESAI -->
 
-        <div class="premium-stat-card">
+        <div class="dashboard-stat-card">
 
-            <div class="premium-stat-head">
+            <div class="dashboard-stat-head">
 
                 <small>
                     Laundry Selesai
                 </small>
 
-                <div class="premium-stat-icon">
+                <div class="dashboard-stat-icon">
                     ✅
                 </div>
 
             </div>
 
+
             <h2>
                 {{ $laundrySelesai }}
             </h2>
 
+
             <p>
-                Pesanan yang telah selesai
+                Pesanan yang telah selesai.
             </p>
 
         </div>
 
 
 
-        <!-- TOTAL PENDAPATAN -->
+        <!-- PENDAPATAN -->
 
-        <div class="premium-stat-card stat-money">
+        <div
+            class="
+                dashboard-stat-card
+                dashboard-stat-money
+            "
+        >
 
-            <div class="premium-stat-head">
+            <div class="dashboard-stat-head">
 
                 <small>
                     Total Pendapatan
                 </small>
 
-                <div class="premium-stat-icon">
+                <div class="dashboard-stat-icon">
                     💰
                 </div>
 
             </div>
+
 
             <h2>
 
@@ -1412,8 +1681,9 @@
 
             </h2>
 
+
             <p>
-                Pendapatan transaksi yang sudah lunas
+                Pendapatan transaksi yang sudah lunas.
             </p>
 
         </div>
@@ -1424,10 +1694,10 @@
 
 
     <!-- =====================================================
-         ANALISIS PENDAPATAN
+         ANALISIS
     ====================================================== -->
 
-    <div class="section-heading">
+    <div class="dashboard-section-heading">
 
         <div>
 
@@ -1436,7 +1706,8 @@
             </h2>
 
             <p>
-                Pergerakan pendapatan dan aktivitas laundry hari ini.
+                Aktivitas dan pendapatan laundry
+                selama tujuh hari terakhir.
             </p>
 
         </div>
@@ -1445,15 +1716,15 @@
 
 
 
-    <div class="today-dashboard-grid">
+    <div class="dashboard-analysis-grid">
 
 
         <!-- GRAFIK -->
 
-        <div class="chart-panel">
+        <div class="dashboard-panel">
 
 
-            <div class="chart-header">
+            <div class="dashboard-panel-header">
 
 
                 <div>
@@ -1463,23 +1734,23 @@
                     </h2>
 
                     <p>
-                        Berdasarkan transaksi dengan status pembayaran Lunas.
+                        Berdasarkan transaksi dengan
+                        status pembayaran Lunas.
                     </p>
 
                 </div>
 
 
-                <div class="chart-label">
-
+                <span class="dashboard-chart-label">
                     ● 7 Hari
-
-                </div>
+                </span>
 
 
             </div>
 
 
-            <div class="chart-wrapper">
+
+            <div class="dashboard-chart-wrapper">
 
                 <canvas id="revenueChart"></canvas>
 
@@ -1490,21 +1761,21 @@
 
 
 
-        <!-- STATISTIK HARI INI -->
+        <!-- HARI INI -->
 
-        <div class="today-summary">
-
-
-            <div class="today-card">
+        <div class="dashboard-today">
 
 
-                <div class="today-card-header">
+            <div class="dashboard-today-card">
 
-                    <span class="today-card-label">
+
+                <div class="dashboard-today-head">
+
+                    <span class="dashboard-today-label">
                         Transaksi Hari Ini
                     </span>
 
-                    <div class="today-icon">
+                    <div class="dashboard-today-icon">
                         🧾
                     </div>
 
@@ -1525,16 +1796,21 @@
 
 
 
-            <div class="today-card today-income">
+            <div
+                class="
+                    dashboard-today-card
+                    dashboard-today-income
+                "
+            >
 
 
-                <div class="today-card-header">
+                <div class="dashboard-today-head">
 
-                    <span class="today-card-label">
+                    <span class="dashboard-today-label">
                         Pendapatan Hari Ini
                     </span>
 
-                    <div class="today-icon">
+                    <div class="dashboard-today-icon">
                         💵
                     </div>
 
@@ -1557,7 +1833,7 @@
 
 
                 <p>
-                    Total transaksi lunas yang masuk hari ini.
+                    Total transaksi lunas hari ini.
                 </p>
 
 
@@ -1572,10 +1848,10 @@
 
 
     <!-- =====================================================
-         STATUS LAUNDRY
+         STATUS
     ====================================================== -->
 
-    <div class="section-heading">
+    <div class="dashboard-section-heading">
 
         <div>
 
@@ -1584,7 +1860,8 @@
             </h2>
 
             <p>
-                Ringkasan jumlah transaksi berdasarkan proses pengerjaan.
+                Jumlah transaksi berdasarkan
+                proses pengerjaan laundry.
             </p>
 
         </div>
@@ -1593,10 +1870,10 @@
 
 
 
-    <div class="status-grid">
+    <div class="dashboard-status-grid">
 
 
-        <div class="status-mini-card">
+        <div class="dashboard-status-card">
 
             <span>📥</span>
 
@@ -1611,7 +1888,7 @@
         </div>
 
 
-        <div class="status-mini-card">
+        <div class="dashboard-status-card">
 
             <span>🫧</span>
 
@@ -1626,7 +1903,7 @@
         </div>
 
 
-        <div class="status-mini-card">
+        <div class="dashboard-status-card">
 
             <span>💨</span>
 
@@ -1641,7 +1918,7 @@
         </div>
 
 
-        <div class="status-mini-card">
+        <div class="dashboard-status-card">
 
             <span>👔</span>
 
@@ -1656,7 +1933,7 @@
         </div>
 
 
-        <div class="status-mini-card">
+        <div class="dashboard-status-card">
 
             <span>✅</span>
 
@@ -1671,7 +1948,7 @@
         </div>
 
 
-        <div class="status-mini-card">
+        <div class="dashboard-status-card">
 
             <span>🤝</span>
 
@@ -1686,7 +1963,7 @@
         </div>
 
 
-        <div class="status-mini-card">
+        <div class="dashboard-status-card">
 
             <span>🚚</span>
 
@@ -1706,18 +1983,18 @@
 
 
     <!-- =====================================================
-         TRANSAKSI + MENU CEPAT
+         TRANSAKSI & MENU CEPAT
     ====================================================== -->
 
-    <div class="premium-dashboard-grid">
+    <div class="dashboard-bottom-grid">
 
 
-        <!-- TRANSAKSI TERBARU -->
+        <!-- TRANSAKSI -->
 
-        <div class="premium-panel">
+        <div class="dashboard-panel">
 
 
-            <div class="premium-panel-header">
+            <div class="dashboard-panel-header">
 
 
                 <div>
@@ -1726,19 +2003,17 @@
                         🧾 Transaksi Terbaru
                     </h2>
 
-                    <div class="panel-description">
-
+                    <p>
                         Aktivitas transaksi terbaru
                         Tania Mutiara Laundry.
-
-                    </div>
+                    </p>
 
                 </div>
 
 
                 <a
                     href="{{ route('transaksi.index') }}"
-                    class="dashboard-btn dashboard-btn-primary"
+                    class="dashboard-btn"
                 >
                     Lihat Semua →
                 </a>
@@ -1748,10 +2023,10 @@
 
 
 
-            <div class="premium-table-responsive">
+            <div class="dashboard-table-responsive">
 
 
-                <table class="premium-table">
+                <table class="dashboard-table">
 
 
                     <thead>
@@ -1798,7 +2073,11 @@
 
                             <td>
 
-                                <span class="transaction-code">
+                                <span
+                                    class="
+                                        dashboard-transaction-code
+                                    "
+                                >
 
                                     {{
                                         $transaksi
@@ -1839,7 +2118,7 @@
 
                             <td>
 
-                                <span class="transaction-total">
+                                <span class="dashboard-total">
 
                                     Rp
                                     {{
@@ -1862,7 +2141,8 @@
 
                                 @if(
                                     in_array(
-                                        $transaksi->status_laundry,
+                                        $transaksi
+                                            ->status_laundry,
                                         [
                                             'Selesai',
                                             'Diambil',
@@ -1874,8 +2154,8 @@
 
                                     <span
                                         class="
-                                            premium-badge
-                                            premium-badge-green
+                                            dashboard-badge
+                                            dashboard-badge-green
                                         "
                                     >
 
@@ -1892,8 +2172,8 @@
 
                                     <span
                                         class="
-                                            premium-badge
-                                            premium-badge-blue
+                                            dashboard-badge
+                                            dashboard-badge-blue
                                         "
                                     >
 
@@ -1921,7 +2201,7 @@
 
                             <td
                                 colspan="5"
-                                class="empty-dashboard"
+                                class="dashboard-empty"
                             >
 
                                 🧺 Belum ada transaksi laundry.
@@ -1947,14 +2227,12 @@
 
 
 
-        <!-- =================================================
-             MENU CEPAT
-        ================================================== -->
+        <!-- MENU CEPAT -->
 
-        <div class="premium-panel">
+        <div class="dashboard-panel">
 
 
-            <div class="premium-panel-header">
+            <div class="dashboard-panel-header">
 
                 <div>
 
@@ -1962,9 +2240,9 @@
                         ⚡ Menu Cepat
                     </h2>
 
-                    <div class="panel-description">
+                    <p>
                         Akses fitur utama dengan cepat.
-                    </div>
+                    </p>
 
                 </div>
 
@@ -1972,15 +2250,15 @@
 
 
 
-            <div class="quick-action-list">
+            <div class="dashboard-quick-list">
 
 
                 <a
                     href="{{ route('transaksi.index') }}"
-                    class="premium-quick-action"
+                    class="dashboard-quick-action"
                 >
 
-                    <div class="premium-quick-icon">
+                    <div class="dashboard-quick-icon">
                         ➕
                     </div>
 
@@ -2002,10 +2280,10 @@
 
                 <a
                     href="{{ route('pelanggan.index') }}"
-                    class="premium-quick-action"
+                    class="dashboard-quick-action"
                 >
 
-                    <div class="premium-quick-icon">
+                    <div class="dashboard-quick-icon">
                         👤
                     </div>
 
@@ -2026,11 +2304,36 @@
 
 
                 <a
-                    href="{{ route('status.index') }}"
-                    class="premium-quick-action"
+                    href="{{ route('layanan.index') }}"
+                    class="dashboard-quick-action"
                 >
 
-                    <div class="premium-quick-icon">
+                    <div class="dashboard-quick-icon">
+                        👕
+                    </div>
+
+                    <div>
+
+                        <strong>
+                            Data Layanan
+                        </strong>
+
+                        <small>
+                            Kelola harga dan layanan
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+
+                <a
+                    href="{{ route('status.index') }}"
+                    class="dashboard-quick-action"
+                >
+
+                    <div class="dashboard-quick-icon">
                         🔄
                     </div>
 
@@ -2052,10 +2355,10 @@
 
                 <a
                     href="{{ route('laporan.index') }}"
-                    class="premium-quick-action"
+                    class="dashboard-quick-action"
                 >
 
-                    <div class="premium-quick-icon">
+                    <div class="dashboard-quick-icon">
                         📊
                     </div>
 
@@ -2080,7 +2383,7 @@
 
             <!-- BELUM LUNAS -->
 
-            <div class="payment-warning">
+            <div class="dashboard-warning">
 
                 <small>
                     💳 PEMBAYARAN BELUM LUNAS
@@ -2138,15 +2441,26 @@ document.addEventListener(
 
 
         const ctx =
-            canvas.getContext('2d');
+            canvas.getContext(
+                '2d'
+            );
 
+
+        /*
+        |--------------------------------------------------------------------------
+        | FORMAT RUPIAH
+        |--------------------------------------------------------------------------
+        */
 
         function formatRupiahShort(value)
         {
-            value = Number(value);
+            value =
+                Number(value);
 
 
-            if (value >= 1000000) {
+            if (
+                value >= 1000000
+            ) {
 
                 return (
                     'Rp' +
@@ -2159,7 +2473,9 @@ document.addEventListener(
             }
 
 
-            if (value >= 1000) {
+            if (
+                value >= 1000
+            ) {
 
                 return (
                     'Rp' +
@@ -2179,6 +2495,12 @@ document.addEventListener(
         }
 
 
+        /*
+        |--------------------------------------------------------------------------
+        | DRAW CHART
+        |--------------------------------------------------------------------------
+        */
+
         function drawChart()
         {
             const parent =
@@ -2194,7 +2516,8 @@ document.addEventListener(
 
 
             const ratio =
-                window.devicePixelRatio || 1;
+                window.devicePixelRatio
+                || 1;
 
 
             canvas.width =
@@ -2240,21 +2563,23 @@ document.addEventListener(
 
 
             const chartWidth =
-                width -
-                padding.left -
-                padding.right;
+                width
+                - padding.left
+                - padding.right;
 
 
             const chartHeight =
-                height -
-                padding.top -
-                padding.bottom;
+                height
+                - padding.top
+                - padding.bottom;
 
 
             const numericValues =
                 values.map(
                     function (value) {
+
                         return Number(value);
+
                     }
                 );
 
@@ -2268,14 +2593,15 @@ document.addEventListener(
 
             const roundedMaximum =
                 Math.ceil(
-                    maximumValue /
-                    10000
-                ) * 10000;
+                    maximumValue
+                    / 10000
+                )
+                * 10000;
 
 
             /*
             |--------------------------------------------------------------------------
-            | GRID + ANGKA Y
+            | GRID
             |--------------------------------------------------------------------------
             */
 
@@ -2298,10 +2624,12 @@ document.addEventListener(
             ) {
 
                 const y =
-                    padding.top +
+                    padding.top
+                    +
                     (
                         chartHeight / 4
-                    ) * i;
+                    )
+                    * i;
 
 
                 ctx.beginPath();
@@ -2311,7 +2639,8 @@ document.addEventListener(
                     '#e2e8f0';
 
 
-                ctx.lineWidth = 1;
+                ctx.lineWidth =
+                    1;
 
 
                 ctx.moveTo(
@@ -2321,7 +2650,8 @@ document.addEventListener(
 
 
                 ctx.lineTo(
-                    width - padding.right,
+                    width
+                    - padding.right,
                     y
                 );
 
@@ -2330,10 +2660,12 @@ document.addEventListener(
 
 
                 const value =
-                    roundedMaximum -
+                    roundedMaximum
+                    -
                     (
                         roundedMaximum / 4
-                    ) * i;
+                    )
+                    * i;
 
 
                 ctx.fillStyle =
@@ -2353,7 +2685,7 @@ document.addEventListener(
 
             /*
             |--------------------------------------------------------------------------
-            | TITIK DATA
+            | POINTS
             |--------------------------------------------------------------------------
             */
 
@@ -2367,30 +2699,36 @@ document.addEventListener(
                 ) {
 
                     const x =
-                        padding.left +
+                        padding.left
+                        +
                         (
-                            chartWidth /
+                            chartWidth
+                            /
                             Math.max(
                                 numericValues.length - 1,
                                 1
                             )
-                        ) * index;
+                        )
+                        * index;
 
 
                     const y =
-                        padding.top +
-                        chartHeight -
+                        padding.top
+                        +
+                        chartHeight
+                        -
                         (
-                            value /
+                            value
+                            /
                             roundedMaximum
-                        ) *
+                        )
+                        *
                         chartHeight;
 
 
                     points.push({
                         x: x,
-                        y: y,
-                        value: value
+                        y: y
                     });
 
                 }
@@ -2403,21 +2741,23 @@ document.addEventListener(
             |--------------------------------------------------------------------------
             */
 
-            if (points.length > 0) {
+            if (
+                points.length > 0
+            ) {
 
                 const gradient =
                     ctx.createLinearGradient(
                         0,
                         padding.top,
                         0,
-                        padding.top +
-                        chartHeight
+                        padding.top
+                        + chartHeight
                     );
 
 
                 gradient.addColorStop(
                     0,
-                    'rgba(37,99,235,.25)'
+                    'rgba(37,99,235,.26)'
                 );
 
 
@@ -2432,8 +2772,8 @@ document.addEventListener(
 
                 ctx.moveTo(
                     points[0].x,
-                    padding.top +
-                    chartHeight
+                    padding.top
+                    + chartHeight
                 );
 
 
@@ -2443,7 +2783,9 @@ document.addEventListener(
                         index
                     ) {
 
-                        if (index === 0) {
+                        if (
+                            index === 0
+                        ) {
 
                             ctx.lineTo(
                                 point.x,
@@ -2453,14 +2795,18 @@ document.addEventListener(
                         } else {
 
                             const previous =
-                                points[index - 1];
+                                points[
+                                    index - 1
+                                ];
 
 
                             const middle =
                                 (
-                                    previous.x +
+                                    previous.x
+                                    +
                                     point.x
-                                ) / 2;
+                                )
+                                / 2;
 
 
                             ctx.bezierCurveTo(
@@ -2482,8 +2828,8 @@ document.addEventListener(
                     points[
                         points.length - 1
                     ].x,
-                    padding.top +
-                    chartHeight
+                    padding.top
+                    + chartHeight
                 );
 
 
@@ -2501,11 +2847,13 @@ document.addEventListener(
 
             /*
             |--------------------------------------------------------------------------
-            | GARIS GRAFIK
+            | LINE
             |--------------------------------------------------------------------------
             */
 
-            if (points.length > 0) {
+            if (
+                points.length > 0
+            ) {
 
                 ctx.beginPath();
 
@@ -2516,7 +2864,9 @@ document.addEventListener(
                         index
                     ) {
 
-                        if (index === 0) {
+                        if (
+                            index === 0
+                        ) {
 
                             ctx.moveTo(
                                 point.x,
@@ -2526,14 +2876,18 @@ document.addEventListener(
                         } else {
 
                             const previous =
-                                points[index - 1];
+                                points[
+                                    index - 1
+                                ];
 
 
                             const middle =
                                 (
-                                    previous.x +
+                                    previous.x
+                                    +
                                     point.x
-                                ) / 2;
+                                )
+                                / 2;
 
 
                             ctx.bezierCurveTo(
@@ -2555,7 +2909,8 @@ document.addEventListener(
                     '#2563eb';
 
 
-                ctx.lineWidth = 3;
+                ctx.lineWidth =
+                    3;
 
 
                 ctx.lineCap =
@@ -2573,7 +2928,7 @@ document.addEventListener(
 
             /*
             |--------------------------------------------------------------------------
-            | BULATAN TITIK
+            | DOTS
             |--------------------------------------------------------------------------
             */
 
@@ -2599,7 +2954,8 @@ document.addEventListener(
                     ctx.fill();
 
 
-                    ctx.lineWidth = 3;
+                    ctx.lineWidth =
+                        3;
 
 
                     ctx.strokeStyle =
@@ -2641,21 +2997,27 @@ document.addEventListener(
                 ) {
 
                     const x =
-                        padding.left +
+                        padding.left
+                        +
                         (
-                            chartWidth /
+                            chartWidth
+                            /
                             Math.max(
                                 labels.length - 1,
                                 1
                             )
-                        ) * index;
+                        )
+                        *
+                        index;
 
 
                     ctx.fillText(
                         label,
                         x,
-                        padding.top +
-                        chartHeight +
+                        padding.top
+                        +
+                        chartHeight
+                        +
                         15
                     );
 
