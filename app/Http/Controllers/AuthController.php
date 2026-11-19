@@ -9,15 +9,35 @@ class AuthController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | TAMPILKAN LOGIN
+    | HALAMAN LOGIN
     |--------------------------------------------------------------------------
     */
 
     public function showLogin()
     {
+        /*
+        |--------------------------------------------------------------------------
+        | JIKA ADMIN SUDAH LOGIN
+        |--------------------------------------------------------------------------
+        |
+        | Jika user sudah memiliki session login,
+        | maka tidak perlu melihat halaman login lagi.
+        |
+        */
+
         if (Auth::check()) {
-            return redirect()->route('dashboard');
+
+            return redirect()
+                ->route('dashboard');
+
         }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | TAMPILKAN LOGIN
+        |--------------------------------------------------------------------------
+        */
 
         return view('auth.login');
     }
@@ -31,42 +51,126 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        $credentials = $request->validate(
+        /*
+        |--------------------------------------------------------------------------
+        | VALIDASI FORM
+        |--------------------------------------------------------------------------
+        */
+
+        $validated = $request->validate(
             [
                 'email' => [
                     'required',
-                    'email'
+                    'email',
+                    'max:255',
                 ],
 
                 'password' => [
-                    'required'
+                    'required',
+                    'string',
                 ],
             ],
             [
                 'email.required' =>
-                    'Email wajib diisi.',
+                    'Email admin wajib diisi.',
 
                 'email.email' =>
-                    'Format email tidak valid.',
+                    'Format email yang dimasukkan tidak valid.',
+
+                'email.max' =>
+                    'Email maksimal 255 karakter.',
 
                 'password.required' =>
                     'Password wajib diisi.',
+
+                'password.string' =>
+                    'Password tidak valid.',
             ]
         );
 
 
-        $remember = $request->boolean('remember');
+        /*
+        |--------------------------------------------------------------------------
+        | BERSIHKAN EMAIL
+        |--------------------------------------------------------------------------
+        */
+
+        $email = strtolower(
+            trim(
+                $validated['email']
+            )
+        );
 
 
-        if (Auth::attempt($credentials, $remember)) {
+        /*
+        |--------------------------------------------------------------------------
+        | REMEMBER ME
+        |--------------------------------------------------------------------------
+        |
+        | Jika checkbox "Ingat saya" dicentang,
+        | Laravel akan mempertahankan login lebih lama.
+        |
+        */
+
+        $remember =
+            $request->boolean('remember');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | DATA LOGIN
+        |--------------------------------------------------------------------------
+        */
+
+        $credentials = [
+            'email' => $email,
+
+            'password' =>
+                $validated['password'],
+        ];
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | COBA LOGIN
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            Auth::attempt(
+                $credentials,
+                $remember
+            )
+        ) {
+
+            /*
+            |--------------------------------------------------------------------------
+            | REGENERATE SESSION
+            |--------------------------------------------------------------------------
+            |
+            | Penting untuk mencegah session fixation.
+            |
+            */
 
             $request
                 ->session()
                 ->regenerate();
 
 
+            /*
+            |--------------------------------------------------------------------------
+            | LOGIN BERHASIL
+            |--------------------------------------------------------------------------
+            |
+            | intended() akan membawa user kembali ke halaman
+            | yang sebelumnya ingin dibuka.
+            |
+            */
+
             return redirect()
-                ->intended(route('dashboard'))
+                ->intended(
+                    route('dashboard')
+                )
                 ->with(
                     'success',
                     'Login berhasil. Selamat datang di Tania Mutiara Laundry.'
@@ -74,12 +178,28 @@ class AuthController extends Controller
         }
 
 
+        /*
+        |--------------------------------------------------------------------------
+        | LOGIN GAGAL
+        |--------------------------------------------------------------------------
+        |
+        | Password tidak dikembalikan ke form.
+        |
+        */
+
         return back()
+            ->withInput([
+                'email' => $email,
+
+                'remember' =>
+                    $remember
+                        ? '1'
+                        : null,
+            ])
             ->withErrors([
                 'email' =>
-                    'Email atau password yang Anda masukkan salah.'
-            ])
-            ->onlyInput('email');
+                    'Email atau password yang Anda masukkan tidak sesuai.',
+            ]);
     }
 
 
@@ -91,24 +211,48 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
+        /*
+        |--------------------------------------------------------------------------
+        | LOGOUT USER
+        |--------------------------------------------------------------------------
+        */
+
         Auth::logout();
 
+
+        /*
+        |--------------------------------------------------------------------------
+        | HAPUS SESSION LAMA
+        |--------------------------------------------------------------------------
+        */
 
         $request
             ->session()
             ->invalidate();
 
 
+        /*
+        |--------------------------------------------------------------------------
+        | TOKEN CSRF BARU
+        |--------------------------------------------------------------------------
+        */
+
         $request
             ->session()
             ->regenerateToken();
 
 
+        /*
+        |--------------------------------------------------------------------------
+        | KEMBALI KE LOGIN
+        |--------------------------------------------------------------------------
+        */
+
         return redirect()
             ->route('login')
             ->with(
                 'success',
-                'Anda berhasil logout.'
+                'Anda berhasil keluar dari sistem.'
             );
     }
 }

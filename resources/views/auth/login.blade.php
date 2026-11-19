@@ -22,15 +22,9 @@
 
     <style>
 
-        /* =========================================================
-           RESET
-        ========================================================= */
-
         * {
             box-sizing: border-box;
-
             margin: 0;
-
             padding: 0;
 
             font-family:
@@ -40,24 +34,16 @@
         }
 
 
-        html {
-            scroll-behavior: smooth;
-        }
-
-
         body {
             min-height: 100vh;
-
-            color: #1e293b;
-
             background: #eff6ff;
+            color: #0f172a;
         }
 
 
-
-        /* =========================================================
+        /* =====================================================
            PAGE
-        ========================================================= */
+        ====================================================== */
 
         .login-page {
             position: relative;
@@ -65,34 +51,25 @@
             min-height: 100vh;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             overflow: hidden;
 
-            padding: 35px;
-
+            padding: 30px;
 
             background:
-
                 linear-gradient(
                     135deg,
-                    rgba(15, 46, 100, .88),
+                    rgba(15, 46, 100, .86),
                     rgba(37, 99, 235, .72)
                 ),
-
                 url("{{ asset('images/laundry-bg.png') }}");
 
-
             background-size: cover;
-
             background-position: center;
-
             background-repeat: no-repeat;
         }
-
 
 
         .login-page::before {
@@ -100,18 +77,16 @@
 
             position: absolute;
 
-            width: 420px;
-            height: 420px;
+            width: 450px;
+            height: 450px;
 
-            left: -170px;
-            top: -160px;
+            top: -220px;
+            left: -180px;
 
             border-radius: 50%;
 
             background:
                 rgba(255,255,255,.08);
-
-            pointer-events: none;
         }
 
 
@@ -120,94 +95,84 @@
 
             position: absolute;
 
-            width: 360px;
-            height: 360px;
+            width: 350px;
+            height: 350px;
 
-            right: -130px;
-            bottom: -150px;
+            right: -150px;
+            bottom: -160px;
 
             border-radius: 50%;
 
             background:
                 rgba(255,255,255,.07);
-
-            pointer-events: none;
         }
 
 
-
-        /* =========================================================
+        /* =====================================================
            MAIN CARD
-        ========================================================= */
+        ====================================================== */
 
-        .login-wrapper {
+        .login-container {
             position: relative;
 
             z-index: 2;
 
             width: 100%;
-
-            max-width: 980px;
+            max-width: 1000px;
 
             display: grid;
 
             grid-template-columns:
-                minmax(0, 1.1fr)
-                minmax(340px, .9fr);
+                1.1fr
+                .9fr;
 
             overflow: hidden;
-
-            border:
-                1px solid
-                rgba(255,255,255,.18);
 
             border-radius: 28px;
 
+            border:
+                1px solid
+                rgba(255,255,255,.20);
+
             background:
-                rgba(255,255,255,.96);
+                rgba(255,255,255,.97);
 
             box-shadow:
                 0 30px 80px
-                rgba(15,23,42,.32);
-
-            backdrop-filter:
-                blur(18px);
+                rgba(15,23,42,.35);
         }
 
 
+        /* =====================================================
+           LEFT BRAND
+        ====================================================== */
 
-        /* =========================================================
-           LEFT SIDE
-        ========================================================= */
-
-        .login-brand {
+        .brand-section {
             position: relative;
-
-            overflow: hidden;
 
             min-height: 620px;
 
             display: flex;
-
             flex-direction: column;
-
             justify-content: space-between;
 
-            padding: 48px;
+            overflow: hidden;
 
+            padding: 46px;
+
+            color: white;
 
             background:
-
                 linear-gradient(
                     145deg,
-                    rgba(30,64,175,.96),
-                    rgba(37,99,235,.90),
-                    rgba(14,165,233,.85)
+                    rgba(30,64,175,.97),
+                    rgba(37,99,235,.92),
+                    rgba(14,165,233,.86)
                 );
         }
 
 
-        .login-brand::before {
+        .brand-section::before {
             content: "";
 
             position: absolute;
@@ -215,8 +180,8 @@
             width: 260px;
             height: 260px;
 
-            right: -90px;
-            top: -100px;
+            right: -100px;
+            top: -110px;
 
             border-radius: 50%;
 
@@ -225,16 +190,16 @@
         }
 
 
-        .login-brand::after {
+        .brand-section::after {
             content: "";
 
             position: absolute;
 
-            width: 170px;
-            height: 170px;
+            width: 180px;
+            height: 180px;
 
-            left: -65px;
-            bottom: 90px;
+            left: -70px;
+            bottom: 80px;
 
             border-radius: 50%;
 
@@ -244,63 +209,49 @@
 
 
         .brand-top,
-        .brand-middle,
+        .brand-content,
         .brand-footer {
             position: relative;
-
             z-index: 2;
         }
 
 
         .brand-logo {
-            display: inline-flex;
-
+            display: flex;
             align-items: center;
 
             gap: 11px;
 
-            color: white;
-
-            font-weight: 800;
-
             font-size: 15px;
-
-            letter-spacing: .3px;
+            font-weight: 800;
         }
 
 
         .brand-logo-icon {
-            width: 45px;
-            height: 45px;
+            width: 47px;
+            height: 47px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
+
+            border-radius: 14px;
 
             border:
                 1px solid
                 rgba(255,255,255,.20);
 
-            border-radius: 13px;
-
             background:
                 rgba(255,255,255,.13);
 
-            font-size: 23px;
-
-            backdrop-filter:
-                blur(10px);
+            font-size: 24px;
         }
 
 
-        .brand-middle h1 {
-            max-width: 430px;
+        .brand-content h1 {
+            max-width: 440px;
 
-            margin-bottom: 16px;
-
-            color: white;
+            margin-bottom: 17px;
 
             font-size: 38px;
 
@@ -308,8 +259,8 @@
         }
 
 
-        .brand-middle p {
-            max-width: 460px;
+        .brand-content p {
+            max-width: 450px;
 
             color:
                 rgba(255,255,255,.82);
@@ -328,72 +279,63 @@
 
             gap: 10px;
 
-            margin-top: 25px;
+            margin-top: 26px;
         }
 
 
         .brand-feature {
-            padding: 13px 10px;
+            padding: 14px 8px;
+
+            border-radius: 13px;
 
             border:
                 1px solid
-                rgba(255,255,255,.13);
-
-            border-radius: 13px;
+                rgba(255,255,255,.14);
 
             background:
                 rgba(255,255,255,.09);
 
             text-align: center;
-
-            color: white;
-
-            backdrop-filter:
-                blur(8px);
         }
 
 
         .brand-feature span {
             display: block;
 
-            margin-bottom: 5px;
+            margin-bottom: 6px;
 
             font-size: 21px;
         }
 
 
         .brand-feature strong {
-            display: block;
-
             font-size: 9px;
         }
 
 
         .brand-footer {
             color:
-                rgba(255,255,255,.62);
+                rgba(255,255,255,.66);
 
             font-size: 10px;
 
-            line-height: 1.6;
+            line-height: 1.7;
         }
 
 
+        /* =====================================================
+           LOGIN SIDE
+        ====================================================== */
 
-        /* =========================================================
-           RIGHT SIDE
-        ========================================================= */
-
-        .login-form-section {
+        .login-section {
             display: flex;
-
             align-items: center;
 
             padding: 45px;
         }
 
 
-        .login-form-container {
+        .login-content {
             width: 100%;
         }
 
@@ -401,26 +343,27 @@
         .mobile-logo {
             display: none;
 
-            margin-bottom: 22px;
+            margin-bottom: 20px;
 
             text-align: center;
         }
 
 
         .mobile-logo-icon {
-            width: 64px;
-            height: 64px;
-
-            margin:
-                0 auto 10px;
+            width: 65px;
+            height: 65px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
+            margin:
+                0 auto
+                10px;
+
             border-radius: 18px;
+
+            color: white;
 
             background:
                 linear-gradient(
@@ -429,22 +372,20 @@
                     #0ea5e9
                 );
 
-            color: white;
-
             font-size: 31px;
 
             box-shadow:
-                0 12px 25px
-                rgba(37,99,235,.20);
+                0 12px 26px
+                rgba(37,99,235,.23);
         }
 
 
-        .login-heading {
+        .login-header {
             margin-bottom: 27px;
         }
 
 
-        .login-heading .welcome {
+        .login-label {
             display: inline-block;
 
             margin-bottom: 7px;
@@ -452,16 +393,15 @@
             color: #2563eb;
 
             font-size: 9px;
-
             font-weight: 800;
 
-            text-transform: uppercase;
-
             letter-spacing: 1.2px;
+
+            text-transform: uppercase;
         }
 
 
-        .login-heading h2 {
+        .login-header h2 {
             margin-bottom: 7px;
 
             color: #0f172a;
@@ -470,7 +410,7 @@
         }
 
 
-        .login-heading p {
+        .login-header p {
             color: #64748b;
 
             font-size: 11px;
@@ -479,15 +419,12 @@
         }
 
 
-
-        /* =========================================================
+        /* =====================================================
            ALERT
-        ========================================================= */
+        ====================================================== */
 
         .alert {
             display: flex;
-
-            align-items: flex-start;
 
             gap: 9px;
 
@@ -499,41 +436,42 @@
 
             font-size: 10px;
 
-            line-height: 1.5;
-        }
-
-
-        .alert-error {
-            background: #fff1f2;
-
-            border:
-                1px solid #fecdd3;
-
-            color: #9f1239;
+            line-height: 1.6;
         }
 
 
         .alert-success {
+            color: #166534;
+
             background: #ecfdf5;
 
             border:
-                1px solid #bbf7d0;
-
-            color: #166534;
+                1px solid
+                #bbf7d0;
         }
 
 
-        .alert ul {
-            margin: 0;
+        .alert-error {
+            color: #9f1239;
 
-            padding-left: 16px;
+            background: #fff1f2;
+
+            border:
+                1px solid
+                #fecdd3;
         }
 
 
+        .alert-error ul {
+            margin-top: 5px;
 
-        /* =========================================================
+            padding-left: 17px;
+        }
+
+
+        /* =====================================================
            FORM
-        ========================================================= */
+        ====================================================== */
 
         .form-group {
             margin-bottom: 17px;
@@ -579,12 +517,13 @@
 
             padding:
                 12px
-                42px
+                43px
                 12px
                 40px;
 
             border:
-                1px solid #cbd5e1;
+                1px solid
+                #cbd5e1;
 
             border-radius: 10px;
 
@@ -614,23 +553,25 @@
         }
 
 
+        /* =====================================================
+           PASSWORD BUTTON
+        ====================================================== */
+
         .toggle-password {
             position: absolute;
 
-            right: 10px;
+            right: 9px;
 
             top: 50%;
 
             transform:
                 translateY(-50%);
 
-            width: 31px;
-            height: 31px;
+            width: 32px;
+            height: 32px;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             border: none;
@@ -640,8 +581,6 @@
             background: transparent;
 
             cursor: pointer;
-
-            color: #64748b;
 
             font-size: 15px;
 
@@ -654,10 +593,9 @@
         }
 
 
-
-        /* =========================================================
+        /* =====================================================
            CAPS LOCK
-        ========================================================= */
+        ====================================================== */
 
         .caps-warning {
             display: none;
@@ -670,29 +608,26 @@
         }
 
 
-
-        /* =========================================================
-           REMEMBER
-        ========================================================= */
+        /* =====================================================
+           OPTIONS
+        ====================================================== */
 
         .login-options {
             display: flex;
 
-            justify-content: space-between;
-
             align-items: center;
+            justify-content: space-between;
 
             gap: 10px;
 
             margin:
                 3px 0
-                20px;
+                21px;
         }
 
 
         .remember {
             display: flex;
-
             align-items: center;
 
             gap: 7px;
@@ -703,9 +638,9 @@
             width: 15px;
             height: 15px;
 
-            accent-color: #2563eb;
-
             cursor: pointer;
+
+            accent-color: #2563eb;
         }
 
 
@@ -718,27 +653,22 @@
         }
 
 
-        .login-security {
+        .security-text {
             color: #94a3b8;
 
             font-size: 8px;
         }
 
 
-
-        /* =========================================================
+        /* =====================================================
            LOGIN BUTTON
-        ========================================================= */
+        ====================================================== */
 
-        .btn-login {
-            position: relative;
-
+        .login-button {
             width: 100%;
 
             display: flex;
-
             align-items: center;
-
             justify-content: center;
 
             gap: 7px;
@@ -749,6 +679,10 @@
 
             border-radius: 10px;
 
+            cursor: pointer;
+
+            color: white;
+
             background:
                 linear-gradient(
                     135deg,
@@ -756,33 +690,28 @@
                     #1d4ed8
                 );
 
-            color: white;
-
             font-size: 11px;
-
             font-weight: 800;
 
-            cursor: pointer;
+            box-shadow:
+                0 8px 20px
+                rgba(37,99,235,.22);
 
             transition: .2s;
-
-            box-shadow:
-                0 7px 18px
-                rgba(37,99,235,.20);
         }
 
 
-        .btn-login:hover {
+        .login-button:hover {
             transform:
                 translateY(-1px);
 
             box-shadow:
-                0 10px 22px
+                0 11px 25px
                 rgba(37,99,235,.30);
         }
 
 
-        .btn-login:disabled {
+        .login-button:disabled {
             opacity: .7;
 
             cursor: not-allowed;
@@ -791,7 +720,7 @@
         }
 
 
-        .btn-loader {
+        .loader {
             display: none;
 
             width: 14px;
@@ -799,18 +728,21 @@
 
             border:
                 2px solid
-                rgba(255,255,255,.4);
+                rgba(255,255,255,.40);
 
             border-top-color: white;
 
             border-radius: 50%;
 
             animation:
-                spin .7s linear infinite;
+                loading
+                .7s
+                linear
+                infinite;
         }
 
 
-        @keyframes spin {
+        @keyframes loading {
 
             to {
                 transform:
@@ -820,10 +752,9 @@
         }
 
 
-
-        /* =========================================================
+        /* =====================================================
            FOOTER
-        ========================================================= */
+        ====================================================== */
 
         .login-footer {
             margin-top: 24px;
@@ -831,7 +762,8 @@
             padding-top: 18px;
 
             border-top:
-                1px solid #edf2f7;
+                1px solid
+                #edf2f7;
 
             text-align: center;
 
@@ -848,10 +780,9 @@
         }
 
 
-
-        /* =========================================================
+        /* =====================================================
            RESPONSIVE
-        ========================================================= */
+        ====================================================== */
 
         @media(max-width: 850px) {
 
@@ -860,25 +791,25 @@
             }
 
 
-            .login-wrapper {
-                max-width: 470px;
-
+            .login-container {
                 display: block;
+
+                max-width: 470px;
             }
 
 
-            .login-brand {
+            .brand-section {
                 display: none;
-            }
-
-
-            .login-form-section {
-                padding: 35px;
             }
 
 
             .mobile-logo {
                 display: block;
+            }
+
+
+            .login-section {
+                padding: 35px;
             }
 
         }
@@ -891,26 +822,25 @@
             }
 
 
-            .login-wrapper {
+            .login-container {
                 border-radius: 20px;
             }
 
 
-            .login-form-section {
+            .login-section {
                 padding:
                     28px
                     22px;
             }
 
 
-            .login-heading h2 {
+            .login-header h2 {
                 font-size: 23px;
             }
 
 
             .login-options {
                 align-items: flex-start;
-
                 flex-direction: column;
             }
 
@@ -927,57 +857,48 @@
 <div class="login-page">
 
 
-    <div class="login-wrapper">
+    <main class="login-container">
 
 
-        <!-- =====================================================
-             BRAND SIDE
-        ====================================================== -->
+        <!-- =================================================
+             BRAND
+        ================================================== -->
 
-        <section class="login-brand">
+        <section class="brand-section">
 
 
             <div class="brand-top">
 
-
                 <div class="brand-logo">
-
 
                     <div class="brand-logo-icon">
                         🧺
                     </div>
 
-
                     <span>
                         TANIA MUTIARA LAUNDRY
                     </span>
 
-
                 </div>
-
 
             </div>
 
 
 
-            <div class="brand-middle">
-
+            <div class="brand-content">
 
                 <h1>
                     Laundry Lebih Mudah, Cepat & Terorganisir.
                 </h1>
 
-
                 <p>
                     Sistem informasi untuk membantu pengelolaan
-                    pelanggan, transaksi, layanan, status cucian,
-                    pembayaran, dan laporan Tania Mutiara Laundry.
+                    pelanggan, layanan, transaksi, pembayaran,
+                    status cucian dan laporan Tania Mutiara Laundry.
                 </p>
 
 
-
                 <div class="brand-features">
-
 
                     <div class="brand-feature">
 
@@ -990,7 +911,6 @@
                         </strong>
 
                     </div>
-
 
 
                     <div class="brand-feature">
@@ -1006,7 +926,6 @@
                     </div>
 
 
-
                     <div class="brand-feature">
 
                         <span>
@@ -1019,9 +938,7 @@
 
                     </div>
 
-
                 </div>
-
 
             </div>
 
@@ -1030,7 +947,9 @@
             <div class="brand-footer">
 
                 Sistem Informasi Laundry
+
                 <br>
+
                 Bersih • Wangi • Rapi
 
             </div>
@@ -1040,56 +959,48 @@
 
 
 
-        <!-- =====================================================
-             LOGIN FORM
-        ====================================================== -->
+        <!-- =================================================
+             LOGIN
+        ================================================== -->
 
-        <section class="login-form-section">
-
-
-            <div class="login-form-container">
+        <section class="login-section">
 
 
-                <!-- MOBILE LOGO -->
+            <div class="login-content">
+
+
+                <!-- MOBILE BRAND -->
 
                 <div class="mobile-logo">
-
 
                     <div class="mobile-logo-icon">
                         🧺
                     </div>
 
-
                     <strong>
                         Tania Mutiara Laundry
                     </strong>
-
 
                 </div>
 
 
 
-                <!-- HEADING -->
+                <!-- HEADER -->
 
-                <div class="login-heading">
+                <div class="login-header">
 
-
-                    <span class="welcome">
+                    <span class="login-label">
                         Administrator Access
                     </span>
-
 
                     <h2>
                         Selamat Datang 👋
                     </h2>
 
-
                     <p>
-                        Masuk menggunakan akun administrator
-                        untuk mengakses dashboard dan mengelola
-                        sistem laundry.
+                        Silakan masuk menggunakan akun administrator
+                        untuk mengakses dashboard Tania Mutiara Laundry.
                     </p>
-
 
                 </div>
 
@@ -1128,20 +1039,15 @@
                             ⚠️
                         </span>
 
-
                         <div>
 
                             <strong>
                                 Login belum berhasil.
                             </strong>
 
-
                             <ul>
 
-                                @foreach(
-                                    $errors->all()
-                                    as $error
-                                )
+                                @foreach($errors->all() as $error)
 
                                     <li>
                                         {{ $error }}
@@ -1153,14 +1059,13 @@
 
                         </div>
 
-
                     </div>
 
                 @endif
 
 
 
-                <!-- FORM -->
+                <!-- FORM LOGIN -->
 
                 <form
                     action="{{ route('login.process') }}"
@@ -1171,21 +1076,16 @@
                     @csrf
 
 
-
                     <!-- EMAIL -->
 
                     <div class="form-group">
 
-
                         <label for="email">
-
                             Email Admin
-
                         </label>
 
 
                         <div class="input-wrapper">
-
 
                             <span class="input-icon">
                                 ✉️
@@ -1200,13 +1100,12 @@
                                 value="{{ old('email') }}"
                                 placeholder="Masukkan email admin"
                                 autocomplete="email"
+                                maxlength="255"
                                 required
                                 autofocus
                             >
 
-
                         </div>
-
 
                     </div>
 
@@ -1216,16 +1115,12 @@
 
                     <div class="form-group">
 
-
                         <label for="password">
-
                             Password
-
                         </label>
 
 
                         <div class="input-wrapper">
-
 
                             <span class="input-icon">
                                 🔑
@@ -1250,11 +1145,8 @@
                                 title="Tampilkan password"
                                 aria-label="Tampilkan password"
                             >
-
                                 👁
-
                             </button>
-
 
                         </div>
 
@@ -1266,85 +1158,63 @@
                             ⚠ Caps Lock sedang aktif.
                         </div>
 
-
                     </div>
 
 
 
-                    <!-- OPTIONS -->
+                    <!-- REMEMBER -->
 
                     <div class="login-options">
 
-
                         <div class="remember">
-
 
                             <input
                                 type="checkbox"
                                 name="remember"
                                 id="remember"
                                 value="1"
-
-                                {{
-                                    old('remember')
-                                    ? 'checked'
-                                    : ''
-                                }}
+                                {{ old('remember') ? 'checked' : '' }}
                             >
 
-
                             <label for="remember">
-
                                 Ingat saya
-
                             </label>
-
 
                         </div>
 
 
-                        <span class="login-security">
-
-                            🔒 Akses administrator
-
+                        <span class="security-text">
+                            🔒 Akses Administrator
                         </span>
-
 
                     </div>
 
 
 
-                    <!-- LOGIN BUTTON -->
+                    <!-- BUTTON -->
 
                     <button
                         type="submit"
-                        class="btn-login"
+                        class="login-button"
                         id="loginButton"
                     >
 
-
                         <span
-                            class="btn-loader"
+                            class="loader"
                             id="loginLoader"
                         ></span>
 
 
-                        <span id="loginButtonIcon">
-
+                        <span id="loginIcon">
                             🔐
-
                         </span>
 
 
-                        <span id="loginButtonText">
-
+                        <span id="loginText">
                             Masuk ke Dashboard
-
                         </span>
-
 
                     </button>
-
 
                 </form>
 
@@ -1355,6 +1225,7 @@
                 <div class="login-footer">
 
                     © {{ date('Y') }}
+
                     <strong>
                         Tania Mutiara Laundry
                     </strong>
@@ -1372,7 +1243,7 @@
         </section>
 
 
-    </div>
+    </main>
 
 
 </div>
@@ -1387,7 +1258,7 @@ document.addEventListener(
 
         /*
         |--------------------------------------------------------------------------
-        | PASSWORD TOGGLE
+        | ELEMENT
         |--------------------------------------------------------------------------
         */
 
@@ -1396,12 +1267,47 @@ document.addEventListener(
                 'password'
             );
 
-
         const togglePassword =
             document.getElementById(
                 'togglePassword'
             );
 
+        const capsWarning =
+            document.getElementById(
+                'capsWarning'
+            );
+
+        const loginForm =
+            document.getElementById(
+                'loginForm'
+            );
+
+        const loginButton =
+            document.getElementById(
+                'loginButton'
+            );
+
+        const loginLoader =
+            document.getElementById(
+                'loginLoader'
+            );
+
+        const loginIcon =
+            document.getElementById(
+                'loginIcon'
+            );
+
+        const loginText =
+            document.getElementById(
+                'loginText'
+            );
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | SHOW / HIDE PASSWORD
+        |--------------------------------------------------------------------------
+        */
 
         if (
             password
@@ -1413,25 +1319,25 @@ document.addEventListener(
                 'click',
                 function () {
 
-                    const isHidden =
+                    const hidden =
                         password.type ===
                         'password';
 
 
                     password.type =
-                        isHidden
+                        hidden
                         ? 'text'
                         : 'password';
 
 
                     togglePassword.textContent =
-                        isHidden
+                        hidden
                         ? '🙈'
                         : '👁';
 
 
                     togglePassword.title =
-                        isHidden
+                        hidden
                         ? 'Sembunyikan password'
                         : 'Tampilkan password';
 
@@ -1447,61 +1353,47 @@ document.addEventListener(
         }
 
 
-
         /*
         |--------------------------------------------------------------------------
-        | CAPS LOCK WARNING
+        | CAPS LOCK
         |--------------------------------------------------------------------------
         */
 
-        const capsWarning =
-            document.getElementById(
-                'capsWarning'
-            );
-
-
-        function checkCapsLock(event)
+        function detectCapsLock(event)
         {
             if (
                 !capsWarning
+                ||
+                !event.getModifierState
             ) {
                 return;
             }
 
 
-            if (
-                event.getModifierState
-                &&
+            const active =
                 event.getModifierState(
                     'CapsLock'
-                )
-            ) {
+                );
 
-                capsWarning.style.display =
-                    'block';
 
-            } else {
-
-                capsWarning.style.display =
-                    'none';
-
-            }
+            capsWarning.style.display =
+                active
+                ? 'block'
+                : 'none';
         }
 
 
-        if (
-            password
-        ) {
+        if (password) {
 
             password.addEventListener(
-                'keyup',
-                checkCapsLock
+                'keydown',
+                detectCapsLock
             );
 
 
             password.addEventListener(
-                'keydown',
-                checkCapsLock
+                'keyup',
+                detectCapsLock
             );
 
 
@@ -1509,9 +1401,7 @@ document.addEventListener(
                 'blur',
                 function () {
 
-                    if (
-                        capsWarning
-                    ) {
+                    if (capsWarning) {
 
                         capsWarning.style.display =
                             'none';
@@ -1524,42 +1414,11 @@ document.addEventListener(
         }
 
 
-
         /*
         |--------------------------------------------------------------------------
         | LOGIN LOADING
         |--------------------------------------------------------------------------
         */
-
-        const loginForm =
-            document.getElementById(
-                'loginForm'
-            );
-
-
-        const loginButton =
-            document.getElementById(
-                'loginButton'
-            );
-
-
-        const loginLoader =
-            document.getElementById(
-                'loginLoader'
-            );
-
-
-        const loginButtonIcon =
-            document.getElementById(
-                'loginButtonIcon'
-            );
-
-
-        const loginButtonText =
-            document.getElementById(
-                'loginButtonText'
-            );
-
 
         if (
             loginForm
@@ -1575,9 +1434,7 @@ document.addEventListener(
                         true;
 
 
-                    if (
-                        loginLoader
-                    ) {
+                    if (loginLoader) {
 
                         loginLoader.style.display =
                             'inline-block';
@@ -1585,21 +1442,17 @@ document.addEventListener(
                     }
 
 
-                    if (
-                        loginButtonIcon
-                    ) {
+                    if (loginIcon) {
 
-                        loginButtonIcon.style.display =
+                        loginIcon.style.display =
                             'none';
 
                     }
 
 
-                    if (
-                        loginButtonText
-                    ) {
+                    if (loginText) {
 
-                        loginButtonText.textContent =
+                        loginText.textContent =
                             'Memproses Login...';
 
                     }
