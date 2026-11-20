@@ -7,1420 +7,1443 @@
 
 <style>
 
-    /* =========================================================
-       DASHBOARD PREMIUM
-    ========================================================= */
+/* =========================================================
+   DASHBOARD PREMIUM
+========================================================= */
+
+.dashboard-premium {
+    position: relative;
+    width: 100%;
+    min-height: calc(100vh - 120px);
+    padding: 20px;
+    overflow: hidden;
+    border-radius: 28px;
+
+    background:
+        linear-gradient(
+            rgba(244, 247, 251, .84),
+            rgba(244, 247, 251, .94)
+        ),
+        url("{{ asset('images/laundry-bg.png') }}");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.dashboard-hero {
+    position: relative;
+    overflow: hidden;
+
+    min-height: 350px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 35px;
+
+    padding: 48px;
+    margin-bottom: 30px;
+
+    border-radius: 30px;
+
+    color: white;
+
+    background:
+        linear-gradient(
+            105deg,
+            rgba(7, 30, 75, .96) 0%,
+            rgba(29, 78, 216, .88) 52%,
+            rgba(14, 165, 233, .58) 100%
+        ),
+        url("{{ asset('images/laundry-bg.png') }}");
+
+    background-size: cover;
+    background-position: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.18);
+
+    box-shadow:
+        0 25px 60px
+        rgba(15,23,42,.24);
+}
+
+
+.dashboard-hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        radial-gradient(
+            circle at 82% 25%,
+            rgba(255,255,255,.16),
+            transparent 27%
+        );
+
+    pointer-events: none;
+}
+
+
+.dashboard-hero::after {
+    content: "";
+
+    position: absolute;
+
+    width: 360px;
+    height: 360px;
+
+    right: -170px;
+    top: -190px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255,255,255,.08);
+}
+
+
+.dashboard-hero-content {
+    position: relative;
+    z-index: 3;
+
+    max-width: 770px;
+}
+
+
+.dashboard-hero-top {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 21px;
+}
+
+
+.hero-info-badge {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        10px 15px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.22);
+
+    border-radius: 30px;
+
+    background:
+        rgba(255,255,255,.14);
+
+    backdrop-filter:
+        blur(12px);
+
+    color: white;
+
+    font-size: 12px;
+    font-weight: 700;
+}
+
+
+.hero-notification-badge {
+    background:
+        rgba(251,191,36,.18);
+
+    border-color:
+        rgba(253,224,71,.30);
+
+    color: #fef3c7;
+}
+
+
+.dashboard-hero h1 {
+    margin:
+        0 0 18px;
+
+    color: white;
+
+    font-size:
+        clamp(
+            44px,
+            5vw,
+            66px
+        );
+
+    font-weight: 900;
+
+    line-height: 1.02;
+
+    letter-spacing: -2px;
+
+    text-shadow:
+        0 7px 25px
+        rgba(0,0,0,.23);
+}
+
+
+.dashboard-hero h1 span {
+    color: #d7f3ff;
+}
+
+
+.dashboard-hero-description {
+    max-width: 690px;
+
+    margin: 0;
+
+    color:
+        rgba(255,255,255,.92);
+
+    font-size: 15px;
+    font-weight: 500;
+
+    line-height: 1.8;
+}
+
+
+.dashboard-hero-quote {
+    display: inline-block;
+
+    margin-top: 23px;
+
+    padding:
+        14px 18px;
+
+    border-left:
+        4px solid
+        #bae6fd;
+
+    border-radius:
+        0 15px 15px 0;
+
+    background:
+        rgba(255,255,255,.13);
+
+    backdrop-filter:
+        blur(10px);
+
+    color: white;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   HERO VISUAL
+========================================================= */
+
+.dashboard-laundry-visual {
+    position: relative;
+    z-index: 3;
+
+    width: 210px;
+    height: 210px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border:
+        1px solid
+        rgba(255,255,255,.28);
+
+    border-radius: 52px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.22),
+            rgba(255,255,255,.09)
+        );
+
+    backdrop-filter:
+        blur(20px);
+
+    box-shadow:
+        0 28px 50px
+        rgba(0,0,0,.17);
+
+    transform:
+        rotate(3deg);
+
+    transition:
+        .3s;
+}
+
+
+.dashboard-laundry-visual:hover {
+    transform:
+        rotate(0deg)
+        scale(1.04);
+}
+
+
+.dashboard-laundry-visual span {
+    font-size: 96px;
+}
+
+
+.dashboard-laundry-visual small {
+    position: absolute;
+
+    left: 50%;
+    bottom: 18px;
+
+    transform:
+        translateX(-50%);
+
+    width: 100%;
+
+    text-align: center;
+
+    color:
+        rgba(255,255,255,.82);
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1px;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.dashboard-section-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    margin:
+        8px 0 18px;
+
+    flex-wrap: wrap;
+}
+
+
+.dashboard-section-heading h2 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 21px;
+    font-weight: 900;
+}
+
+
+.dashboard-section-heading p {
+    margin:
+        6px 0 0;
+
+    color: #64748b;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   STATS
+========================================================= */
+
+.dashboard-stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 17px;
+
+    margin-bottom: 30px;
+}
+
+
+.dashboard-stat-card {
+    position: relative;
+    overflow: hidden;
+
+    padding: 24px;
+
+    border:
+        1px solid
+        rgba(255,255,255,.85);
+
+    border-radius: 22px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.98),
+            rgba(248,250,252,.95)
+        );
+
+    box-shadow:
+        0 12px 32px
+        rgba(15,23,42,.08);
+
+    backdrop-filter:
+        blur(10px);
+
+    transition: .25s;
+}
+
+
+.dashboard-stat-card:hover {
+    transform:
+        translateY(-6px);
+
+    box-shadow:
+        0 22px 45px
+        rgba(15,23,42,.13);
+}
+
+
+.dashboard-stat-card::after {
+    content: "";
+
+    position: absolute;
+
+    width: 110px;
+    height: 110px;
+
+    right: -50px;
+    bottom: -50px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(37,99,235,.06);
+}
+
+
+.dashboard-stat-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 16px;
+}
+
+
+.dashboard-stat-head small {
+    color: #64748b;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+
+    letter-spacing: .5px;
+}
+
+
+.dashboard-stat-icon {
+    width: 49px;
+    height: 49px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #eff6ff,
+            #dbeafe
+        );
+
+    font-size: 23px;
+}
+
+
+.dashboard-stat-card h2 {
+    position: relative;
+    z-index: 2;
+
+    margin:
+        0 0 8px;
+
+    color: #0f172a;
+
+    font-size: 34px;
+    font-weight: 900;
+}
+
+
+.dashboard-stat-card p {
+    position: relative;
+    z-index: 2;
+
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+
+    line-height: 1.55;
+}
+
+
+.dashboard-stat-money h2 {
+    color: #059669;
+
+    font-size: 26px;
+}
+
+
+/* =========================================================
+   NOTIFICATION
+========================================================= */
+
+.notification-panel {
+    margin-bottom: 30px;
+
+    padding: 24px;
+
+    border:
+        1px solid #e8eef7;
+
+    border-radius: 23px;
+
+    background:
+        rgba(255,255,255,.96);
+
+    box-shadow:
+        0 12px 35px
+        rgba(15,23,42,.08);
+}
+
+
+.notification-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+
+    flex-wrap: wrap;
+}
+
+
+.notification-header h2 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 19px;
+}
+
+
+.notification-count {
+    padding:
+        7px 11px;
+
+    border-radius: 30px;
+
+    background: #eff6ff;
+
+    color: #1d4ed8;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+.notification-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 13px;
+}
+
+
+.notification-card {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 16px;
+
+    border-radius: 16px;
+
+    border:
+        1px solid #edf2f7;
+
+    background: #f8fafc;
+
+    transition: .22s;
+}
+
+
+.notification-card:hover {
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 10px 25px
+        rgba(15,23,42,.08);
+}
+
+
+.notification-icon {
+    width: 48px;
+    height: 48px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    font-size: 22px;
+}
+
+
+.notification-payment
+.notification-icon {
+    background: #fff1f2;
+}
+
+
+.notification-ready
+.notification-icon {
+    background: #ecfdf5;
+}
+
+
+.notification-delivery
+.notification-icon {
+    background: #eff6ff;
+}
+
+
+.notification-card strong {
+    display: block;
+
+    color: #0f172a;
+
+    font-size: 13px;
+}
+
+
+.notification-card small {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #64748b;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   ANALYSIS
+========================================================= */
+
+.dashboard-analysis-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(290px, .80fr);
+
+    gap: 21px;
+
+    margin-bottom: 30px;
+}
+
+
+.dashboard-panel {
+    padding: 25px;
+
+    border:
+        1px solid
+        rgba(226,232,240,.96);
+
+    border-radius: 23px;
+
+    background:
+        rgba(255,255,255,.96);
+
+    box-shadow:
+        0 12px 35px
+        rgba(15,23,42,.08);
+}
+
+
+.dashboard-panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 21px;
+
+    flex-wrap: wrap;
+}
+
+
+.dashboard-panel-header h2 {
+    margin: 0;
+
+    color: #0f172a;
+
+    font-size: 19px;
+    font-weight: 900;
+}
+
+
+.dashboard-panel-header p {
+    margin:
+        6px 0 0;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+.dashboard-chart-label {
+    padding:
+        7px 11px;
+
+    border-radius: 20px;
+
+    background: #ecfdf5;
+
+    color: #047857;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+.dashboard-chart-wrapper {
+    position: relative;
+
+    width: 100%;
+    height: 285px;
+}
+
+
+#revenueChart {
+    width: 100%;
+    height: 100%;
+}
+
+
+/* =========================================================
+   TODAY CARDS
+========================================================= */
+
+.dashboard-today {
+    display: flex;
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+
+.dashboard-today-card {
+    position: relative;
+    overflow: hidden;
+
+    padding: 22px;
+
+    border:
+        1px solid #e8eef7;
+
+    border-radius: 21px;
+
+    background:
+        rgba(255,255,255,.97);
+
+    box-shadow:
+        0 10px 28px
+        rgba(15,23,42,.07);
+
+    transition: .25s;
+}
+
+
+.dashboard-today-card:hover {
+    transform:
+        translateY(-4px);
+}
+
+
+.dashboard-today-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.dashboard-today-label {
+    color: #64748b;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+}
+
+
+.dashboard-today-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background: #eff6ff;
+
+    font-size: 21px;
+}
+
+
+.dashboard-today-card h2 {
+    margin:
+        15px 0 6px;
+
+    color: #0f172a;
+
+    font-size: 31px;
+    font-weight: 900;
+}
+
+
+.dashboard-today-card p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 10px;
+}
+
+
+.dashboard-today-income {
+    background:
+        linear-gradient(
+            135deg,
+            white,
+            #f0fdf4
+        );
+}
+
+
+.dashboard-today-income h2 {
+    color: #059669;
+
+    font-size: 25px;
+}
+
+
+/* =========================================================
+   TREND
+========================================================= */
+
+.income-trend {
+    margin-top: 11px;
+
+    display: inline-flex;
+    align-items: center;
+
+    gap: 5px;
+
+    padding:
+        6px 9px;
+
+    border-radius: 20px;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+.trend-up {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+.trend-down {
+    background: #fee2e2;
+
+    color: #991b1b;
+}
+
+
+.trend-same {
+    background: #f1f5f9;
+
+    color: #475569;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.dashboard-status-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(7, 1fr);
+
+    gap: 11px;
+
+    margin-bottom: 30px;
+}
+
+
+.dashboard-status-card {
+    padding:
+        19px 10px;
+
+    border:
+        1px solid
+        rgba(226,232,240,.96);
+
+    border-radius: 17px;
+
+    background:
+        rgba(255,255,255,.95);
+
+    box-shadow:
+        0 7px 20px
+        rgba(15,23,42,.06);
+
+    text-align: center;
+
+    transition: .25s;
+}
+
+
+.dashboard-status-card:hover {
+    transform:
+        translateY(-5px);
+
+    box-shadow:
+        0 15px 30px
+        rgba(15,23,42,.10);
+}
+
+
+.dashboard-status-card span {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 23px;
+}
+
+
+.dashboard-status-card strong {
+    display: block;
+
+    color: #0f172a;
+
+    font-size: 24px;
+    font-weight: 900;
+}
+
+
+.dashboard-status-card small {
+    display: block;
+
+    margin-top: 5px;
+
+    color: #64748b;
+
+    font-size: 8px;
+    font-weight: 700;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   BOTTOM
+========================================================= */
+
+.dashboard-bottom-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(290px, .85fr);
+
+    gap: 21px;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   TABLE
+========================================================= */
+
+.dashboard-table-responsive {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+.dashboard-table {
+    width: 100%;
+
+    min-width: 700px;
+
+    border-collapse: collapse;
+}
+
+
+.dashboard-table th {
+    padding:
+        13px 11px;
+
+    border-bottom:
+        1px solid #e2e8f0;
+
+    background: #f8fafc;
+
+    color: #64748b;
+
+    text-align: left;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    text-transform: uppercase;
+}
+
+
+.dashboard-table td {
+    padding:
+        15px 11px;
+
+    border-bottom:
+        1px solid #f1f5f9;
+
+    color: #334155;
+
+    font-size: 11px;
+}
+
+
+.dashboard-table tbody tr:hover {
+    background: #f8fafc;
+}
+
+
+.dashboard-transaction-code {
+    color: #2563eb;
+
+    font-weight: 800;
+}
+
+
+.dashboard-total {
+    color: #0f172a;
+
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   BADGES
+========================================================= */
+
+.dashboard-badge {
+    display: inline-flex;
+
+    padding:
+        6px 9px;
+
+    border-radius: 20px;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+.dashboard-badge-green {
+    background: #dcfce7;
+
+    color: #166534;
+}
+
+
+.dashboard-badge-blue {
+    background: #dbeafe;
+
+    color: #1d4ed8;
+}
+
+
+/* =========================================================
+   BUTTON
+========================================================= */
+
+.dashboard-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding:
+        10px 14px;
+
+    border-radius: 10px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #2563eb,
+            #1d4ed8
+        );
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 10px;
+    font-weight: 800;
+
+    transition: .2s;
+}
+
+
+.dashboard-btn:hover {
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   QUICK MENU
+========================================================= */
+
+.dashboard-quick-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 10px;
+}
+
+
+.dashboard-quick-action {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 14px;
+
+    border:
+        1px solid #edf2f7;
+
+    border-radius: 14px;
+
+    background: #f8fafc;
+
+    color: #0f172a;
+
+    text-decoration: none;
+
+    transition: .22s;
+}
+
+
+.dashboard-quick-action:hover {
+    border-color: #bfdbfe;
+
+    background: #eff6ff;
+
+    transform:
+        translateX(4px);
+}
+
+
+.dashboard-quick-icon {
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #dbeafe,
+            #e0f2fe
+        );
+
+    font-size: 21px;
+}
+
+
+.dashboard-quick-action strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 12px;
+}
+
+
+.dashboard-quick-action small {
+    color: #94a3b8;
+
+    font-size: 9px;
+}
+
+
+/* =========================================================
+   PAYMENT WARNING
+========================================================= */
+
+.dashboard-warning {
+    position: relative;
+    overflow: hidden;
+
+    margin-top: 17px;
+
+    padding: 20px;
+
+    border:
+        1px solid #fecdd3;
+
+    border-radius: 17px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff1f2,
+            #fff7ed
+        );
+}
+
+
+.dashboard-warning::after {
+    content: "💳";
+
+    position: absolute;
+
+    right: 15px;
+    top: 13px;
+
+    font-size: 43px;
+
+    opacity: .12;
+}
+
+
+.dashboard-warning small {
+    color: #9f1239;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+
+.dashboard-warning h2 {
+    margin:
+        8px 0 5px;
+
+    color: #e11d48;
+
+    font-size: 33px;
+}
+
+
+.dashboard-warning p {
+    margin: 0;
+
+    color: #9f1239;
+
+    font-size: 9px;
+
+    line-height: 1.5;
+}
+
+
+.dashboard-empty {
+    padding:
+        40px !important;
+
+    color:
+        #94a3b8 !important;
+
+    text-align:
+        center !important;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width: 1200px) {
+
+    .dashboard-stats-grid {
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+
+    .notification-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .dashboard-status-grid {
+        grid-template-columns:
+            repeat(4,1fr);
+    }
+
+
+    .dashboard-bottom-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+@media(max-width: 1000px) {
+
+    .dashboard-analysis-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .dashboard-today {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2,1fr);
+    }
+
+}
+
+
+@media(max-width: 760px) {
 
     .dashboard-premium {
-        position: relative;
+        padding: 10px;
 
-        width: 100%;
-
-        min-height:
-            calc(100vh - 120px);
-
-        padding: 20px;
-
-        overflow: hidden;
-
-        border-radius: 28px;
-
-        background:
-            linear-gradient(
-                rgba(244,247,251,.84),
-                rgba(244,247,251,.94)
-            ),
-            url("{{ asset('images/laundry-bg.png') }}");
-
-        background-size: cover;
-
-        background-position: center;
-
-        background-repeat: no-repeat;
-
-        background-attachment: fixed;
+        background-attachment:
+            scroll;
     }
 
-
-    /* =========================================================
-       HERO
-    ========================================================= */
 
     .dashboard-hero {
-        position: relative;
-
-        overflow: hidden;
-
-        min-height: 340px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: space-between;
-
-        gap: 35px;
-
-        padding: 48px;
-
-        margin-bottom: 32px;
-
-        border-radius: 30px;
-
-        color: white;
-
-        background:
-            linear-gradient(
-                105deg,
-                rgba(7,30,75,.96) 0%,
-                rgba(29,78,216,.88) 50%,
-                rgba(14,165,233,.60) 100%
-            ),
-            url("{{ asset('images/laundry-bg.png') }}");
-
-        background-size: cover;
-
-        background-position: center;
-
-        border:
-            1px solid
-            rgba(255,255,255,.18);
-
-        box-shadow:
-            0 25px 60px
-            rgba(15,23,42,.25);
-    }
-
-
-    .dashboard-hero::before {
-        content: "";
-
-        position: absolute;
-
-        inset: 0;
-
-        background:
-            radial-gradient(
-                circle at 82% 28%,
-                rgba(255,255,255,.16),
-                transparent 26%
-            );
-
-        pointer-events: none;
-    }
-
-
-    .dashboard-hero::after {
-        content: "";
-
-        position: absolute;
-
-        width: 360px;
-
-        height: 360px;
-
-        right: -170px;
-
-        top: -190px;
-
-        border-radius: 50%;
-
-        background:
-            rgba(255,255,255,.08);
-    }
-
-
-    .dashboard-hero-content {
-        position: relative;
-
-        z-index: 3;
-
-        max-width: 760px;
-    }
-
-
-    .dashboard-hero-top {
-        display: flex;
-
-        align-items: center;
-
-        gap: 10px;
-
-        flex-wrap: wrap;
-
-        margin-bottom: 22px;
-    }
-
-
-    .dashboard-hero-badge,
-    .dashboard-hero-date {
-        display: inline-flex;
-
-        align-items: center;
-
-        gap: 7px;
+        min-height: auto;
 
         padding:
-            10px 15px;
+            30px 23px;
 
-        border:
-            1px solid
-            rgba(255,255,255,.22);
+        border-radius: 22px;
+    }
 
-        border-radius: 30px;
 
-        background:
-            rgba(255,255,255,.14);
-
-        backdrop-filter:
-            blur(12px);
-
-        color: white;
-
-        font-size: 12px;
-
-        font-weight: 700;
-
-        box-shadow:
-            inset 0 1px 0
-            rgba(255,255,255,.10);
+    .dashboard-laundry-visual {
+        display: none;
     }
 
 
     .dashboard-hero h1 {
-        margin:
-            0 0 18px;
+        font-size: 40px;
 
-        max-width: 760px;
-
-        color: white;
-
-        font-size:
-            clamp(
-                44px,
-                5vw,
-                66px
-            );
-
-        font-weight: 900;
-
-        line-height: 1.02;
-
-        letter-spacing: -2px;
-
-        text-shadow:
-            0 7px 25px
-            rgba(0,0,0,.24);
-    }
-
-
-    .dashboard-hero h1 span {
-        color: #d7f3ff;
-
-        text-shadow:
-            0 0 30px
-            rgba(186,230,253,.22);
+        letter-spacing: -1px;
     }
 
 
     .dashboard-hero-description {
-        max-width: 690px;
-
-        margin: 0;
-
-        color:
-            rgba(255,255,255,.92);
-
-        font-size: 15px;
-
-        font-weight: 500;
-
-        line-height: 1.8;
-
-        text-shadow:
-            0 2px 10px
-            rgba(0,0,0,.15);
-    }
-
-
-    .dashboard-hero-quote {
-        display: inline-block;
-
-        margin-top: 24px;
-
-        padding:
-            15px 19px;
-
-        border-left:
-            4px solid #bae6fd;
-
-        border-radius:
-            0 15px 15px 0;
-
-        background:
-            rgba(255,255,255,.13);
-
-        backdrop-filter:
-            blur(10px);
-
-        color: white;
-
         font-size: 13px;
-
-        font-weight: 600;
-
-        line-height: 1.7;
-
-        box-shadow:
-            0 10px 25px
-            rgba(0,0,0,.08);
     }
 
 
-    /* =========================================================
-       HERO VISUAL
-    ========================================================= */
-
-    .dashboard-laundry-visual {
-        position: relative;
-
-        z-index: 3;
-
-        width: 210px;
-
-        height: 210px;
-
-        flex-shrink: 0;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        border:
-            1px solid
-            rgba(255,255,255,.28);
-
-        border-radius: 52px;
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(255,255,255,.22),
-                rgba(255,255,255,.09)
-            );
-
-        backdrop-filter:
-            blur(20px);
-
-        box-shadow:
-            0 28px 50px
-            rgba(0,0,0,.18);
-
-        transform:
-            rotate(3deg);
-
-        transition:
-            transform .3s ease;
+    .dashboard-stats-grid {
+        grid-template-columns:
+            1fr;
     }
 
 
-    .dashboard-laundry-visual:hover {
-        transform:
-            rotate(0deg)
-            scale(1.04);
+    .dashboard-today {
+        grid-template-columns:
+            1fr;
     }
 
 
-    .dashboard-laundry-visual span {
-        font-size: 96px;
-
-        filter:
-            drop-shadow(
-                0 12px 15px
-                rgba(0,0,0,.18)
-            );
+    .dashboard-status-grid {
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
 
-    .dashboard-laundry-visual small {
-        position: absolute;
-
-        left: 50%;
-
-        bottom: 18px;
-
-        transform:
-            translateX(-50%);
-
-        width: 100%;
-
-        color:
-            rgba(255,255,255,.82);
-
-        text-align: center;
-
-        font-size: 10px;
-
-        font-weight: 800;
-
-        letter-spacing: 1.2px;
-
-        text-transform: uppercase;
-    }
-
-
-    /* =========================================================
-       SECTION HEADING
-    ========================================================= */
-
-    .dashboard-section-heading {
-        display: flex;
-
-        justify-content: space-between;
-
-        align-items: center;
-
-        gap: 15px;
-
-        margin:
-            8px 0 18px;
-
-        flex-wrap: wrap;
+    .dashboard-chart-wrapper {
+        height: 225px;
     }
 
 
     .dashboard-section-heading h2 {
-        margin: 0;
-
-        color: #0f172a;
-
-        font-size: 21px;
-
-        font-weight: 900;
-
-        letter-spacing: -.4px;
-    }
-
-
-    .dashboard-section-heading p {
-        margin:
-            6px 0 0;
-
-        color: #64748b;
-
-        font-size: 12px;
-
-        line-height: 1.5;
-    }
-
-
-    /* =========================================================
-       STATISTIK
-    ========================================================= */
-
-    .dashboard-stats-grid {
-        display: grid;
-
-        grid-template-columns:
-            repeat(4, 1fr);
-
-        gap: 17px;
-
-        margin-bottom: 30px;
-    }
-
-
-    .dashboard-stat-card {
-        position: relative;
-
-        overflow: hidden;
-
-        padding: 24px;
-
-        border:
-            1px solid
-            rgba(255,255,255,.85);
-
-        border-radius: 22px;
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(255,255,255,.98),
-                rgba(248,250,252,.94)
-            );
-
-        box-shadow:
-            0 12px 32px
-            rgba(15,23,42,.08);
-
-        backdrop-filter:
-            blur(10px);
-
-        transition:
-            transform .25s,
-            box-shadow .25s;
-    }
-
-
-    .dashboard-stat-card:hover {
-        transform:
-            translateY(-6px);
-
-        box-shadow:
-            0 22px 45px
-            rgba(15,23,42,.13);
-    }
-
-
-    .dashboard-stat-card::after {
-        content: "";
-
-        position: absolute;
-
-        width: 110px;
-
-        height: 110px;
-
-        right: -50px;
-
-        bottom: -50px;
-
-        border-radius: 50%;
-
-        background:
-            rgba(37,99,235,.06);
-    }
-
-
-    .dashboard-stat-head {
-        display: flex;
-
-        justify-content: space-between;
-
-        align-items: center;
-
-        margin-bottom: 16px;
-    }
-
-
-    .dashboard-stat-head small {
-        color: #64748b;
-
-        font-size: 10px;
-
-        font-weight: 800;
-
-        letter-spacing: .5px;
-
-        text-transform: uppercase;
-    }
-
-
-    .dashboard-stat-icon {
-        width: 49px;
-
-        height: 49px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        border-radius: 15px;
-
-        background:
-            linear-gradient(
-                135deg,
-                #eff6ff,
-                #dbeafe
-            );
-
-        font-size: 23px;
-
-        box-shadow:
-            0 7px 18px
-            rgba(37,99,235,.11);
-    }
-
-
-    .dashboard-stat-card h2 {
-        position: relative;
-
-        z-index: 2;
-
-        margin:
-            0 0 8px;
-
-        color: #0f172a;
-
-        font-size: 34px;
-
-        font-weight: 900;
-    }
-
-
-    .dashboard-stat-card p {
-        position: relative;
-
-        z-index: 2;
-
-        margin: 0;
-
-        color: #94a3b8;
-
-        font-size: 11px;
-
-        line-height: 1.55;
-    }
-
-
-    .dashboard-stat-money h2 {
-        color: #059669;
-
-        font-size: 26px;
-    }
-
-
-    /* =========================================================
-       ANALYSIS GRID
-    ========================================================= */
-
-    .dashboard-analysis-grid {
-        display: grid;
-
-        grid-template-columns:
-            minmax(0, 2fr)
-            minmax(280px, .78fr);
-
-        gap: 21px;
-
-        margin-bottom: 30px;
-    }
-
-
-    /* =========================================================
-       PANEL
-    ========================================================= */
-
-    .dashboard-panel {
-        padding: 25px;
-
-        border:
-            1px solid
-            rgba(226,232,240,.96);
-
-        border-radius: 23px;
-
-        background:
-            rgba(255,255,255,.96);
-
-        box-shadow:
-            0 12px 35px
-            rgba(15,23,42,.08);
-
-        backdrop-filter:
-            blur(10px);
-    }
-
-
-    .dashboard-panel-header {
-        display: flex;
-
-        justify-content: space-between;
-
-        align-items: center;
-
-        gap: 15px;
-
-        margin-bottom: 21px;
-
-        flex-wrap: wrap;
-    }
-
-
-    .dashboard-panel-header h2 {
-        margin: 0;
-
-        color: #0f172a;
-
-        font-size: 19px;
-
-        font-weight: 900;
-    }
-
-
-    .dashboard-panel-header p {
-        margin:
-            6px 0 0;
-
-        color: #94a3b8;
-
-        font-size: 11px;
-    }
-
-
-    .dashboard-chart-label {
-        padding:
-            7px 11px;
-
-        border-radius: 20px;
-
-        background: #ecfdf5;
-
-        color: #047857;
-
-        font-size: 9px;
-
-        font-weight: 800;
-    }
-
-
-    /* =========================================================
-       CHART
-    ========================================================= */
-
-    .dashboard-chart-wrapper {
-        position: relative;
-
-        width: 100%;
-
-        height: 285px;
-    }
-
-
-    #revenueChart {
-        display: block;
-
-        width: 100%;
-
-        height: 100%;
-    }
-
-
-    /* =========================================================
-       TODAY
-    ========================================================= */
-
-    .dashboard-today {
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 16px;
-    }
-
-
-    .dashboard-today-card {
-        position: relative;
-
-        overflow: hidden;
-
-        flex: 1;
-
-        min-height: 145px;
-
-        padding: 23px;
-
-        border:
-            1px solid
-            #e8eef7;
-
-        border-radius: 21px;
-
-        background:
-            rgba(255,255,255,.97);
-
-        box-shadow:
-            0 10px 28px
-            rgba(15,23,42,.07);
-
-        transition: .25s;
-    }
-
-
-    .dashboard-today-card:hover {
-        transform:
-            translateY(-5px);
-
-        box-shadow:
-            0 18px 35px
-            rgba(15,23,42,.11);
-    }
-
-
-    .dashboard-today-card::after {
-        content: "";
-
-        position: absolute;
-
-        width: 110px;
-
-        height: 110px;
-
-        right: -50px;
-
-        bottom: -50px;
-
-        border-radius: 50%;
-
-        background:
-            rgba(37,99,235,.06);
-    }
-
-
-    .dashboard-today-head {
-        display: flex;
-
-        justify-content: space-between;
-
-        align-items: center;
-    }
-
-
-    .dashboard-today-label {
-        color: #64748b;
-
-        font-size: 10px;
-
-        font-weight: 800;
-
-        letter-spacing: .5px;
-
-        text-transform: uppercase;
-    }
-
-
-    .dashboard-today-icon {
-        width: 46px;
-
-        height: 46px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        border-radius: 14px;
-
-        background:
-            linear-gradient(
-                135deg,
-                #eff6ff,
-                #dbeafe
-            );
-
-        font-size: 21px;
-    }
-
-
-    .dashboard-today-card h2 {
-        margin:
-            16px 0 6px;
-
-        color: #0f172a;
-
-        font-size: 33px;
-
-        font-weight: 900;
-    }
-
-
-    .dashboard-today-card p {
-        margin: 0;
-
-        color: #94a3b8;
-
-        font-size: 10px;
-
-        line-height: 1.5;
-    }
-
-
-    .dashboard-today-income {
-        background:
-            linear-gradient(
-                135deg,
-                rgba(255,255,255,.97),
-                rgba(240,253,244,.97)
-            );
-    }
-
-
-    .dashboard-today-income h2 {
-        color: #059669;
-
-        font-size: 26px;
-    }
-
-
-    /* =========================================================
-       STATUS
-    ========================================================= */
-
-    .dashboard-status-grid {
-        display: grid;
-
-        grid-template-columns:
-            repeat(7, 1fr);
-
-        gap: 11px;
-
-        margin-bottom: 30px;
-    }
-
-
-    .dashboard-status-card {
-        padding:
-            19px 10px;
-
-        border:
-            1px solid
-            rgba(226,232,240,.96);
-
-        border-radius: 17px;
-
-        background:
-            rgba(255,255,255,.95);
-
-        box-shadow:
-            0 7px 20px
-            rgba(15,23,42,.06);
-
-        backdrop-filter:
-            blur(8px);
-
-        text-align: center;
-
-        transition:
-            transform .25s,
-            box-shadow .25s;
-    }
-
-
-    .dashboard-status-card:hover {
-        transform:
-            translateY(-5px);
-
-        box-shadow:
-            0 15px 30px
-            rgba(15,23,42,.11);
-    }
-
-
-    .dashboard-status-card span {
-        display: block;
-
-        margin-bottom: 7px;
-
-        font-size: 23px;
-    }
-
-
-    .dashboard-status-card strong {
-        display: block;
-
-        color: #0f172a;
-
-        font-size: 24px;
-
-        font-weight: 900;
-    }
-
-
-    .dashboard-status-card small {
-        display: block;
-
-        margin-top: 5px;
-
-        color: #64748b;
-
-        font-size: 8px;
-
-        font-weight: 700;
-
-        text-transform: uppercase;
-    }
-
-
-    /* =========================================================
-       BOTTOM GRID
-    ========================================================= */
-
-    .dashboard-bottom-grid {
-        display: grid;
-
-        grid-template-columns:
-            minmax(0, 2fr)
-            minmax(290px, .85fr);
-
-        gap: 21px;
-
-        align-items: start;
-    }
-
-
-    /* =========================================================
-       TABLE
-    ========================================================= */
-
-    .dashboard-table-responsive {
-        width: 100%;
-
-        overflow-x: auto;
-    }
-
-
-    .dashboard-table {
-        width: 100%;
-
-        min-width: 700px;
-
-        border-collapse: collapse;
-    }
-
-
-    .dashboard-table th {
-        padding:
-            13px 11px;
-
-        border-bottom:
-            1px solid #e2e8f0;
-
-        background: #f8fafc;
-
-        color: #64748b;
-
-        text-align: left;
-
-        font-size: 9px;
-
-        font-weight: 800;
-
-        text-transform: uppercase;
-
-        letter-spacing: .5px;
-    }
-
-
-    .dashboard-table td {
-        padding:
-            15px 11px;
-
-        border-bottom:
-            1px solid #f1f5f9;
-
-        color: #334155;
-
-        font-size: 11px;
-    }
-
-
-    .dashboard-table tbody tr {
-        transition: .2s;
-    }
-
-
-    .dashboard-table tbody tr:hover {
-        background: #f8fafc;
-    }
-
-
-    .dashboard-transaction-code {
-        color: #2563eb;
-
-        font-weight: 800;
-    }
-
-
-    .dashboard-total {
-        color: #0f172a;
-
-        font-weight: 800;
-    }
-
-
-    /* =========================================================
-       BADGE
-    ========================================================= */
-
-    .dashboard-badge {
-        display: inline-flex;
-
-        align-items: center;
-
-        padding:
-            6px 9px;
-
-        border-radius: 20px;
-
-        font-size: 8px;
-
-        font-weight: 800;
-    }
-
-
-    .dashboard-badge-green {
-        background: #dcfce7;
-
-        color: #166534;
-    }
-
-
-    .dashboard-badge-blue {
-        background: #dbeafe;
-
-        color: #1d4ed8;
-    }
-
-
-    /* =========================================================
-       BUTTON
-    ========================================================= */
-
-    .dashboard-btn {
-        display: inline-flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        gap: 5px;
-
-        padding:
-            10px 14px;
-
-        border-radius: 10px;
-
-        background:
-            linear-gradient(
-                135deg,
-                #2563eb,
-                #1d4ed8
-            );
-
-        color: white;
-
-        text-decoration: none;
-
-        font-size: 10px;
-
-        font-weight: 800;
-
-        box-shadow:
-            0 7px 15px
-            rgba(37,99,235,.16);
-
-        transition: .2s;
-    }
-
-
-    .dashboard-btn:hover {
-        transform:
-            translateY(-2px);
-
-        box-shadow:
-            0 10px 20px
-            rgba(37,99,235,.22);
-    }
-
-
-    /* =========================================================
-       QUICK MENU
-    ========================================================= */
-
-    .dashboard-quick-list {
-        display: flex;
-
-        flex-direction: column;
-
-        gap: 10px;
-    }
-
-
-    .dashboard-quick-action {
-        display: flex;
-
-        align-items: center;
-
-        gap: 12px;
-
-        padding: 14px;
-
-        border:
-            1px solid #edf2f7;
-
-        border-radius: 14px;
-
-        background:
-            linear-gradient(
-                135deg,
-                #f8fafc,
-                #ffffff
-            );
-
-        color: #0f172a;
-
-        text-decoration: none;
-
-        transition: .22s;
-    }
-
-
-    .dashboard-quick-action:hover {
-        border-color: #bfdbfe;
-
-        background: #eff6ff;
-
-        transform:
-            translateX(4px);
-    }
-
-
-    .dashboard-quick-icon {
-        width: 45px;
-
-        height: 45px;
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        flex-shrink: 0;
-
-        border-radius: 13px;
-
-        background:
-            linear-gradient(
-                135deg,
-                #dbeafe,
-                #e0f2fe
-            );
-
-        font-size: 21px;
-    }
-
-
-    .dashboard-quick-action strong {
-        display: block;
-
-        margin-bottom: 4px;
-
-        font-size: 12px;
-    }
-
-
-    .dashboard-quick-action small {
-        color: #94a3b8;
-
-        font-size: 9px;
-    }
-
-
-    /* =========================================================
-       PAYMENT WARNING
-    ========================================================= */
-
-    .dashboard-warning {
-        position: relative;
-
-        overflow: hidden;
-
-        margin-top: 17px;
-
-        padding: 20px;
-
-        border:
-            1px solid #fecdd3;
-
-        border-radius: 17px;
-
-        background:
-            linear-gradient(
-                135deg,
-                #fff1f2,
-                #fff7ed
-            );
-    }
-
-
-    .dashboard-warning::after {
-        content: "💳";
-
-        position: absolute;
-
-        right: 15px;
-
-        top: 13px;
-
-        font-size: 43px;
-
-        opacity: .12;
-    }
-
-
-    .dashboard-warning small {
-        color: #9f1239;
-
-        font-size: 9px;
-
-        font-weight: 800;
-    }
-
-
-    .dashboard-warning h2 {
-        margin:
-            8px 0 5px;
-
-        color: #e11d48;
-
-        font-size: 33px;
-
-        font-weight: 900;
-    }
-
-
-    .dashboard-warning p {
-        margin: 0;
-
-        color: #9f1239;
-
-        font-size: 9px;
-    }
-
-
-    .dashboard-empty {
-        padding:
-            40px !important;
-
-        color:
-            #94a3b8 !important;
-
-        text-align:
-            center !important;
-    }
-
-
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
-
-    @media(max-width: 1200px) {
-
-        .dashboard-stats-grid {
-            grid-template-columns:
-                repeat(2,1fr);
-        }
-
-
-        .dashboard-status-grid {
-            grid-template-columns:
-                repeat(4,1fr);
-        }
-
-
-        .dashboard-bottom-grid {
-            grid-template-columns:
-                1fr;
-        }
-
-    }
-
-
-    @media(max-width: 1000px) {
-
-        .dashboard-analysis-grid {
-            grid-template-columns:
-                1fr;
-        }
-
-
-        .dashboard-today {
-            display: grid;
-
-            grid-template-columns:
-                repeat(2,1fr);
-        }
-
+        font-size: 18px;
     }
-
-
-    @media(max-width: 760px) {
-
-        .dashboard-premium {
-            padding: 10px;
-
-            background-attachment:
-                scroll;
-        }
-
-
-        .dashboard-hero {
-            min-height: auto;
-
-            padding:
-                31px 24px;
-
-            border-radius: 22px;
-        }
-
-
-        .dashboard-laundry-visual {
-            display: none;
-        }
-
-
-        .dashboard-hero h1 {
-            font-size: 40px;
-
-            letter-spacing: -1px;
-        }
 
-
-        .dashboard-hero-description {
-            font-size: 13px;
-        }
-
-
-        .dashboard-hero-quote {
-            font-size: 12px;
-        }
-
-
-        .dashboard-stats-grid {
-            grid-template-columns:
-                1fr;
-        }
-
-
-        .dashboard-today {
-            grid-template-columns:
-                1fr;
-        }
-
-
-        .dashboard-status-grid {
-            grid-template-columns:
-                repeat(2,1fr);
-        }
-
-
-        .dashboard-chart-wrapper {
-            height: 225px;
-        }
-
-
-        .dashboard-section-heading h2 {
-            font-size: 18px;
-        }
-
-    }
+}
 
 </style>
 
@@ -1447,9 +1470,11 @@
             <div class="dashboard-hero-top">
 
 
-                <div class="dashboard-hero-badge">
+                <div class="hero-info-badge">
 
-                    ✨ Selamat Datang,
+                    ☀️
+
+                    {{ $sapaan }},
 
                     {{
                         auth()->user()->name
@@ -1459,17 +1484,44 @@
                 </div>
 
 
-                <div class="dashboard-hero-date">
+                <div class="hero-info-badge">
 
                     📅
 
-                    {{
-                        now()->translatedFormat(
-                            'd F Y'
-                        )
-                    }}
+                    {{ $tanggalHariIni }}
 
                 </div>
+
+
+                <div class="hero-info-badge">
+
+                    🕘
+
+                    <span id="liveClock">
+                        --:--:--
+                    </span>
+
+                </div>
+
+
+                @if($totalNotifikasi > 0)
+
+                    <div
+                        class="
+                            hero-info-badge
+                            hero-notification-badge
+                        "
+                    >
+
+                        🔔
+
+                        {{ $totalNotifikasi }}
+
+                        Notifikasi
+
+                    </div>
+
+                @endif
 
 
             </div>
@@ -1490,10 +1542,10 @@
 
             <p class="dashboard-hero-description">
 
-                Kelola seluruh aktivitas laundry mulai dari
-                pelanggan, transaksi, pembayaran, layanan,
-                hingga proses pengerjaan dalam satu sistem
-                yang modern, cepat, rapi dan terorganisir.
+                Kelola pelanggan, transaksi, pembayaran,
+                layanan dan proses pengerjaan laundry
+                dalam satu sistem yang modern,
+                cepat, rapi dan terorganisir.
 
             </p>
 
@@ -1530,7 +1582,7 @@
 
 
     <!-- =====================================================
-         RINGKASAN
+         RINGKASAN OPERASIONAL
     ====================================================== -->
 
     <div class="dashboard-section-heading">
@@ -1542,7 +1594,7 @@
             </h2>
 
             <p>
-                Informasi utama operasional
+                Ringkasan aktivitas utama
                 Tania Mutiara Laundry.
             </p>
 
@@ -1554,8 +1606,6 @@
 
     <div class="dashboard-stats-grid">
 
-
-        <!-- TOTAL PELANGGAN -->
 
         <div class="dashboard-stat-card">
 
@@ -1571,11 +1621,9 @@
 
             </div>
 
-
             <h2>
                 {{ $totalPelanggan }}
             </h2>
-
 
             <p>
                 Pelanggan yang telah terdaftar.
@@ -1584,8 +1632,6 @@
         </div>
 
 
-
-        <!-- PESANAN AKTIF -->
 
         <div class="dashboard-stat-card">
 
@@ -1601,21 +1647,17 @@
 
             </div>
 
-
             <h2>
                 {{ $pesananMasuk }}
             </h2>
 
-
             <p>
-                Laundry yang sedang diproses.
+                Laundry yang masih dalam proses.
             </p>
 
         </div>
 
 
-
-        <!-- SELESAI -->
 
         <div class="dashboard-stat-card">
 
@@ -1631,21 +1673,17 @@
 
             </div>
 
-
             <h2>
                 {{ $laundrySelesai }}
             </h2>
 
-
             <p>
-                Pesanan yang telah selesai.
+                Pesanan yang sudah selesai diproses.
             </p>
 
         </div>
 
 
-
-        <!-- PENDAPATAN -->
 
         <div
             class="
@@ -1666,7 +1704,6 @@
 
             </div>
 
-
             <h2>
 
                 Rp
@@ -1681,9 +1718,8 @@
 
             </h2>
 
-
             <p>
-                Pendapatan transaksi yang sudah lunas.
+                Total transaksi berstatus lunas.
             </p>
 
         </div>
@@ -1694,7 +1730,147 @@
 
 
     <!-- =====================================================
-         ANALISIS
+         NOTIFIKASI
+    ====================================================== -->
+
+    <div class="notification-panel">
+
+
+        <div class="notification-header">
+
+            <h2>
+                🔔 Notifikasi Operasional
+            </h2>
+
+            <span class="notification-count">
+
+                {{ $totalNotifikasi }}
+
+                Notifikasi
+
+            </span>
+
+        </div>
+
+
+
+        <div class="notification-grid">
+
+
+            <div
+                class="
+                    notification-card
+                    notification-payment
+                "
+            >
+
+                <div class="notification-icon">
+                    💳
+                </div>
+
+                <div>
+
+                    <strong>
+
+                        {{ $belumLunas }}
+
+                        Pembayaran Belum Lunas
+
+                    </strong>
+
+                    <small>
+
+                        Total tagihan:
+
+                        Rp
+                        {{
+                            number_format(
+                                $nominalBelumLunas,
+                                0,
+                                ',',
+                                '.'
+                            )
+                        }}
+
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="
+                    notification-card
+                    notification-ready
+                "
+            >
+
+                <div class="notification-icon">
+                    ✅
+                </div>
+
+                <div>
+
+                    <strong>
+
+                        {{ $siapDiambil }}
+
+                        Laundry Siap Diambil
+
+                    </strong>
+
+                    <small>
+                        Laundry berstatus Selesai
+                        dan siap diserahkan kepada pelanggan.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <div
+                class="
+                    notification-card
+                    notification-delivery
+                "
+            >
+
+                <div class="notification-icon">
+                    🚚
+                </div>
+
+                <div>
+
+                    <strong>
+
+                        {{ $sedangDikirim }}
+
+                        Laundry Dikirim
+
+                    </strong>
+
+                    <small>
+                        Pesanan dengan status pengiriman.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         ANALISIS PENDAPATAN
     ====================================================== -->
 
     <div class="dashboard-section-heading">
@@ -1706,8 +1882,8 @@
             </h2>
 
             <p>
-                Aktivitas dan pendapatan laundry
-                selama tujuh hari terakhir.
+                Pantau perkembangan transaksi
+                dan pendapatan laundry.
             </p>
 
         </div>
@@ -1726,7 +1902,6 @@
 
             <div class="dashboard-panel-header">
 
-
                 <div>
 
                     <h2>
@@ -1734,8 +1909,8 @@
                     </h2>
 
                     <p>
-                        Berdasarkan transaksi dengan
-                        status pembayaran Lunas.
+                        Berdasarkan transaksi
+                        dengan pembayaran Lunas.
                     </p>
 
                 </div>
@@ -1744,7 +1919,6 @@
                 <span class="dashboard-chart-label">
                     ● 7 Hari
                 </span>
-
 
             </div>
 
@@ -1761,7 +1935,7 @@
 
 
 
-        <!-- HARI INI -->
+        <!-- TODAY -->
 
         <div class="dashboard-today">
 
@@ -1788,7 +1962,13 @@
 
 
                 <p>
-                    Pesanan laundry yang masuk hari ini.
+
+                    Kemarin:
+
+                    {{ $transaksiKemarin }}
+
+                    transaksi.
+
                 </p>
 
 
@@ -1833,8 +2013,70 @@
 
 
                 <p>
-                    Total transaksi lunas hari ini.
+
+                    Kemarin:
+
+                    Rp
+                    {{
+                        number_format(
+                            $pendapatanKemarin,
+                            0,
+                            ',',
+                            '.'
+                        )
+                    }}
+
                 </p>
+
+
+
+                @if($trenPendapatan === 'naik')
+
+                    <div
+                        class="
+                            income-trend
+                            trend-up
+                        "
+                    >
+
+                        ↑
+                        {{ $persentasePendapatan }}%
+
+                        dibanding kemarin
+
+                    </div>
+
+                @elseif($trenPendapatan === 'turun')
+
+                    <div
+                        class="
+                            income-trend
+                            trend-down
+                        "
+                    >
+
+                        ↓
+                        {{ $persentasePendapatan }}%
+
+                        dibanding kemarin
+
+                    </div>
+
+                @else
+
+                    <div
+                        class="
+                            income-trend
+                            trend-same
+                        "
+                    >
+
+                        →
+                        Pendapatan tetap
+
+                    </div>
+
+                @endif
 
 
             </div>
@@ -1848,7 +2090,7 @@
 
 
     <!-- =====================================================
-         STATUS
+         STATUS LAUNDRY
     ====================================================== -->
 
     <div class="dashboard-section-heading">
@@ -1861,7 +2103,7 @@
 
             <p>
                 Jumlah transaksi berdasarkan
-                proses pengerjaan laundry.
+                tahapan pengerjaan.
             </p>
 
         </div>
@@ -1983,19 +2225,18 @@
 
 
     <!-- =====================================================
-         TRANSAKSI & MENU CEPAT
+         TRANSAKSI + MENU CEPAT
     ====================================================== -->
 
     <div class="dashboard-bottom-grid">
 
 
-        <!-- TRANSAKSI -->
+        <!-- TRANSAKSI TERBARU -->
 
         <div class="dashboard-panel">
 
 
             <div class="dashboard-panel-header">
-
 
                 <div>
 
@@ -2017,7 +2258,6 @@
                 >
                     Lihat Semua →
                 </a>
-
 
             </div>
 
@@ -2151,7 +2391,6 @@
                                     )
                                 )
 
-
                                     <span
                                         class="
                                             dashboard-badge
@@ -2166,9 +2405,7 @@
 
                                     </span>
 
-
                                 @else
-
 
                                     <span
                                         class="
@@ -2183,7 +2420,6 @@
                                         }}
 
                                     </span>
-
 
                                 @endif
 
@@ -2381,20 +2617,36 @@
 
 
 
-            <!-- BELUM LUNAS -->
-
             <div class="dashboard-warning">
 
                 <small>
                     💳 PEMBAYARAN BELUM LUNAS
                 </small>
 
+
                 <h2>
                     {{ $belumLunas }}
                 </h2>
 
+
                 <p>
-                    Transaksi masih menunggu pembayaran.
+
+                    Total tagihan belum dibayar:
+
+                    <strong>
+
+                        Rp
+                        {{
+                            number_format(
+                                $nominalBelumLunas,
+                                0,
+                                ',',
+                                '.'
+                            )
+                        }}
+
+                    </strong>
+
                 </p>
 
             </div>
@@ -2420,6 +2672,64 @@
 document.addEventListener(
     'DOMContentLoaded',
     function () {
+
+        /*
+        |--------------------------------------------------------------------------
+        | JAM REALTIME
+        |--------------------------------------------------------------------------
+        */
+
+        const clock =
+            document.getElementById(
+                'liveClock'
+            );
+
+
+        function updateClock()
+        {
+            const now =
+                new Date();
+
+
+            const time =
+                now.toLocaleTimeString(
+                    'id-ID',
+                    {
+                        hour:
+                            '2-digit',
+
+                        minute:
+                            '2-digit',
+
+                        second:
+                            '2-digit',
+
+                        hour12:
+                            false
+                    }
+                );
+
+
+            if (clock) {
+                clock.textContent = time;
+            }
+        }
+
+
+        updateClock();
+
+
+        setInterval(
+            updateClock,
+            1000
+        );
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | GRAFIK
+        |--------------------------------------------------------------------------
+        */
 
         const canvas =
             document.getElementById(
@@ -2466,7 +2776,8 @@ document.addEventListener(
                     'Rp' +
                     (
                         value / 1000000
-                    ).toFixed(1) +
+                    ).toFixed(1)
+                    +
                     'jt'
                 );
 
@@ -2481,7 +2792,8 @@ document.addEventListener(
                     'Rp' +
                     Math.round(
                         value / 1000
-                    ) +
+                    )
+                    +
                     'k'
                 );
 
@@ -2564,21 +2876,27 @@ document.addEventListener(
 
             const chartWidth =
                 width
-                - padding.left
-                - padding.right;
+                -
+                padding.left
+                -
+                padding.right;
 
 
             const chartHeight =
                 height
-                - padding.top
-                - padding.bottom;
+                -
+                padding.top
+                -
+                padding.bottom;
 
 
             const numericValues =
                 values.map(
                     function (value) {
 
-                        return Number(value);
+                        return Number(
+                            value
+                        );
 
                     }
                 );
@@ -2594,9 +2912,11 @@ document.addEventListener(
             const roundedMaximum =
                 Math.ceil(
                     maximumValue
-                    / 10000
+                    /
+                    10000
                 )
-                * 10000;
+                *
+                10000;
 
 
             /*
@@ -2629,7 +2949,8 @@ document.addEventListener(
                     (
                         chartHeight / 4
                     )
-                    * i;
+                    *
+                    i;
 
 
                 ctx.beginPath();
@@ -2651,7 +2972,8 @@ document.addEventListener(
 
                 ctx.lineTo(
                     width
-                    - padding.right,
+                    -
+                    padding.right,
                     y
                 );
 
@@ -2663,9 +2985,12 @@ document.addEventListener(
                     roundedMaximum
                     -
                     (
-                        roundedMaximum / 4
+                        roundedMaximum
+                        /
+                        4
                     )
-                    * i;
+                    *
+                    i;
 
 
                 ctx.fillStyle =
@@ -2705,11 +3030,14 @@ document.addEventListener(
                             chartWidth
                             /
                             Math.max(
-                                numericValues.length - 1,
+                                numericValues.length
+                                -
+                                1,
                                 1
                             )
                         )
-                        * index;
+                        *
+                        index;
 
 
                     const y =
@@ -2737,7 +3065,7 @@ document.addEventListener(
 
             /*
             |--------------------------------------------------------------------------
-            | AREA GRADIENT
+            | AREA
             |--------------------------------------------------------------------------
             */
 
@@ -2751,7 +3079,8 @@ document.addEventListener(
                         padding.top,
                         0,
                         padding.top
-                        + chartHeight
+                        +
+                        chartHeight
                     );
 
 
@@ -2773,7 +3102,8 @@ document.addEventListener(
                 ctx.moveTo(
                     points[0].x,
                     padding.top
-                    + chartHeight
+                    +
+                    chartHeight
                 );
 
 
@@ -2806,7 +3136,8 @@ document.addEventListener(
                                     +
                                     point.x
                                 )
-                                / 2;
+                                /
+                                2;
 
 
                             ctx.bezierCurveTo(
@@ -2829,7 +3160,8 @@ document.addEventListener(
                         points.length - 1
                     ].x,
                     padding.top
-                    + chartHeight
+                    +
+                    chartHeight
                 );
 
 
@@ -2887,7 +3219,8 @@ document.addEventListener(
                                     +
                                     point.x
                                 )
-                                / 2;
+                                /
+                                2;
 
 
                             ctx.bezierCurveTo(
@@ -2928,7 +3261,7 @@ document.addEventListener(
 
             /*
             |--------------------------------------------------------------------------
-            | DOTS
+            | DOT
             |--------------------------------------------------------------------------
             */
 
@@ -3003,7 +3336,9 @@ document.addEventListener(
                             chartWidth
                             /
                             Math.max(
-                                labels.length - 1,
+                                labels.length
+                                -
+                                1,
                                 1
                             )
                         )
