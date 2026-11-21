@@ -2,1448 +2,1191 @@
 
 @section('title', 'Dashboard - Tania Mutiara Laundry')
 
-
 @push('styles')
 
 <style>
-
-/* =========================================================
-   DASHBOARD PREMIUM
-========================================================= */
-
-.dashboard-premium {
-    position: relative;
-    width: 100%;
-    min-height: calc(100vh - 120px);
-    padding: 20px;
-    overflow: hidden;
-    border-radius: 28px;
-
-    background:
-        linear-gradient(
-            rgba(244, 247, 251, .84),
-            rgba(244, 247, 251, .94)
-        ),
-        url("{{ asset('images/laundry-bg.png') }}");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.dashboard-hero {
-    position: relative;
-    overflow: hidden;
-
-    min-height: 350px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 35px;
-
-    padding: 48px;
-    margin-bottom: 30px;
-
-    border-radius: 30px;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            105deg,
-            rgba(7, 30, 75, .96) 0%,
-            rgba(29, 78, 216, .88) 52%,
-            rgba(14, 165, 233, .58) 100%
-        ),
-        url("{{ asset('images/laundry-bg.png') }}");
-
-    background-size: cover;
-    background-position: center;
-
-    border:
-        1px solid
-        rgba(255,255,255,.18);
-
-    box-shadow:
-        0 25px 60px
-        rgba(15,23,42,.24);
-}
-
-
-.dashboard-hero::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background:
-        radial-gradient(
-            circle at 82% 25%,
-            rgba(255,255,255,.16),
-            transparent 27%
-        );
-
-    pointer-events: none;
-}
-
-
-.dashboard-hero::after {
-    content: "";
-
-    position: absolute;
-
-    width: 360px;
-    height: 360px;
-
-    right: -170px;
-    top: -190px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,255,255,.08);
-}
-
-
-.dashboard-hero-content {
-    position: relative;
-    z-index: 3;
-
-    max-width: 770px;
-}
-
-
-.dashboard-hero-top {
-    display: flex;
-    align-items: center;
-
-    gap: 10px;
-
-    flex-wrap: wrap;
-
-    margin-bottom: 21px;
-}
-
-
-.hero-info-badge {
-    display: inline-flex;
-    align-items: center;
-
-    gap: 7px;
-
-    padding:
-        10px 15px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.22);
-
-    border-radius: 30px;
-
-    background:
-        rgba(255,255,255,.14);
-
-    backdrop-filter:
-        blur(12px);
-
-    color: white;
-
-    font-size: 12px;
-    font-weight: 700;
-}
-
-
-.hero-notification-badge {
-    background:
-        rgba(251,191,36,.18);
-
-    border-color:
-        rgba(253,224,71,.30);
-
-    color: #fef3c7;
-}
-
-
-.dashboard-hero h1 {
-    margin:
-        0 0 18px;
-
-    color: white;
-
-    font-size:
-        clamp(
-            44px,
-            5vw,
-            66px
-        );
-
-    font-weight: 900;
-
-    line-height: 1.02;
-
-    letter-spacing: -2px;
-
-    text-shadow:
-        0 7px 25px
-        rgba(0,0,0,.23);
-}
-
-
-.dashboard-hero h1 span {
-    color: #d7f3ff;
-}
-
-
-.dashboard-hero-description {
-    max-width: 690px;
-
-    margin: 0;
-
-    color:
-        rgba(255,255,255,.92);
-
-    font-size: 15px;
-    font-weight: 500;
-
-    line-height: 1.8;
-}
-
-
-.dashboard-hero-quote {
-    display: inline-block;
-
-    margin-top: 23px;
-
-    padding:
-        14px 18px;
-
-    border-left:
-        4px solid
-        #bae6fd;
-
-    border-radius:
-        0 15px 15px 0;
-
-    background:
-        rgba(255,255,255,.13);
-
-    backdrop-filter:
-        blur(10px);
-
-    color: white;
-
-    font-size: 13px;
-    font-weight: 600;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   HERO VISUAL
-========================================================= */
-
-.dashboard-laundry-visual {
-    position: relative;
-    z-index: 3;
-
-    width: 210px;
-    height: 210px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border:
-        1px solid
-        rgba(255,255,255,.28);
-
-    border-radius: 52px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.22),
-            rgba(255,255,255,.09)
-        );
-
-    backdrop-filter:
-        blur(20px);
-
-    box-shadow:
-        0 28px 50px
-        rgba(0,0,0,.17);
-
-    transform:
-        rotate(3deg);
-
-    transition:
-        .3s;
-}
-
-
-.dashboard-laundry-visual:hover {
-    transform:
-        rotate(0deg)
-        scale(1.04);
-}
-
-
-.dashboard-laundry-visual span {
-    font-size: 96px;
-}
-
-
-.dashboard-laundry-visual small {
-    position: absolute;
-
-    left: 50%;
-    bottom: 18px;
-
-    transform:
-        translateX(-50%);
-
-    width: 100%;
-
-    text-align: center;
-
-    color:
-        rgba(255,255,255,.82);
-
-    font-size: 9px;
-    font-weight: 800;
-
-    letter-spacing: 1px;
-
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   SECTION
-========================================================= */
-
-.dashboard-section-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 15px;
-
-    margin:
-        8px 0 18px;
-
-    flex-wrap: wrap;
-}
-
-
-.dashboard-section-heading h2 {
-    margin: 0;
-
-    color: #0f172a;
-
-    font-size: 21px;
-    font-weight: 900;
-}
-
-
-.dashboard-section-heading p {
-    margin:
-        6px 0 0;
-
-    color: #64748b;
-
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   STATS
-========================================================= */
-
-.dashboard-stats-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 17px;
-
-    margin-bottom: 30px;
-}
-
-
-.dashboard-stat-card {
-    position: relative;
-    overflow: hidden;
-
-    padding: 24px;
-
-    border:
-        1px solid
-        rgba(255,255,255,.85);
-
-    border-radius: 22px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,.98),
-            rgba(248,250,252,.95)
-        );
-
-    box-shadow:
-        0 12px 32px
-        rgba(15,23,42,.08);
-
-    backdrop-filter:
-        blur(10px);
-
-    transition: .25s;
-}
-
-
-.dashboard-stat-card:hover {
-    transform:
-        translateY(-6px);
-
-    box-shadow:
-        0 22px 45px
-        rgba(15,23,42,.13);
-}
-
-
-.dashboard-stat-card::after {
-    content: "";
-
-    position: absolute;
-
-    width: 110px;
-    height: 110px;
-
-    right: -50px;
-    bottom: -50px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(37,99,235,.06);
-}
-
-
-.dashboard-stat-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-bottom: 16px;
-}
-
-
-.dashboard-stat-head small {
-    color: #64748b;
-
-    font-size: 10px;
-    font-weight: 800;
-
-    text-transform: uppercase;
-
-    letter-spacing: .5px;
-}
-
-
-.dashboard-stat-icon {
-    width: 49px;
-    height: 49px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 15px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #eff6ff,
-            #dbeafe
-        );
-
-    font-size: 23px;
-}
-
-
-.dashboard-stat-card h2 {
-    position: relative;
-    z-index: 2;
-
-    margin:
-        0 0 8px;
-
-    color: #0f172a;
-
-    font-size: 34px;
-    font-weight: 900;
-}
-
-
-.dashboard-stat-card p {
-    position: relative;
-    z-index: 2;
-
-    margin: 0;
-
-    color: #94a3b8;
-
-    font-size: 11px;
-
-    line-height: 1.55;
-}
-
-
-.dashboard-stat-money h2 {
-    color: #059669;
-
-    font-size: 26px;
-}
-
-
-/* =========================================================
-   NOTIFICATION
-========================================================= */
-
-.notification-panel {
-    margin-bottom: 30px;
-
-    padding: 24px;
-
-    border:
-        1px solid #e8eef7;
-
-    border-radius: 23px;
-
-    background:
-        rgba(255,255,255,.96);
-
-    box-shadow:
-        0 12px 35px
-        rgba(15,23,42,.08);
-}
-
-
-.notification-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 15px;
-
-    margin-bottom: 18px;
-
-    flex-wrap: wrap;
-}
-
-
-.notification-header h2 {
-    margin: 0;
-
-    color: #0f172a;
-
-    font-size: 19px;
-}
-
-
-.notification-count {
-    padding:
-        7px 11px;
-
-    border-radius: 30px;
-
-    background: #eff6ff;
-
-    color: #1d4ed8;
-
-    font-size: 9px;
-    font-weight: 800;
-}
-
-
-.notification-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(3, 1fr);
-
-    gap: 13px;
-}
-
-
-.notification-card {
-    display: flex;
-    align-items: center;
-
-    gap: 13px;
-
-    padding: 16px;
-
-    border-radius: 16px;
-
-    border:
-        1px solid #edf2f7;
-
-    background: #f8fafc;
-
-    transition: .22s;
-}
-
-
-.notification-card:hover {
-    transform:
-        translateY(-3px);
-
-    box-shadow:
-        0 10px 25px
-        rgba(15,23,42,.08);
-}
-
-
-.notification-icon {
-    width: 48px;
-    height: 48px;
-
-    flex-shrink: 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 14px;
-
-    font-size: 22px;
-}
-
-
-.notification-payment
-.notification-icon {
-    background: #fff1f2;
-}
-
-
-.notification-ready
-.notification-icon {
-    background: #ecfdf5;
-}
-
-
-.notification-delivery
-.notification-icon {
-    background: #eff6ff;
-}
-
-
-.notification-card strong {
-    display: block;
-
-    color: #0f172a;
-
-    font-size: 13px;
-}
-
-
-.notification-card small {
-    display: block;
-
-    margin-top: 4px;
-
-    color: #64748b;
-
-    font-size: 9px;
-
-    line-height: 1.5;
-}
-
-
-/* =========================================================
-   ANALYSIS
-========================================================= */
-
-.dashboard-analysis-grid {
-    display: grid;
-
-    grid-template-columns:
-        minmax(0, 2fr)
-        minmax(290px, .80fr);
-
-    gap: 21px;
-
-    margin-bottom: 30px;
-}
-
-
-.dashboard-panel {
-    padding: 25px;
-
-    border:
-        1px solid
-        rgba(226,232,240,.96);
-
-    border-radius: 23px;
-
-    background:
-        rgba(255,255,255,.96);
-
-    box-shadow:
-        0 12px 35px
-        rgba(15,23,42,.08);
-}
-
-
-.dashboard-panel-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    gap: 15px;
-
-    margin-bottom: 21px;
-
-    flex-wrap: wrap;
-}
-
-
-.dashboard-panel-header h2 {
-    margin: 0;
-
-    color: #0f172a;
-
-    font-size: 19px;
-    font-weight: 900;
-}
-
-
-.dashboard-panel-header p {
-    margin:
-        6px 0 0;
-
-    color: #94a3b8;
-
-    font-size: 11px;
-}
-
-
-.dashboard-chart-label {
-    padding:
-        7px 11px;
-
-    border-radius: 20px;
-
-    background: #ecfdf5;
-
-    color: #047857;
-
-    font-size: 9px;
-    font-weight: 800;
-}
-
-
-.dashboard-chart-wrapper {
-    position: relative;
-
-    width: 100%;
-    height: 285px;
-}
-
-
-#revenueChart {
-    width: 100%;
-    height: 100%;
-}
-
-
-/* =========================================================
-   TODAY CARDS
-========================================================= */
-
-.dashboard-today {
-    display: flex;
-    flex-direction: column;
-
-    gap: 15px;
-}
-
-
-.dashboard-today-card {
-    position: relative;
-    overflow: hidden;
-
-    padding: 22px;
-
-    border:
-        1px solid #e8eef7;
-
-    border-radius: 21px;
-
-    background:
-        rgba(255,255,255,.97);
-
-    box-shadow:
-        0 10px 28px
-        rgba(15,23,42,.07);
-
-    transition: .25s;
-}
-
-
-.dashboard-today-card:hover {
-    transform:
-        translateY(-4px);
-}
-
-
-.dashboard-today-head {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-
-.dashboard-today-label {
-    color: #64748b;
-
-    font-size: 10px;
-    font-weight: 800;
-
-    text-transform: uppercase;
-}
-
-
-.dashboard-today-icon {
-    width: 45px;
-    height: 45px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 14px;
-
-    background: #eff6ff;
-
-    font-size: 21px;
-}
-
-
-.dashboard-today-card h2 {
-    margin:
-        15px 0 6px;
-
-    color: #0f172a;
-
-    font-size: 31px;
-    font-weight: 900;
-}
-
-
-.dashboard-today-card p {
-    margin: 0;
-
-    color: #94a3b8;
-
-    font-size: 10px;
-}
-
-
-.dashboard-today-income {
-    background:
-        linear-gradient(
-            135deg,
-            white,
-            #f0fdf4
-        );
-}
-
-
-.dashboard-today-income h2 {
-    color: #059669;
-
-    font-size: 25px;
-}
-
-
-/* =========================================================
-   TREND
-========================================================= */
-
-.income-trend {
-    margin-top: 11px;
-
-    display: inline-flex;
-    align-items: center;
-
-    gap: 5px;
-
-    padding:
-        6px 9px;
-
-    border-radius: 20px;
-
-    font-size: 9px;
-    font-weight: 800;
-}
-
-
-.trend-up {
-    background: #dcfce7;
-
-    color: #166534;
-}
-
-
-.trend-down {
-    background: #fee2e2;
-
-    color: #991b1b;
-}
-
-
-.trend-same {
-    background: #f1f5f9;
-
-    color: #475569;
-}
-
-
-/* =========================================================
-   STATUS
-========================================================= */
-
-.dashboard-status-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(7, 1fr);
-
-    gap: 11px;
-
-    margin-bottom: 30px;
-}
-
-
-.dashboard-status-card {
-    padding:
-        19px 10px;
-
-    border:
-        1px solid
-        rgba(226,232,240,.96);
-
-    border-radius: 17px;
-
-    background:
-        rgba(255,255,255,.95);
-
-    box-shadow:
-        0 7px 20px
-        rgba(15,23,42,.06);
-
-    text-align: center;
-
-    transition: .25s;
-}
-
-
-.dashboard-status-card:hover {
-    transform:
-        translateY(-5px);
-
-    box-shadow:
-        0 15px 30px
-        rgba(15,23,42,.10);
-}
-
-
-.dashboard-status-card span {
-    display: block;
-
-    margin-bottom: 7px;
-
-    font-size: 23px;
-}
-
-
-.dashboard-status-card strong {
-    display: block;
-
-    color: #0f172a;
-
-    font-size: 24px;
-    font-weight: 900;
-}
-
-
-.dashboard-status-card small {
-    display: block;
-
-    margin-top: 5px;
-
-    color: #64748b;
-
-    font-size: 8px;
-    font-weight: 700;
-
-    text-transform: uppercase;
-}
-
-
-/* =========================================================
-   BOTTOM
-========================================================= */
-
-.dashboard-bottom-grid {
-    display: grid;
-
-    grid-template-columns:
-        minmax(0, 2fr)
-        minmax(290px, .85fr);
-
-    gap: 21px;
-
-    align-items: start;
-}
-
-
-/* =========================================================
-   TABLE
-========================================================= */
-
-.dashboard-table-responsive {
-    width: 100%;
-
-    overflow-x: auto;
-}
-
-
-.dashboard-table {
-    width: 100%;
-
-    min-width: 700px;
-
-    border-collapse: collapse;
-}
-
-
-.dashboard-table th {
-    padding:
-        13px 11px;
-
-    border-bottom:
-        1px solid #e2e8f0;
-
-    background: #f8fafc;
-
-    color: #64748b;
-
-    text-align: left;
-
-    font-size: 9px;
-    font-weight: 800;
-
-    text-transform: uppercase;
-}
-
-
-.dashboard-table td {
-    padding:
-        15px 11px;
-
-    border-bottom:
-        1px solid #f1f5f9;
-
-    color: #334155;
-
-    font-size: 11px;
-}
-
-
-.dashboard-table tbody tr:hover {
-    background: #f8fafc;
-}
-
-
-.dashboard-transaction-code {
-    color: #2563eb;
-
-    font-weight: 800;
-}
-
-
-.dashboard-total {
-    color: #0f172a;
-
-    font-weight: 800;
-}
-
-
-/* =========================================================
-   BADGES
-========================================================= */
-
-.dashboard-badge {
-    display: inline-flex;
-
-    padding:
-        6px 9px;
-
-    border-radius: 20px;
-
-    font-size: 8px;
-    font-weight: 800;
-}
-
-
-.dashboard-badge-green {
-    background: #dcfce7;
-
-    color: #166534;
-}
-
-
-.dashboard-badge-blue {
-    background: #dbeafe;
-
-    color: #1d4ed8;
-}
-
-
-/* =========================================================
-   BUTTON
-========================================================= */
-
-.dashboard-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    padding:
-        10px 14px;
-
-    border-radius: 10px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #2563eb,
-            #1d4ed8
-        );
-
-    color: white;
-
-    text-decoration: none;
-
-    font-size: 10px;
-    font-weight: 800;
-
-    transition: .2s;
-}
-
-
-.dashboard-btn:hover {
-    transform:
-        translateY(-2px);
-}
-
-
-/* =========================================================
-   QUICK MENU
-========================================================= */
-
-.dashboard-quick-list {
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 10px;
-}
-
-
-.dashboard-quick-action {
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-
-    padding: 14px;
-
-    border:
-        1px solid #edf2f7;
-
-    border-radius: 14px;
-
-    background: #f8fafc;
-
-    color: #0f172a;
-
-    text-decoration: none;
-
-    transition: .22s;
-}
-
-
-.dashboard-quick-action:hover {
-    border-color: #bfdbfe;
-
-    background: #eff6ff;
-
-    transform:
-        translateX(4px);
-}
-
-
-.dashboard-quick-icon {
-    width: 45px;
-    height: 45px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    flex-shrink: 0;
-
-    border-radius: 13px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #dbeafe,
-            #e0f2fe
-        );
-
-    font-size: 21px;
-}
-
-
-.dashboard-quick-action strong {
-    display: block;
-
-    margin-bottom: 4px;
-
-    font-size: 12px;
-}
-
-
-.dashboard-quick-action small {
-    color: #94a3b8;
-
-    font-size: 9px;
-}
-
-
-/* =========================================================
-   PAYMENT WARNING
-========================================================= */
-
-.dashboard-warning {
-    position: relative;
-    overflow: hidden;
-
-    margin-top: 17px;
-
-    padding: 20px;
-
-    border:
-        1px solid #fecdd3;
-
-    border-radius: 17px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #fff1f2,
-            #fff7ed
-        );
-}
-
-
-.dashboard-warning::after {
-    content: "💳";
-
-    position: absolute;
-
-    right: 15px;
-    top: 13px;
-
-    font-size: 43px;
-
-    opacity: .12;
-}
-
-
-.dashboard-warning small {
-    color: #9f1239;
-
-    font-size: 9px;
-    font-weight: 800;
-}
-
-
-.dashboard-warning h2 {
-    margin:
-        8px 0 5px;
-
-    color: #e11d48;
-
-    font-size: 33px;
-}
-
-
-.dashboard-warning p {
-    margin: 0;
-
-    color: #9f1239;
-
-    font-size: 9px;
-
-    line-height: 1.5;
-}
-
-
-.dashboard-empty {
-    padding:
-        40px !important;
-
-    color:
-        #94a3b8 !important;
-
-    text-align:
-        center !important;
-}
-
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width: 1200px) {
-
-    .dashboard-stats-grid {
-        grid-template-columns:
-            repeat(2,1fr);
+    .dashboard-page {
+        min-height: calc(100vh - 120px);
+        padding: 20px;
+        border-radius: 28px;
+
+        background:
+            linear-gradient(
+                rgba(244, 247, 251, .86),
+                rgba(244, 247, 251, .95)
+            ),
+            url("{{ asset('images/laundry-bg.png') }}");
+
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
     }
 
 
-    .notification-grid {
-        grid-template-columns:
-            1fr;
-    }
-
-
-    .dashboard-status-grid {
-        grid-template-columns:
-            repeat(4,1fr);
-    }
-
-
-    .dashboard-bottom-grid {
-        grid-template-columns:
-            1fr;
-    }
-
-}
-
-
-@media(max-width: 1000px) {
-
-    .dashboard-analysis-grid {
-        grid-template-columns:
-            1fr;
-    }
-
-
-    .dashboard-today {
-        display: grid;
-
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-}
-
-
-@media(max-width: 760px) {
-
-    .dashboard-premium {
-        padding: 10px;
-
-        background-attachment:
-            scroll;
-    }
-
+    /* =========================================================
+       HERO
+    ========================================================= */
 
     .dashboard-hero {
-        min-height: auto;
+        position: relative;
+        overflow: hidden;
 
-        padding:
-            30px 23px;
+        min-height: 350px;
 
-        border-radius: 22px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 30px;
+
+        padding: 45px;
+
+        margin-bottom: 28px;
+
+        border-radius: 30px;
+
+        background:
+            linear-gradient(
+                110deg,
+                rgba(7, 30, 75, .97),
+                rgba(37, 99, 235, .88),
+                rgba(14, 165, 233, .60)
+            ),
+            url("{{ asset('images/laundry-bg.png') }}");
+
+        background-size: cover;
+        background-position: center;
+
+        box-shadow:
+            0 25px 60px
+            rgba(15, 23, 42, .22);
+
+        color: white;
     }
 
 
-    .dashboard-laundry-visual {
-        display: none;
+    .dashboard-hero::after {
+        content: "";
+
+        position: absolute;
+
+        width: 380px;
+        height: 380px;
+
+        right: -180px;
+        top: -190px;
+
+        border-radius: 50%;
+
+        background:
+            rgba(255,255,255,.08);
+    }
+
+
+    .hero-content {
+        position: relative;
+        z-index: 3;
+
+        max-width: 780px;
+    }
+
+
+    .hero-top {
+        display: flex;
+        align-items: center;
+
+        gap: 9px;
+
+        flex-wrap: wrap;
+
+        margin-bottom: 22px;
+    }
+
+
+    .hero-badge {
+        display: inline-flex;
+        align-items: center;
+
+        gap: 6px;
+
+        padding: 9px 14px;
+
+        border:
+            1px solid
+            rgba(255,255,255,.22);
+
+        border-radius: 30px;
+
+        background:
+            rgba(255,255,255,.14);
+
+        backdrop-filter:
+            blur(12px);
+
+        color: white;
+
+        text-decoration: none;
+
+        font-size: 11px;
+        font-weight: 700;
+
+        transition: .2s;
+    }
+
+
+    .hero-badge:hover {
+        transform:
+            translateY(-2px);
+
+        background:
+            rgba(255,255,255,.20);
+    }
+
+
+    .hero-notification {
+        background:
+            rgba(251,191,36,.18);
+
+        border-color:
+            rgba(253,224,71,.32);
+
+        color: #fef3c7;
     }
 
 
     .dashboard-hero h1 {
-        font-size: 40px;
+        margin:
+            0 0 18px;
 
-        letter-spacing: -1px;
+        color: white;
+
+        font-size:
+            clamp(
+                44px,
+                5vw,
+                66px
+            );
+
+        font-weight: 900;
+
+        line-height: 1.02;
+
+        letter-spacing: -2px;
     }
 
 
-    .dashboard-hero-description {
-        font-size: 13px;
+    .dashboard-hero h1 span {
+        color: #d7f3ff;
     }
 
 
-    .dashboard-stats-grid {
+    .hero-description {
+        max-width: 700px;
+
+        margin: 0;
+
+        color:
+            rgba(255,255,255,.92);
+
+        font-size: 14px;
+
+        line-height: 1.8;
+    }
+
+
+    .hero-quote {
+        display: inline-block;
+
+        margin-top: 22px;
+
+        padding:
+            14px 18px;
+
+        border-left:
+            4px solid #bae6fd;
+
+        border-radius:
+            0 14px 14px 0;
+
+        background:
+            rgba(255,255,255,.13);
+
+        color: white;
+
+        font-size: 12px;
+        font-weight: 600;
+
+        line-height: 1.7;
+    }
+
+
+    .hero-visual {
+        position: relative;
+        z-index: 3;
+
+        width: 210px;
+        height: 210px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border:
+            1px solid
+            rgba(255,255,255,.27);
+
+        border-radius: 52px;
+
+        background:
+            rgba(255,255,255,.13);
+
+        backdrop-filter:
+            blur(18px);
+
+        font-size: 95px;
+
+        box-shadow:
+            0 25px 45px
+            rgba(0,0,0,.15);
+    }
+
+
+    /* =========================================================
+       SECTION
+    ========================================================= */
+
+    .section-heading {
+        margin:
+            8px 0 17px;
+    }
+
+
+    .section-heading h2 {
+        margin: 0;
+
+        color: #0f172a;
+
+        font-size: 20px;
+        font-weight: 900;
+    }
+
+
+    .section-heading p {
+        margin:
+            5px 0 0;
+
+        color: #64748b;
+
+        font-size: 11px;
+    }
+
+
+    /* =========================================================
+       STAT CARDS
+    ========================================================= */
+
+    .stat-grid {
+        display: grid;
+
         grid-template-columns:
-            1fr;
+            repeat(4, 1fr);
+
+        gap: 16px;
+
+        margin-bottom: 28px;
     }
 
 
-    .dashboard-today {
+    .stat-card {
+        padding: 23px;
+
+        border:
+            1px solid #e5edf7;
+
+        border-radius: 21px;
+
+        background:
+            rgba(255,255,255,.96);
+
+        box-shadow:
+            0 10px 28px
+            rgba(15,23,42,.07);
+
+        transition: .25s;
+    }
+
+
+    .stat-card:hover {
+        transform:
+            translateY(-5px);
+
+        box-shadow:
+            0 18px 38px
+            rgba(15,23,42,.12);
+    }
+
+
+    .stat-card-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        margin-bottom: 15px;
+    }
+
+
+    .stat-card-top small {
+        color: #64748b;
+
+        font-size: 9px;
+        font-weight: 800;
+
+        text-transform: uppercase;
+    }
+
+
+    .stat-icon {
+        width: 48px;
+        height: 48px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 14px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #eff6ff,
+                #dbeafe
+            );
+
+        font-size: 22px;
+    }
+
+
+    .stat-card h2 {
+        margin:
+            0 0 7px;
+
+        color: #0f172a;
+
+        font-size: 32px;
+        font-weight: 900;
+    }
+
+
+    .stat-card p {
+        margin: 0;
+
+        color: #94a3b8;
+
+        font-size: 10px;
+    }
+
+
+    .stat-money h2 {
+        color: #059669;
+
+        font-size: 25px;
+    }
+
+
+    /* =========================================================
+       NOTIFICATION
+    ========================================================= */
+
+    .notification-panel {
+        margin-bottom: 28px;
+
+        padding: 24px;
+
+        border:
+            1px solid #e5edf7;
+
+        border-radius: 22px;
+
+        background:
+            rgba(255,255,255,.96);
+
+        box-shadow:
+            0 10px 30px
+            rgba(15,23,42,.07);
+    }
+
+
+    .notification-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 15px;
+
+        margin-bottom: 18px;
+    }
+
+
+    .notification-header h2 {
+        margin: 0;
+
+        color: #0f172a;
+
+        font-size: 18px;
+        font-weight: 900;
+    }
+
+
+    .notification-count {
+        padding:
+            7px 11px;
+
+        border-radius: 30px;
+
+        background: #eff6ff;
+
+        color: #1d4ed8;
+
+        font-size: 9px;
+        font-weight: 800;
+    }
+
+
+    .notification-grid {
+        display: grid;
+
         grid-template-columns:
-            1fr;
+            repeat(3, 1fr);
+
+        gap: 13px;
     }
 
 
-    .dashboard-status-grid {
-        grid-template-columns:
-            repeat(2,1fr);
+    .notification-card {
+        display: flex;
+        align-items: center;
+
+        gap: 13px;
+
+        padding: 16px;
+
+        border:
+            1px solid #edf2f7;
+
+        border-radius: 16px;
+
+        background: #f8fafc;
+
+        text-decoration: none;
+
+        transition: .22s;
     }
 
 
-    .dashboard-chart-wrapper {
-        height: 225px;
+    .notification-card:hover {
+        transform:
+            translateY(-4px);
+
+        border-color: #bfdbfe;
+
+        background: #eff6ff;
+
+        box-shadow:
+            0 12px 28px
+            rgba(15,23,42,.09);
     }
 
 
-    .dashboard-section-heading h2 {
+    .notification-icon {
+        width: 48px;
+        height: 48px;
+
+        flex-shrink: 0;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        border-radius: 14px;
+
+        font-size: 22px;
+    }
+
+
+    .notification-payment .notification-icon {
+        background: #fff1f2;
+    }
+
+
+    .notification-ready .notification-icon {
+        background: #ecfdf5;
+    }
+
+
+    .notification-delivery .notification-icon {
+        background: #eff6ff;
+    }
+
+
+    .notification-card strong {
+        display: block;
+
+        color: #0f172a;
+
+        font-size: 12px;
+    }
+
+
+    .notification-card small {
+        display: block;
+
+        margin-top: 4px;
+
+        color: #64748b;
+
+        font-size: 9px;
+
+        line-height: 1.5;
+    }
+
+
+    .notification-arrow {
+        margin-left: auto;
+
+        color: #2563eb;
+
         font-size: 18px;
     }
 
-}
+
+    /* =========================================================
+       ANALISIS
+    ========================================================= */
+
+    .analysis-grid {
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 2fr)
+            minmax(280px, .8fr);
+
+        gap: 20px;
+
+        margin-bottom: 28px;
+    }
+
+
+    .panel {
+        padding: 24px;
+
+        border:
+            1px solid #e5edf7;
+
+        border-radius: 22px;
+
+        background:
+            rgba(255,255,255,.97);
+
+        box-shadow:
+            0 10px 30px
+            rgba(15,23,42,.07);
+    }
+
+
+    .panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 12px;
+
+        margin-bottom: 20px;
+
+        flex-wrap: wrap;
+    }
+
+
+    .panel-header h2 {
+        margin: 0;
+
+        color: #0f172a;
+
+        font-size: 18px;
+        font-weight: 900;
+    }
+
+
+    .panel-header p {
+        margin:
+            5px 0 0;
+
+        color: #94a3b8;
+
+        font-size: 10px;
+    }
+
+
+    .chart-wrapper {
+        position: relative;
+
+        width: 100%;
+        height: 280px;
+    }
+
+
+    #revenueChart {
+        width: 100%;
+        height: 100%;
+    }
+
+
+    /* =========================================================
+       TODAY
+    ========================================================= */
+
+    .today-list {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 14px;
+    }
+
+
+    .today-card {
+        padding: 21px;
+
+        border:
+            1px solid #e5edf7;
+
+        border-radius: 19px;
+
+        background: white;
+
+        box-shadow:
+            0 8px 24px
+            rgba(15,23,42,.06);
+    }
+
+
+    .today-card h3 {
+        margin:
+            0 0 12px;
+
+        color: #64748b;
+
+        font-size: 9px;
+
+        text-transform: uppercase;
+    }
+
+
+    .today-card h2 {
+        margin:
+            0 0 7px;
+
+        color: #0f172a;
+
+        font-size: 29px;
+        font-weight: 900;
+    }
+
+
+    .today-income h2 {
+        color: #059669;
+
+        font-size: 24px;
+    }
+
+
+    .today-card p {
+        margin: 0;
+
+        color: #94a3b8;
+
+        font-size: 9px;
+    }
+
+
+    .trend {
+        display: inline-flex;
+
+        margin-top: 10px;
+
+        padding:
+            6px 9px;
+
+        border-radius: 20px;
+
+        font-size: 9px;
+        font-weight: 800;
+    }
+
+
+    .trend-up {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+
+    .trend-down {
+        background: #fee2e2;
+        color: #991b1b;
+    }
+
+
+    .trend-same {
+        background: #f1f5f9;
+        color: #475569;
+    }
+
+
+    /* =========================================================
+       STATUS
+    ========================================================= */
+
+    .status-grid {
+        display: grid;
+
+        grid-template-columns:
+            repeat(7, 1fr);
+
+        gap: 11px;
+
+        margin-bottom: 28px;
+    }
+
+
+    .status-card {
+        padding:
+            18px 9px;
+
+        border:
+            1px solid #e5edf7;
+
+        border-radius: 16px;
+
+        background:
+            rgba(255,255,255,.96);
+
+        text-align: center;
+
+        box-shadow:
+            0 7px 20px
+            rgba(15,23,42,.05);
+
+        transition: .22s;
+    }
+
+
+    .status-card:hover {
+        transform:
+            translateY(-4px);
+    }
+
+
+    .status-card span {
+        display: block;
+
+        font-size: 22px;
+    }
+
+
+    .status-card strong {
+        display: block;
+
+        margin-top: 6px;
+
+        color: #0f172a;
+
+        font-size: 23px;
+        font-weight: 900;
+    }
+
+
+    .status-card small {
+        display: block;
+
+        margin-top: 4px;
+
+        color: #64748b;
+
+        font-size: 8px;
+        font-weight: 700;
+
+        text-transform: uppercase;
+    }
+
+
+    /* =========================================================
+       BOTTOM
+    ========================================================= */
+
+    .bottom-grid {
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 2fr)
+            minmax(290px, .85fr);
+
+        gap: 20px;
+
+        align-items: start;
+    }
+
+
+    /* =========================================================
+       TABLE
+    ========================================================= */
+
+    .table-wrapper {
+        width: 100%;
+
+        overflow-x: auto;
+    }
+
+
+    .dashboard-table {
+        width: 100%;
+
+        min-width: 690px;
+
+        border-collapse: collapse;
+    }
+
+
+    .dashboard-table th {
+        padding:
+            12px 10px;
+
+        border-bottom:
+            1px solid #e2e8f0;
+
+        background: #f8fafc;
+
+        color: #64748b;
+
+        text-align: left;
+
+        font-size: 8px;
+        font-weight: 800;
+
+        text-transform: uppercase;
+    }
+
+
+    .dashboard-table td {
+        padding:
+            14px 10px;
+
+        border-bottom:
+            1px solid #f1f5f9;
+
+        color: #334155;
+
+        font-size: 10px;
+    }
+
+
+    .transaction-code {
+        color: #2563eb;
+
+        font-weight: 800;
+    }
+
+
+    .transaction-total {
+        color: #0f172a;
+
+        font-weight: 800;
+    }
+
+
+    .status-badge {
+        display: inline-flex;
+
+        padding:
+            5px 8px;
+
+        border-radius: 20px;
+
+        font-size: 8px;
+        font-weight: 800;
+    }
+
+
+    .status-success {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+
+    .status-process {
+        background: #dbeafe;
+        color: #1d4ed8;
+    }
+
+
+    /* =========================================================
+       QUICK MENU
+    ========================================================= */
+
+    .quick-list {
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 9px;
+    }
+
+
+    .quick-link {
+        display: flex;
+        align-items: center;
+
+        gap: 11px;
+
+        padding: 13px;
+
+        border:
+            1px solid #edf2f7;
+
+        border-radius: 13px;
+
+        background: #f8fafc;
+
+        color: #0f172a;
+
+        text-decoration: none;
+
+        transition: .2s;
+    }
+
+
+    .quick-link:hover {
+        transform:
+            translateX(4px);
+
+        border-color: #bfdbfe;
+
+        background: #eff6ff;
+    }
+
+
+    .quick-icon {
+        width: 43px;
+        height: 43px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        flex-shrink: 0;
+
+        border-radius: 12px;
+
+        background: #dbeafe;
+
+        font-size: 20px;
+    }
+
+
+    .quick-link strong {
+        display: block;
+
+        margin-bottom: 3px;
+
+        font-size: 11px;
+    }
+
+
+    .quick-link small {
+        color: #94a3b8;
+
+        font-size: 8px;
+    }
+
+
+    /* =========================================================
+       WARNING
+    ========================================================= */
+
+    .payment-warning {
+        display: block;
+
+        position: relative;
+
+        margin-top: 16px;
+
+        padding: 18px;
+
+        border:
+            1px solid #fecdd3;
+
+        border-radius: 16px;
+
+        background:
+            linear-gradient(
+                135deg,
+                #fff1f2,
+                #fff7ed
+            );
+
+        text-decoration: none;
+
+        transition: .2s;
+    }
+
+
+    .payment-warning:hover {
+        transform:
+            translateY(-3px);
+
+        box-shadow:
+            0 12px 25px
+            rgba(225,29,72,.10);
+    }
+
+
+    .payment-warning small {
+        color: #9f1239;
+
+        font-size: 8px;
+        font-weight: 800;
+    }
+
+
+    .payment-warning h2 {
+        margin:
+            7px 0 5px;
+
+        color: #e11d48;
+
+        font-size: 31px;
+    }
+
+
+    .payment-warning p {
+        margin: 0;
+
+        color: #9f1239;
+
+        font-size: 9px;
+    }
+
+
+    .dashboard-btn {
+        display: inline-flex;
+
+        padding:
+            9px 13px;
+
+        border-radius: 9px;
+
+        background: #2563eb;
+
+        color: white;
+
+        text-decoration: none;
+
+        font-size: 9px;
+        font-weight: 800;
+    }
+
+
+    .empty {
+        padding:
+            35px !important;
+
+        text-align:
+            center !important;
+
+        color:
+            #94a3b8 !important;
+    }
+
+
+    @media(max-width: 1200px) {
+
+        .stat-grid {
+            grid-template-columns:
+                repeat(2,1fr);
+        }
+
+
+        .status-grid {
+            grid-template-columns:
+                repeat(4,1fr);
+        }
+
+
+        .bottom-grid {
+            grid-template-columns:
+                1fr;
+        }
+
+    }
+
+
+    @media(max-width: 1000px) {
+
+        .analysis-grid {
+            grid-template-columns:
+                1fr;
+        }
+
+
+        .notification-grid {
+            grid-template-columns:
+                1fr;
+        }
+
+    }
+
+
+    @media(max-width: 760px) {
+
+        .dashboard-page {
+            padding: 10px;
+
+            background-attachment: scroll;
+        }
+
+
+        .dashboard-hero {
+            min-height: auto;
+
+            padding:
+                30px 23px;
+
+            border-radius: 22px;
+        }
+
+
+        .hero-visual {
+            display: none;
+        }
+
+
+        .dashboard-hero h1 {
+            font-size: 40px;
+        }
+
+
+        .stat-grid {
+            grid-template-columns:
+                1fr;
+        }
+
+
+        .status-grid {
+            grid-template-columns:
+                repeat(2,1fr);
+        }
+
+    }
 
 </style>
 
@@ -1453,8 +1196,7 @@
 
 @section('content')
 
-
-<div class="dashboard-premium">
+<div class="dashboard-page">
 
 
     <!-- =====================================================
@@ -1464,17 +1206,17 @@
     <section class="dashboard-hero">
 
 
-        <div class="dashboard-hero-content">
+        <div class="hero-content">
 
 
-            <div class="dashboard-hero-top">
+            <div class="hero-top">
 
 
-                <div class="hero-info-badge">
+                <div class="hero-badge">
 
-                    ☀️
+                    {{ $ikonSapaan ?? '☀️' }}
 
-                    {{ $sapaan }},
+                    {{ $sapaan ?? 'Selamat Datang' }},
 
                     {{
                         auth()->user()->name
@@ -1484,16 +1226,19 @@
                 </div>
 
 
-                <div class="hero-info-badge">
+                <div class="hero-badge">
 
                     📅
 
-                    {{ $tanggalHariIni }}
+                    {{
+                        $tanggalHariIni
+                        ?? now()->translatedFormat('d F Y')
+                    }}
 
                 </div>
 
 
-                <div class="hero-info-badge">
+                <div class="hero-badge">
 
                     🕘
 
@@ -1504,12 +1249,13 @@
                 </div>
 
 
-                @if($totalNotifikasi > 0)
+                @if(($totalNotifikasi ?? 0) > 0)
 
-                    <div
+                    <a
+                        href="{{ route('transaksi.index') }}"
                         class="
-                            hero-info-badge
-                            hero-notification-badge
+                            hero-badge
+                            hero-notification
                         "
                     >
 
@@ -1519,7 +1265,7 @@
 
                         Notifikasi
 
-                    </div>
+                    </a>
 
                 @endif
 
@@ -1540,7 +1286,7 @@
 
 
 
-            <p class="dashboard-hero-description">
+            <p class="hero-description">
 
                 Kelola pelanggan, transaksi, pembayaran,
                 layanan dan proses pengerjaan laundry
@@ -1551,7 +1297,7 @@
 
 
 
-            <div class="dashboard-hero-quote">
+            <div class="hero-quote">
 
                 “Bersih, Wangi, Rapi —
                 Karena Setiap Pakaian Layak Mendapatkan
@@ -1564,16 +1310,8 @@
 
 
 
-        <div class="dashboard-laundry-visual">
-
-            <span>
-                👕
-            </span>
-
-            <small>
-                Laundry Service
-            </small>
-
+        <div class="hero-visual">
+            👕
         </div>
 
 
@@ -1582,40 +1320,36 @@
 
 
     <!-- =====================================================
-         RINGKASAN OPERASIONAL
+         RINGKASAN
     ====================================================== -->
 
-    <div class="dashboard-section-heading">
+    <div class="section-heading">
 
-        <div>
+        <h2>
+            📊 Ringkasan Operasional
+        </h2>
 
-            <h2>
-                📊 Ringkasan Operasional
-            </h2>
-
-            <p>
-                Ringkasan aktivitas utama
-                Tania Mutiara Laundry.
-            </p>
-
-        </div>
+        <p>
+            Ringkasan aktivitas utama
+            Tania Mutiara Laundry.
+        </p>
 
     </div>
 
 
 
-    <div class="dashboard-stats-grid">
+    <div class="stat-grid">
 
 
-        <div class="dashboard-stat-card">
+        <div class="stat-card">
 
-            <div class="dashboard-stat-head">
+            <div class="stat-card-top">
 
                 <small>
                     Total Pelanggan
                 </small>
 
-                <div class="dashboard-stat-icon">
+                <div class="stat-icon">
                     👥
                 </div>
 
@@ -1633,15 +1367,15 @@
 
 
 
-        <div class="dashboard-stat-card">
+        <div class="stat-card">
 
-            <div class="dashboard-stat-head">
+            <div class="stat-card-top">
 
                 <small>
                     Pesanan Aktif
                 </small>
 
-                <div class="dashboard-stat-icon">
+                <div class="stat-icon">
                     🫧
                 </div>
 
@@ -1659,15 +1393,15 @@
 
 
 
-        <div class="dashboard-stat-card">
+        <div class="stat-card">
 
-            <div class="dashboard-stat-head">
+            <div class="stat-card-top">
 
                 <small>
                     Laundry Selesai
                 </small>
 
-                <div class="dashboard-stat-icon">
+                <div class="stat-icon">
                     ✅
                 </div>
 
@@ -1678,27 +1412,22 @@
             </h2>
 
             <p>
-                Pesanan yang sudah selesai diproses.
+                Pesanan yang telah selesai diproses.
             </p>
 
         </div>
 
 
 
-        <div
-            class="
-                dashboard-stat-card
-                dashboard-stat-money
-            "
-        >
+        <div class="stat-card stat-money">
 
-            <div class="dashboard-stat-head">
+            <div class="stat-card-top">
 
                 <small>
                     Total Pendapatan
                 </small>
 
-                <div class="dashboard-stat-icon">
+                <div class="stat-icon">
                     💰
                 </div>
 
@@ -1719,7 +1448,7 @@
             </h2>
 
             <p>
-                Total transaksi berstatus lunas.
+                Transaksi dengan pembayaran Lunas.
             </p>
 
         </div>
@@ -1730,7 +1459,7 @@
 
 
     <!-- =====================================================
-         NOTIFIKASI
+         NOTIFIKASI YANG BISA DIKLIK
     ====================================================== -->
 
     <div class="notification-panel">
@@ -1741,6 +1470,7 @@
             <h2>
                 🔔 Notifikasi Operasional
             </h2>
+
 
             <span class="notification-count">
 
@@ -1757,7 +1487,19 @@
         <div class="notification-grid">
 
 
-            <div
+            <!-- BELUM LUNAS -->
+
+            <a
+                href="{{
+                    route(
+                        'transaksi.index',
+                        [
+                            'status_pembayaran'
+                                => 'Belum Lunas'
+                        ]
+                    )
+                }}"
+
                 class="
                     notification-card
                     notification-payment
@@ -1767,6 +1509,7 @@
                 <div class="notification-icon">
                     💳
                 </div>
+
 
                 <div>
 
@@ -1796,11 +1539,28 @@
 
                 </div>
 
-            </div>
+
+                <div class="notification-arrow">
+                    →
+                </div>
+
+            </a>
 
 
 
-            <div
+            <!-- SIAP DIAMBIL -->
+
+            <a
+                href="{{
+                    route(
+                        'transaksi.index',
+                        [
+                            'status_laundry'
+                                => 'Selesai'
+                        ]
+                    )
+                }}"
+
                 class="
                     notification-card
                     notification-ready
@@ -1810,6 +1570,7 @@
                 <div class="notification-icon">
                     ✅
                 </div>
+
 
                 <div>
 
@@ -1822,17 +1583,34 @@
                     </strong>
 
                     <small>
-                        Laundry berstatus Selesai
-                        dan siap diserahkan kepada pelanggan.
+                        Klik untuk melihat laundry
+                        dengan status Selesai.
                     </small>
 
                 </div>
 
-            </div>
+
+                <div class="notification-arrow">
+                    →
+                </div>
+
+            </a>
 
 
 
-            <div
+            <!-- DIKIRIM -->
+
+            <a
+                href="{{
+                    route(
+                        'transaksi.index',
+                        [
+                            'status_laundry'
+                                => 'Dikirim'
+                        ]
+                    )
+                }}"
+
                 class="
                     notification-card
                     notification-delivery
@@ -1842,6 +1620,7 @@
                 <div class="notification-icon">
                     🚚
                 </div>
+
 
                 <div>
 
@@ -1854,12 +1633,18 @@
                     </strong>
 
                     <small>
-                        Pesanan dengan status pengiriman.
+                        Klik untuk melihat pesanan
+                        dengan status Dikirim.
                     </small>
 
                 </div>
 
-            </div>
+
+                <div class="notification-arrow">
+                    →
+                </div>
+
+            </a>
 
 
         </div>
@@ -1870,37 +1655,30 @@
 
 
     <!-- =====================================================
-         ANALISIS PENDAPATAN
+         ANALISIS
     ====================================================== -->
 
-    <div class="dashboard-section-heading">
+    <div class="section-heading">
 
-        <div>
+        <h2>
+            📈 Analisis Pendapatan
+        </h2>
 
-            <h2>
-                📈 Analisis Pendapatan
-            </h2>
-
-            <p>
-                Pantau perkembangan transaksi
-                dan pendapatan laundry.
-            </p>
-
-        </div>
+        <p>
+            Pantau transaksi dan pendapatan laundry.
+        </p>
 
     </div>
 
 
 
-    <div class="dashboard-analysis-grid">
+    <div class="analysis-grid">
 
 
-        <!-- GRAFIK -->
-
-        <div class="dashboard-panel">
+        <div class="panel">
 
 
-            <div class="dashboard-panel-header">
+            <div class="panel-header">
 
                 <div>
 
@@ -1910,21 +1688,15 @@
 
                     <p>
                         Berdasarkan transaksi
-                        dengan pembayaran Lunas.
+                        berstatus Lunas.
                     </p>
 
                 </div>
 
-
-                <span class="dashboard-chart-label">
-                    ● 7 Hari
-                </span>
-
             </div>
 
 
-
-            <div class="dashboard-chart-wrapper">
+            <div class="chart-wrapper">
 
                 <canvas id="revenueChart"></canvas>
 
@@ -1935,31 +1707,18 @@
 
 
 
-        <!-- TODAY -->
-
-        <div class="dashboard-today">
+        <div class="today-list">
 
 
-            <div class="dashboard-today-card">
+            <div class="today-card">
 
-
-                <div class="dashboard-today-head">
-
-                    <span class="dashboard-today-label">
-                        Transaksi Hari Ini
-                    </span>
-
-                    <div class="dashboard-today-icon">
-                        🧾
-                    </div>
-
-                </div>
-
+                <h3>
+                    🧾 Transaksi Hari Ini
+                </h3>
 
                 <h2>
                     {{ $transaksiHariIni }}
                 </h2>
-
 
                 <p>
 
@@ -1967,35 +1726,19 @@
 
                     {{ $transaksiKemarin }}
 
-                    transaksi.
+                    transaksi
 
                 </p>
-
 
             </div>
 
 
 
-            <div
-                class="
-                    dashboard-today-card
-                    dashboard-today-income
-                "
-            >
+            <div class="today-card today-income">
 
-
-                <div class="dashboard-today-head">
-
-                    <span class="dashboard-today-label">
-                        Pendapatan Hari Ini
-                    </span>
-
-                    <div class="dashboard-today-icon">
-                        💵
-                    </div>
-
-                </div>
-
+                <h3>
+                    💵 Pendapatan Hari Ini
+                </h3>
 
                 <h2>
 
@@ -2010,7 +1753,6 @@
                     }}
 
                 </h2>
-
 
                 <p>
 
@@ -2029,52 +1771,36 @@
                 </p>
 
 
-
                 @if($trenPendapatan === 'naik')
 
-                    <div
-                        class="
-                            income-trend
-                            trend-up
-                        "
-                    >
+                    <span class="trend trend-up">
 
                         ↑
                         {{ $persentasePendapatan }}%
 
                         dibanding kemarin
 
-                    </div>
+                    </span>
 
                 @elseif($trenPendapatan === 'turun')
 
-                    <div
-                        class="
-                            income-trend
-                            trend-down
-                        "
-                    >
+                    <span class="trend trend-down">
 
                         ↓
                         {{ $persentasePendapatan }}%
 
                         dibanding kemarin
 
-                    </div>
+                    </span>
 
                 @else
 
-                    <div
-                        class="
-                            income-trend
-                            trend-same
-                        "
-                    >
+                    <span class="trend trend-same">
 
                         →
                         Pendapatan tetap
 
-                    </div>
+                    </span>
 
                 @endif
 
@@ -2090,32 +1816,28 @@
 
 
     <!-- =====================================================
-         STATUS LAUNDRY
+         STATUS
     ====================================================== -->
 
-    <div class="dashboard-section-heading">
+    <div class="section-heading">
 
-        <div>
+        <h2>
+            🫧 Monitoring Status Laundry
+        </h2>
 
-            <h2>
-                🫧 Monitoring Status Laundry
-            </h2>
-
-            <p>
-                Jumlah transaksi berdasarkan
-                tahapan pengerjaan.
-            </p>
-
-        </div>
+        <p>
+            Jumlah transaksi berdasarkan
+            tahap pengerjaan.
+        </p>
 
     </div>
 
 
 
-    <div class="dashboard-status-grid">
+    <div class="status-grid">
 
 
-        <div class="dashboard-status-card">
+        <div class="status-card">
 
             <span>📥</span>
 
@@ -2130,7 +1852,7 @@
         </div>
 
 
-        <div class="dashboard-status-card">
+        <div class="status-card">
 
             <span>🫧</span>
 
@@ -2145,7 +1867,7 @@
         </div>
 
 
-        <div class="dashboard-status-card">
+        <div class="status-card">
 
             <span>💨</span>
 
@@ -2160,7 +1882,7 @@
         </div>
 
 
-        <div class="dashboard-status-card">
+        <div class="status-card">
 
             <span>👔</span>
 
@@ -2175,7 +1897,7 @@
         </div>
 
 
-        <div class="dashboard-status-card">
+        <div class="status-card">
 
             <span>✅</span>
 
@@ -2190,7 +1912,7 @@
         </div>
 
 
-        <div class="dashboard-status-card">
+        <div class="status-card">
 
             <span>🤝</span>
 
@@ -2205,7 +1927,7 @@
         </div>
 
 
-        <div class="dashboard-status-card">
+        <div class="status-card">
 
             <span>🚚</span>
 
@@ -2225,18 +1947,18 @@
 
 
     <!-- =====================================================
-         TRANSAKSI + MENU CEPAT
+         BOTTOM
     ====================================================== -->
 
-    <div class="dashboard-bottom-grid">
+    <div class="bottom-grid">
 
 
         <!-- TRANSAKSI TERBARU -->
 
-        <div class="dashboard-panel">
+        <div class="panel">
 
 
-            <div class="dashboard-panel-header">
+            <div class="panel-header">
 
                 <div>
 
@@ -2245,8 +1967,7 @@
                     </h2>
 
                     <p>
-                        Aktivitas transaksi terbaru
-                        Tania Mutiara Laundry.
+                        Lima transaksi terbaru.
                     </p>
 
                 </div>
@@ -2263,7 +1984,7 @@
 
 
 
-            <div class="dashboard-table-responsive">
+            <div class="table-wrapper">
 
 
                 <table class="dashboard-table">
@@ -2313,11 +2034,7 @@
 
                             <td>
 
-                                <span
-                                    class="
-                                        dashboard-transaction-code
-                                    "
-                                >
+                                <span class="transaction-code">
 
                                     {{
                                         $transaksi
@@ -2327,7 +2044,6 @@
                                 </span>
 
                             </td>
-
 
 
                             <td>
@@ -2342,7 +2058,6 @@
                             </td>
 
 
-
                             <td>
 
                                 {{
@@ -2355,10 +2070,9 @@
                             </td>
 
 
-
                             <td>
 
-                                <span class="dashboard-total">
+                                <span class="transaction-total">
 
                                     Rp
                                     {{
@@ -2375,14 +2089,12 @@
                             </td>
 
 
-
                             <td>
 
 
                                 @if(
                                     in_array(
-                                        $transaksi
-                                            ->status_laundry,
+                                        $transaksi->status_laundry,
                                         [
                                             'Selesai',
                                             'Diambil',
@@ -2393,8 +2105,8 @@
 
                                     <span
                                         class="
-                                            dashboard-badge
-                                            dashboard-badge-green
+                                            status-badge
+                                            status-success
                                         "
                                     >
 
@@ -2409,8 +2121,8 @@
 
                                     <span
                                         class="
-                                            dashboard-badge
-                                            dashboard-badge-blue
+                                            status-badge
+                                            status-process
                                         "
                                     >
 
@@ -2437,11 +2149,9 @@
 
                             <td
                                 colspan="5"
-                                class="dashboard-empty"
+                                class="empty"
                             >
-
                                 🧺 Belum ada transaksi laundry.
-
                             </td>
 
                         </tr>
@@ -2465,10 +2175,10 @@
 
         <!-- MENU CEPAT -->
 
-        <div class="dashboard-panel">
+        <div class="panel">
 
 
-            <div class="dashboard-panel-header">
+            <div class="panel-header">
 
                 <div>
 
@@ -2477,7 +2187,7 @@
                     </h2>
 
                     <p>
-                        Akses fitur utama dengan cepat.
+                        Akses fitur utama.
                     </p>
 
                 </div>
@@ -2486,15 +2196,15 @@
 
 
 
-            <div class="dashboard-quick-list">
+            <div class="quick-list">
 
 
                 <a
                     href="{{ route('transaksi.index') }}"
-                    class="dashboard-quick-action"
+                    class="quick-link"
                 >
 
-                    <div class="dashboard-quick-icon">
+                    <div class="quick-icon">
                         ➕
                     </div>
 
@@ -2516,10 +2226,10 @@
 
                 <a
                     href="{{ route('pelanggan.index') }}"
-                    class="dashboard-quick-action"
+                    class="quick-link"
                 >
 
-                    <div class="dashboard-quick-icon">
+                    <div class="quick-icon">
                         👤
                     </div>
 
@@ -2530,7 +2240,7 @@
                         </strong>
 
                         <small>
-                            Tambah dan kelola pelanggan
+                            Kelola pelanggan
                         </small>
 
                     </div>
@@ -2541,10 +2251,10 @@
 
                 <a
                     href="{{ route('layanan.index') }}"
-                    class="dashboard-quick-action"
+                    class="quick-link"
                 >
 
-                    <div class="dashboard-quick-icon">
+                    <div class="quick-icon">
                         👕
                     </div>
 
@@ -2555,7 +2265,7 @@
                         </strong>
 
                         <small>
-                            Kelola harga dan layanan
+                            Kelola layanan dan harga
                         </small>
 
                     </div>
@@ -2566,10 +2276,10 @@
 
                 <a
                     href="{{ route('status.index') }}"
-                    class="dashboard-quick-action"
+                    class="quick-link"
                 >
 
-                    <div class="dashboard-quick-icon">
+                    <div class="quick-icon">
                         🔄
                     </div>
 
@@ -2580,7 +2290,7 @@
                         </strong>
 
                         <small>
-                            Pantau proses pengerjaan
+                            Pantau proses laundry
                         </small>
 
                     </div>
@@ -2591,10 +2301,10 @@
 
                 <a
                     href="{{ route('laporan.index') }}"
-                    class="dashboard-quick-action"
+                    class="quick-link"
                 >
 
-                    <div class="dashboard-quick-icon">
+                    <div class="quick-icon">
                         📊
                     </div>
 
@@ -2617,7 +2327,21 @@
 
 
 
-            <div class="dashboard-warning">
+            <!-- WARNING BISA DIKLIK -->
+
+            <a
+                href="{{
+                    route(
+                        'transaksi.index',
+                        [
+                            'status_pembayaran'
+                                => 'Belum Lunas'
+                        ]
+                    )
+                }}"
+
+                class="payment-warning"
+            >
 
                 <small>
                     💳 PEMBAYARAN BELUM LUNAS
@@ -2631,7 +2355,7 @@
 
                 <p>
 
-                    Total tagihan belum dibayar:
+                    Total tagihan:
 
                     <strong>
 
@@ -2647,9 +2371,11 @@
 
                     </strong>
 
+                    — klik untuk melihat.
+
                 </p>
 
-            </div>
+            </a>
 
 
         </div>
@@ -2659,7 +2385,6 @@
 
 
 </div>
-
 
 @endsection
 
@@ -2679,7 +2404,7 @@ document.addEventListener(
         |--------------------------------------------------------------------------
         */
 
-        const clock =
+        const liveClock =
             document.getElementById(
                 'liveClock'
             );
@@ -2691,10 +2416,13 @@ document.addEventListener(
                 new Date();
 
 
-            const time =
+            const jam =
                 now.toLocaleTimeString(
                     'id-ID',
                     {
+                        timeZone:
+                            'Asia/Jakarta',
+
                         hour:
                             '2-digit',
 
@@ -2710,8 +2438,11 @@ document.addEventListener(
                 );
 
 
-            if (clock) {
-                clock.textContent = time;
+            if (liveClock) {
+
+                liveClock.textContent =
+                    jam;
+
             }
         }
 
@@ -2727,7 +2458,7 @@ document.addEventListener(
 
         /*
         |--------------------------------------------------------------------------
-        | GRAFIK
+        | GRAFIK PENDAPATAN
         |--------------------------------------------------------------------------
         */
 
@@ -2747,7 +2478,14 @@ document.addEventListener(
 
 
         const values =
-            @json($grafikPendapatan);
+            @json($grafikPendapatan)
+                .map(
+                    function (value) {
+
+                        return Number(value);
+
+                    }
+                );
 
 
         const ctx =
@@ -2756,24 +2494,13 @@ document.addEventListener(
             );
 
 
-        /*
-        |--------------------------------------------------------------------------
-        | FORMAT RUPIAH
-        |--------------------------------------------------------------------------
-        */
-
-        function formatRupiahShort(value)
+        function formatRupiah(value)
         {
-            value =
-                Number(value);
-
-
-            if (
-                value >= 1000000
-            ) {
+            if (value >= 1000000) {
 
                 return (
-                    'Rp' +
+                    'Rp'
+                    +
                     (
                         value / 1000000
                     ).toFixed(1)
@@ -2784,12 +2511,11 @@ document.addEventListener(
             }
 
 
-            if (
-                value >= 1000
-            ) {
+            if (value >= 1000) {
 
                 return (
-                    'Rp' +
+                    'Rp'
+                    +
                     Math.round(
                         value / 1000
                     )
@@ -2801,17 +2527,12 @@ document.addEventListener(
 
 
             return (
-                'Rp' +
+                'Rp'
+                +
                 value
             );
         }
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | DRAW CHART
-        |--------------------------------------------------------------------------
-        */
 
         function drawChart()
         {
@@ -2869,8 +2590,8 @@ document.addEventListener(
             const padding = {
                 top: 20,
                 right: 20,
-                bottom: 45,
-                left: 65
+                bottom: 42,
+                left: 62
             };
 
 
@@ -2890,39 +2611,23 @@ document.addEventListener(
                 padding.bottom;
 
 
-            const numericValues =
-                values.map(
-                    function (value) {
-
-                        return Number(
-                            value
-                        );
-
-                    }
-                );
-
-
-            const maximumValue =
+            const maxValue =
                 Math.max(
-                    ...numericValues,
+                    ...values,
                     10000
                 );
 
 
-            const roundedMaximum =
+            const roundedMax =
                 Math.ceil(
-                    maximumValue
-                    /
-                    10000
+                    maxValue / 10000
                 )
                 *
                 10000;
 
 
             /*
-            |--------------------------------------------------------------------------
             | GRID
-            |--------------------------------------------------------------------------
             */
 
             ctx.font =
@@ -2982,12 +2687,10 @@ document.addEventListener(
 
 
                 const value =
-                    roundedMaximum
+                    roundedMax
                     -
                     (
-                        roundedMaximum
-                        /
-                        4
+                        roundedMax / 4
                     )
                     *
                     i;
@@ -2998,10 +2701,8 @@ document.addEventListener(
 
 
                 ctx.fillText(
-                    formatRupiahShort(
-                        value
-                    ),
-                    padding.left - 10,
+                    formatRupiah(value),
+                    padding.left - 8,
                     y
                 );
 
@@ -3009,15 +2710,13 @@ document.addEventListener(
 
 
             /*
-            |--------------------------------------------------------------------------
-            | POINTS
-            |--------------------------------------------------------------------------
+            | POINT
             */
 
             const points = [];
 
 
-            numericValues.forEach(
+            values.forEach(
                 function (
                     value,
                     index
@@ -3030,9 +2729,7 @@ document.addEventListener(
                             chartWidth
                             /
                             Math.max(
-                                numericValues.length
-                                -
-                                1,
+                                values.length - 1,
                                 1
                             )
                         )
@@ -3048,7 +2745,7 @@ document.addEventListener(
                         (
                             value
                             /
-                            roundedMaximum
+                            roundedMax
                         )
                         *
                         chartHeight;
@@ -3064,14 +2761,10 @@ document.addEventListener(
 
 
             /*
-            |--------------------------------------------------------------------------
             | AREA
-            |--------------------------------------------------------------------------
             */
 
-            if (
-                points.length > 0
-            ) {
+            if (points.length > 0) {
 
                 const gradient =
                     ctx.createLinearGradient(
@@ -3086,7 +2779,7 @@ document.addEventListener(
 
                 gradient.addColorStop(
                     0,
-                    'rgba(37,99,235,.26)'
+                    'rgba(37,99,235,.25)'
                 );
 
 
@@ -3113,9 +2806,7 @@ document.addEventListener(
                         index
                     ) {
 
-                        if (
-                            index === 0
-                        ) {
+                        if (index === 0) {
 
                             ctx.lineTo(
                                 point.x,
@@ -3178,14 +2869,10 @@ document.addEventListener(
 
 
             /*
-            |--------------------------------------------------------------------------
             | LINE
-            |--------------------------------------------------------------------------
             */
 
-            if (
-                points.length > 0
-            ) {
+            if (points.length > 0) {
 
                 ctx.beginPath();
 
@@ -3196,9 +2883,7 @@ document.addEventListener(
                         index
                     ) {
 
-                        if (
-                            index === 0
-                        ) {
+                        if (index === 0) {
 
                             ctx.moveTo(
                                 point.x,
@@ -3250,19 +2935,13 @@ document.addEventListener(
                     'round';
 
 
-                ctx.lineJoin =
-                    'round';
-
-
                 ctx.stroke();
 
             }
 
 
             /*
-            |--------------------------------------------------------------------------
             | DOT
-            |--------------------------------------------------------------------------
             */
 
             points.forEach(
@@ -3302,9 +2981,7 @@ document.addEventListener(
 
 
             /*
-            |--------------------------------------------------------------------------
-            | LABEL TANGGAL
-            |--------------------------------------------------------------------------
+            | LABEL
             */
 
             ctx.font =
@@ -3336,9 +3013,7 @@ document.addEventListener(
                             chartWidth
                             /
                             Math.max(
-                                labels.length
-                                -
-                                1,
+                                labels.length - 1,
                                 1
                             )
                         )
@@ -3353,7 +3028,7 @@ document.addEventListener(
                         +
                         chartHeight
                         +
-                        15
+                        14
                     );
 
                 }
