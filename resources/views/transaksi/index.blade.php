@@ -2,216 +2,228 @@
 
 @section('title', 'Transaksi - Tania Mutiara Laundry')
 
-
 @push('styles')
 
 <style>
-
-    /* =========================================================
-       TRANSAKSI PREMIUM
-    ========================================================= */
-
-    .transaction-page {
+    .tx-page {
         width: 100%;
     }
 
+    /* =====================================================
+       HERO
+    ====================================================== */
 
-    /* =========================================================
-       HEADER
-    ========================================================= */
+    .tx-hero {
+        position: relative;
+        overflow: hidden;
 
-    .transaction-header {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
 
         gap: 20px;
 
-        margin-bottom: 24px;
+        padding: 30px;
 
-        flex-wrap: wrap;
+        margin-bottom: 22px;
+
+        border-radius: 24px;
+
+        background:
+            linear-gradient(
+                115deg,
+                rgba(8, 35, 85, .97),
+                rgba(37, 99, 235, .91),
+                rgba(14, 165, 233, .72)
+            ),
+            url("{{ asset('images/laundry-bg.png') }}");
+
+        background-size: cover;
+        background-position: center;
+
+        color: white;
+
+        box-shadow:
+            0 18px 45px
+            rgba(15,23,42,.16);
     }
 
+    .tx-hero::after {
+        content: "";
 
-    .transaction-header h1 {
-        margin: 0 0 6px;
+        position: absolute;
 
-        color: #0f172a;
+        width: 250px;
+        height: 250px;
 
-        font-size: 28px;
+        right: -90px;
+        top: -130px;
+
+        border-radius: 50%;
+
+        background:
+            rgba(255,255,255,.09);
     }
 
+    .tx-hero-content {
+        position: relative;
+        z-index: 2;
+    }
 
-    .transaction-header p {
+    .tx-hero h1 {
+        margin:
+            0 0 7px;
+
+        color: white;
+
+        font-size: 29px;
+        font-weight: 900;
+    }
+
+    .tx-hero p {
+        max-width: 700px;
+
         margin: 0;
 
-        color: #64748b;
-
-        font-size: 13px;
-    }
-
-
-    .header-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-
-        padding: 9px 14px;
-
-        background: #eff6ff;
-
-        color: #1d4ed8;
-
-        border:
-            1px solid #bfdbfe;
-
-        border-radius: 30px;
+        color:
+            rgba(255,255,255,.87);
 
         font-size: 11px;
 
-        font-weight: 700;
+        line-height: 1.7;
     }
 
+    .tx-hero-badge {
+        position: relative;
+        z-index: 2;
 
+        padding:
+            10px 14px;
 
-    /* =========================================================
+        border:
+            1px solid
+            rgba(255,255,255,.24);
+
+        border-radius: 30px;
+
+        background:
+            rgba(255,255,255,.15);
+
+        color: white;
+
+        font-size: 9px;
+        font-weight: 800;
+
+        white-space: nowrap;
+    }
+
+    /* =====================================================
        ALERT
-    ========================================================= */
+    ====================================================== */
 
-    .transaction-alert-success {
-        margin-bottom: 20px;
+    .tx-alert {
+        margin-bottom: 18px;
 
-        padding: 13px 15px;
+        padding:
+            13px 15px;
+
+        border-radius: 11px;
+
+        font-size: 11px;
+    }
+
+    .tx-alert-success {
+        border:
+            1px solid #bbf7d0;
 
         background: #dcfce7;
 
         color: #166534;
-
-        border:
-            1px solid #bbf7d0;
-
-        border-radius: 11px;
-
-        font-size: 13px;
     }
 
-
-    .transaction-alert-error {
-        margin-bottom: 20px;
-
-        padding: 14px 16px;
+    .tx-alert-error {
+        border:
+            1px solid #fecaca;
 
         background: #fee2e2;
 
         color: #991b1b;
-
-        border:
-            1px solid #fecaca;
-
-        border-radius: 11px;
-
-        font-size: 12px;
     }
 
-
-    .transaction-alert-error ul {
+    .tx-alert-error ul {
         margin:
             8px 0 0;
 
         padding-left: 20px;
     }
 
+    /* =====================================================
+       STAT
+    ====================================================== */
 
-
-    /* =========================================================
-       STATS
-    ========================================================= */
-
-    .transaction-stats {
+    .tx-stats {
         display: grid;
 
         grid-template-columns:
             repeat(3, 1fr);
 
-        gap: 16px;
+        gap: 14px;
 
-        margin-bottom: 24px;
+        margin-bottom: 22px;
     }
 
-
-    .transaction-stat-card {
+    .tx-stat {
         position: relative;
-
         overflow: hidden;
 
-        padding: 21px;
-
-        background: white;
+        padding: 20px;
 
         border:
-            1px solid #e8eef7;
+            1px solid #e7edf6;
 
         border-radius: 18px;
 
+        background:
+            linear-gradient(
+                145deg,
+                #ffffff,
+                #f8fafc
+            );
+
         box-shadow:
-            0 8px 25px
+            0 8px 24px
             rgba(15,23,42,.06);
 
         transition: .2s;
     }
 
-
-    .transaction-stat-card:hover {
+    .tx-stat:hover {
         transform:
-            translateY(-3px);
+            translateY(-4px);
 
         box-shadow:
             0 15px 32px
             rgba(15,23,42,.10);
     }
 
-
-    .transaction-stat-card::after {
-        content: "";
-
-        position: absolute;
-
-        width: 90px;
-        height: 90px;
-
-        right: -40px;
-        bottom: -40px;
-
-        border-radius: 50%;
-
-        background:
-            rgba(37,99,235,.05);
-    }
-
-
-    .stat-top {
+    .tx-stat-top {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
 
-        margin-bottom: 13px;
+        margin-bottom: 12px;
     }
 
-
-    .stat-top small {
+    .tx-stat-top small {
         color: #64748b;
 
-        font-size: 10px;
-
-        font-weight: 700;
+        font-size: 8px;
+        font-weight: 800;
 
         text-transform: uppercase;
-
-        letter-spacing: .4px;
     }
 
-
-    .stat-icon {
+    .tx-stat-icon {
         width: 42px;
         height: 42px;
 
@@ -231,183 +243,172 @@
         font-size: 19px;
     }
 
-
-    .transaction-stat-card h2 {
+    .tx-stat h2 {
         margin:
             0 0 5px;
 
         color: #0f172a;
 
-        font-size: 26px;
+        font-size: 25px;
+        font-weight: 900;
     }
 
-
-    .transaction-stat-card p {
+    .tx-stat p {
         margin: 0;
 
         color: #94a3b8;
 
-        font-size: 10px;
+        font-size: 9px;
+
+        line-height: 1.5;
     }
 
+    .tx-stat-green h2 {
+        color: #059669;
+    }
 
-    .stat-unpaid h2 {
+    .tx-stat-red h2 {
         color: #e11d48;
     }
 
-
-    .stat-income h2 {
-        color: #059669;
-
-        font-size: 22px;
+    .tx-stat-purple h2 {
+        color: #7c3aed;
     }
 
+    .tx-stat-blue h2 {
+        color: #2563eb;
+    }
 
-
-    /* =========================================================
+    /* =====================================================
        PANEL
-    ========================================================= */
+    ====================================================== */
 
-    .transaction-panel {
-        margin-bottom: 24px;
+    .tx-panel {
+        margin-bottom: 22px;
 
-        padding: 24px;
-
-        background: white;
+        padding: 23px;
 
         border:
-            1px solid #e8eef7;
+            1px solid #e7edf6;
 
         border-radius: 20px;
+
+        background:
+            rgba(255,255,255,.98);
 
         box-shadow:
             0 8px 25px
             rgba(15,23,42,.06);
     }
 
-
-    .panel-title {
+    .tx-panel-title {
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
 
         gap: 15px;
 
-        margin-bottom: 22px;
+        margin-bottom: 20px;
 
         flex-wrap: wrap;
     }
 
-
-    .panel-title h2 {
+    .tx-panel-title h2 {
         margin: 0;
 
         color: #0f172a;
 
-        font-size: 18px;
+        font-size: 17px;
+        font-weight: 900;
     }
 
-
-    .panel-title p {
+    .tx-panel-title p {
         margin:
             5px 0 0;
 
         color: #94a3b8;
 
-        font-size: 10px;
+        font-size: 9px;
     }
 
-
-
-    /* =========================================================
+    /* =====================================================
        FORM
-    ========================================================= */
+    ====================================================== */
 
-    .transaction-form-grid {
+    .tx-form-grid {
         display: grid;
 
         grid-template-columns:
             repeat(2, 1fr);
 
-        gap: 17px;
+        gap: 15px;
     }
 
-
-    .transaction-form-group {
-        margin-bottom: 3px;
-    }
-
-
-    .transaction-form-group.full {
+    .tx-group.full {
         grid-column:
             1 / -1;
     }
 
-
-    .transaction-form-group label {
+    .tx-group label {
         display: block;
 
-        margin-bottom: 7px;
+        margin-bottom: 6px;
 
         color: #334155;
 
-        font-size: 12px;
-
-        font-weight: 700;
+        font-size: 10px;
+        font-weight: 800;
     }
 
-
-    .transaction-form-group input,
-    .transaction-form-group select,
-    .transaction-form-group textarea {
+    .tx-group input,
+    .tx-group select,
+    .tx-group textarea {
         width: 100%;
 
-        padding: 11px 12px;
-
-        background: #fff;
+        padding:
+            10px 11px;
 
         border:
             1px solid #cbd5e1;
 
         border-radius: 9px;
 
-        outline: none;
+        background: white;
 
         color: #1e293b;
 
-        font-size: 12px;
+        outline: none;
+
+        font-size: 10px;
 
         transition: .2s;
     }
 
-
-    .transaction-form-group input:focus,
-    .transaction-form-group select:focus,
-    .transaction-form-group textarea:focus {
+    .tx-group input:focus,
+    .tx-group select:focus,
+    .tx-group textarea:focus {
         border-color: #2563eb;
 
         box-shadow:
             0 0 0 3px
-            rgba(37,99,235,.09);
+            rgba(37,99,235,.08);
     }
 
-
-    .transaction-form-group textarea {
+    .tx-group textarea {
         resize: vertical;
     }
 
-
-
-    /* =========================================================
+    /* =====================================================
        TOTAL
-    ========================================================= */
+    ====================================================== */
 
-    .total-preview-box {
-        position: relative;
+    .tx-total-box {
+        padding: 18px;
 
-        overflow: hidden;
+        border:
+            1px solid #bfdbfe;
 
-        padding: 19px;
+        border-radius: 14px;
 
         background:
             linear-gradient(
@@ -415,66 +416,56 @@
                 #eff6ff,
                 #f0f9ff
             );
-
-        border:
-            1px solid #bfdbfe;
-
-        border-radius: 14px;
     }
 
-
-    .total-preview-box small {
+    .tx-total-box small {
         color: #64748b;
 
-        font-size: 10px;
-
-        font-weight: 700;
+        font-size: 8px;
+        font-weight: 800;
 
         text-transform: uppercase;
     }
 
-
-    .total-preview-box h2 {
+    .tx-total-box h2 {
         margin:
             7px 0 0;
 
         color: #1d4ed8;
 
-        font-size: 27px;
+        font-size: 26px;
+        font-weight: 900;
     }
 
-
-
-    /* =========================================================
+    /* =====================================================
        QRIS
-    ========================================================= */
+    ====================================================== */
 
-    .qris-box {
+    .tx-qris {
         display: none;
 
-        padding: 20px;
-
-        background: #f8fafc;
+        padding: 19px;
 
         border:
             2px dashed #cbd5e1;
 
         border-radius: 14px;
 
+        background: #f8fafc;
+
         text-align: center;
     }
 
-
-    .qris-box img {
-        max-width: 180px;
+    .tx-qris img {
+        width: 170px;
+        max-width: 100%;
 
         border-radius: 10px;
     }
 
-
-    .qris-placeholder {
-        width: 150px;
-        height: 150px;
+    .tx-qris-placeholder {
+        width: 145px;
+        height: 145px;
 
         margin:
             0 auto 10px;
@@ -483,235 +474,229 @@
         align-items: center;
         justify-content: center;
 
-        background: white;
-
         border:
             2px solid #0f172a;
 
-        border-radius: 8px;
+        border-radius: 9px;
+
+        background: white;
 
         color: #0f172a;
 
-        font-size: 23px;
-
-        font-weight: 800;
+        font-size: 22px;
+        font-weight: 900;
     }
 
-
-    .qris-box small {
+    .tx-qris small {
         color: #64748b;
 
-        font-size: 10px;
+        font-size: 9px;
     }
 
-
-
-    /* =========================================================
+    /* =====================================================
        BUTTON
-    ========================================================= */
+    ====================================================== */
 
-    .transaction-btn {
+    .tx-btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
 
         gap: 5px;
 
-        padding: 9px 13px;
+        padding:
+            9px 12px;
 
         border: none;
 
-        border-radius: 9px;
+        border-radius: 8px;
 
         cursor: pointer;
 
         text-decoration: none;
 
-        font-size: 10px;
-
-        font-weight: 700;
+        font-size: 9px;
+        font-weight: 800;
 
         transition: .2s;
     }
 
-
-    .transaction-btn:hover {
+    .tx-btn:hover {
         transform:
             translateY(-1px);
     }
 
-
-    .btn-primary {
+    .tx-btn-primary {
         background: #2563eb;
-
         color: white;
     }
 
-
-    .btn-primary:hover {
-        background: #1d4ed8;
-    }
-
-
-    .btn-info {
-        background: #0ea5e9;
-
-        color: white;
-    }
-
-
-    .btn-success {
+    .tx-btn-success {
         background: #16a34a;
-
         color: white;
     }
 
+    .tx-btn-info {
+        background: #0ea5e9;
+        color: white;
+    }
 
-    .btn-warning {
+    .tx-btn-warning {
         background: #f59e0b;
-
         color: white;
     }
 
-
-    .btn-danger {
+    .tx-btn-danger {
         background: #dc2626;
-
         color: white;
     }
 
-
-    .btn-secondary {
+    .tx-btn-secondary {
         background: #64748b;
-
         color: white;
     }
 
+    .tx-submit {
+        margin-top: 17px;
 
-    .btn-save {
-        margin-top: 18px;
+        padding:
+            12px 17px;
 
-        padding: 12px 18px;
-
-        font-size: 12px;
+        font-size: 10px;
     }
 
-
-
-    /* =========================================================
+    /* =====================================================
        FILTER
-    ========================================================= */
+    ====================================================== */
 
-    .filter-box {
+    .tx-filter {
         display: grid;
 
         grid-template-columns:
-            minmax(220px, 2fr)
-            minmax(160px, 1fr)
-            minmax(170px, 1fr)
-            auto;
+            minmax(180px, 1.5fr)
+            repeat(5, minmax(120px, 1fr));
 
-        gap: 10px;
+        gap: 9px;
 
         align-items: end;
 
-        margin-bottom: 20px;
+        margin-bottom: 15px;
 
         padding: 15px;
-
-        background: #f8fafc;
 
         border:
             1px solid #edf2f7;
 
         border-radius: 14px;
+
+        background: #f8fafc;
     }
 
-
-    .filter-group label {
+    .tx-filter-group label {
         display: block;
 
-        margin-bottom: 6px;
+        margin-bottom: 5px;
 
         color: #64748b;
 
-        font-size: 9px;
-
-        font-weight: 700;
+        font-size: 8px;
+        font-weight: 800;
 
         text-transform: uppercase;
     }
 
-
-    .filter-group input,
-    .filter-group select {
+    .tx-filter-group input,
+    .tx-filter-group select {
         width: 100%;
 
-        padding: 9px 10px;
-
-        background: white;
+        padding:
+            9px 9px;
 
         border:
             1px solid #cbd5e1;
 
         border-radius: 8px;
 
+        background: white;
+
         outline: none;
 
-        font-size: 11px;
+        font-size: 9px;
     }
 
+    .tx-filter-actions {
+        grid-column:
+            1 / -1;
 
-    .filter-actions {
         display: flex;
+        justify-content: flex-end;
 
-        gap: 6px;
+        gap: 7px;
+
+        padding-top: 3px;
     }
 
+    .tx-filter-result {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
+        gap: 10px;
 
-    /* =========================================================
+        margin-bottom: 15px;
+
+        padding:
+            10px 12px;
+
+        border-radius: 10px;
+
+        background: #eff6ff;
+
+        color: #1e40af;
+
+        font-size: 9px;
+    }
+
+    /* =====================================================
        TABLE
-    ========================================================= */
+    ====================================================== */
 
-    .transaction-table-wrapper {
+    .tx-table-wrapper {
         width: 100%;
 
         overflow-x: auto;
     }
 
-
-    .transaction-table {
+    .tx-table {
         width: 100%;
 
-        min-width: 1250px;
+        min-width: 1450px;
 
         border-collapse: collapse;
     }
 
-
-    .transaction-table th {
-        padding: 11px;
-
-        background: #f8fafc;
+    .tx-table th {
+        padding:
+            11px 9px;
 
         border-bottom:
             1px solid #e2e8f0;
+
+        background: #f8fafc;
 
         color: #64748b;
 
         text-align: left;
 
-        font-size: 9px;
+        font-size: 8px;
+        font-weight: 800;
 
         text-transform: uppercase;
-
-        letter-spacing: .3px;
     }
 
-
-    .transaction-table td {
-        padding: 13px 11px;
+    .tx-table td {
+        padding:
+            12px 9px;
 
         border-bottom:
             1px solid #f1f5f9;
@@ -720,140 +705,109 @@
 
         vertical-align: middle;
 
-        font-size: 11px;
+        font-size: 9px;
     }
 
-
-    .transaction-table tbody tr:hover {
+    .tx-table tbody tr:hover {
         background: #f8fafc;
     }
 
-
-    .transaction-code {
+    .tx-code {
         color: #2563eb;
+
+        font-weight: 900;
+    }
+
+    .tx-customer {
+        color: #0f172a;
 
         font-weight: 800;
     }
 
-
-    .customer-name {
-        color: #0f172a;
-
-        font-weight: 700;
-    }
-
-
-    .customer-phone {
+    .tx-phone {
         display: block;
 
         margin-top: 3px;
 
         color: #94a3b8;
 
-        font-size: 9px;
+        font-size: 8px;
     }
 
-
-    .transaction-total {
+    .tx-total {
         color: #0f172a;
 
-        font-weight: 800;
+        font-weight: 900;
     }
 
-
-
-    /* =========================================================
+    /* =====================================================
        BADGE
-    ========================================================= */
+    ====================================================== */
 
-    .transaction-badge {
+    .tx-badge {
         display: inline-flex;
         align-items: center;
 
-        padding: 5px 9px;
+        padding:
+            5px 8px;
 
         border-radius: 20px;
 
         font-size: 8px;
-
-        font-weight: 700;
+        font-weight: 800;
     }
 
-
-    .badge-green {
+    .tx-green {
         background: #dcfce7;
-
         color: #166534;
     }
 
-
-    .badge-red {
+    .tx-red {
         background: #fee2e2;
-
         color: #991b1b;
     }
 
-
-    .badge-blue {
+    .tx-blue {
         background: #dbeafe;
-
         color: #1d4ed8;
     }
 
-
-    .badge-orange {
+    .tx-orange {
         background: #ffedd5;
-
         color: #9a3412;
     }
 
-
-    .badge-purple {
-        background: #f3e8ff;
-
-        color: #7e22ce;
-    }
-
-
-
-    /* =========================================================
+    /* =====================================================
        PAYMENT
-    ========================================================= */
+    ====================================================== */
 
-    .payment-action {
-        margin-top: 8px;
-    }
-
-
-    .payment-form {
+    .tx-payment-form {
         display: flex;
+        align-items: center;
 
         gap: 5px;
 
-        align-items: center;
+        margin-top: 7px;
     }
 
+    .tx-payment-form select {
+        width: 85px;
 
-    .payment-form select {
-        width: 90px;
-
-        padding: 7px;
+        padding: 6px;
 
         border:
             1px solid #cbd5e1;
 
         border-radius: 7px;
 
-        font-size: 9px;
+        font-size: 8px;
     }
 
+    /* =====================================================
+       STATUS
+    ====================================================== */
 
-
-    /* =========================================================
-       STATUS SELECT
-    ========================================================= */
-
-    .status-select {
+    .tx-status-select {
         min-width: 115px;
 
         padding: 7px;
@@ -865,22 +819,17 @@
 
         background: white;
 
-        color: #334155;
-
-        font-size: 9px;
+        font-size: 8px;
 
         cursor: pointer;
     }
 
-
-
-    /* =========================================================
+    /* =====================================================
        ACTION
-    ========================================================= */
+    ====================================================== */
 
-    .transaction-action {
+    .tx-actions {
         display: flex;
-
         align-items: center;
 
         gap: 5px;
@@ -888,137 +837,133 @@
         flex-wrap: wrap;
     }
 
-
-    .transaction-action form {
+    .tx-actions form {
         margin: 0;
     }
 
+    .tx-empty {
+        padding:
+            38px !important;
 
+        color:
+            #94a3b8 !important;
 
-    /* =========================================================
-       EMPTY
-    ========================================================= */
-
-    .empty-transaction {
-        padding: 35px !important;
-
-        text-align: center !important;
-
-        color: #94a3b8 !important;
+        text-align:
+            center !important;
     }
 
-
-
-    /* =========================================================
+    /* =====================================================
        RESPONSIVE
-    ========================================================= */
+    ====================================================== */
 
-    @media(max-width: 1100px) {
+    @media(max-width: 1250px) {
 
-        .transaction-stats {
+        .tx-stats {
             grid-template-columns:
                 repeat(2, 1fr);
         }
 
-
-        .filter-box {
+        .tx-filter {
             grid-template-columns:
                 repeat(2, 1fr);
         }
-
-
-        .filter-actions {
-            grid-column:
-                1 / -1;
-        }
-
     }
-
 
     @media(max-width: 700px) {
 
-        .transaction-stats {
+        .tx-hero {
+            align-items: flex-start;
+            flex-direction: column;
+
+            padding:
+                24px 20px;
+        }
+
+        .tx-hero h1 {
+            font-size: 23px;
+        }
+
+        .tx-hero-badge {
+            width: 100%;
+
+            text-align: center;
+        }
+
+        .tx-stats {
             grid-template-columns:
                 1fr;
         }
 
-
-        .transaction-form-grid {
+        .tx-form-grid {
             grid-template-columns:
                 1fr;
         }
 
-
-        .transaction-form-group.full {
-            grid-column:
-                auto;
+        .tx-group.full {
+            grid-column: auto;
         }
 
-
-        .filter-box {
+        .tx-filter {
             grid-template-columns:
                 1fr;
         }
 
+        .tx-filter-actions {
+            grid-column: auto;
 
-        .filter-actions {
-            grid-column:
-                auto;
+            justify-content: flex-start;
+
+            flex-wrap: wrap;
         }
 
+        .tx-filter-result {
+            align-items: flex-start;
+            flex-direction: column;
+        }
     }
-
 </style>
 
 @endpush
 
 
-
 @section('content')
 
-
-<div class="transaction-page">
-
+<div class="tx-page">
 
     <!-- =====================================================
-         HEADER
+         HERO
     ====================================================== -->
 
-    <div class="transaction-header">
+    <div class="tx-hero">
 
-
-        <div>
+        <div class="tx-hero-content">
 
             <h1>
                 🧾 Transaksi Laundry
             </h1>
 
             <p>
-                Kelola pesanan, pembayaran, pengiriman,
-                status laundry dan cetak struk pelanggan.
+                Kelola transaksi pelanggan, pembayaran,
+                pengiriman, proses laundry dan struk
+                Tania Mutiara Laundry dalam satu halaman.
             </p>
 
         </div>
 
-
-        <div class="header-badge">
-
-            🧺 Sistem Transaksi Laundry
-
+        <div class="tx-hero-badge">
+            🧺 Sistem Transaksi Aktif
         </div>
-
 
     </div>
 
 
-
     <!-- =====================================================
-         ALERT SUCCESS
+         ALERT
     ====================================================== -->
 
     @if(session('success'))
 
-        <div class="transaction-alert-success">
+        <div class="tx-alert tx-alert-success">
 
             ✓ {{ session('success') }}
 
@@ -1027,17 +972,12 @@
     @endif
 
 
-
-    <!-- =====================================================
-         VALIDATION ERROR
-    ====================================================== -->
-
     @if($errors->any())
 
-        <div class="transaction-alert-error">
+        <div class="tx-alert tx-alert-error">
 
             <strong>
-                Data transaksi belum benar.
+                ⚠ Ada data yang perlu diperbaiki.
             </strong>
 
             <ul>
@@ -1057,95 +997,160 @@
     @endif
 
 
-
     <!-- =====================================================
-         STATS
+         STATISTIK
     ====================================================== -->
 
-    <div class="transaction-stats">
+    <div class="tx-stats">
 
+        <div class="tx-stat">
 
-        <!-- TOTAL -->
-
-        <div class="transaction-stat-card">
-
-
-            <div class="stat-top">
+            <div class="tx-stat-top">
 
                 <small>
                     Total Transaksi
                 </small>
 
-                <div class="stat-icon">
+                <div class="tx-stat-icon">
                     🧾
                 </div>
 
             </div>
 
-
             <h2>
                 {{ $totalTransaksi }}
             </h2>
 
-
             <p>
-                Seluruh transaksi laundry
+                Seluruh transaksi yang tersimpan.
             </p>
-
 
         </div>
 
 
+        <div class="tx-stat tx-stat-purple">
 
-        <!-- BELUM LUNAS -->
+            <div class="tx-stat-top">
 
-        <div class="transaction-stat-card stat-unpaid">
+                <small>
+                    Transaksi Hari Ini
+                </small>
+
+                <div class="tx-stat-icon">
+                    📅
+                </div>
+
+            </div>
+
+            <h2>
+                {{ $transaksiHariIni }}
+            </h2>
+
+            <p>
+                Pesanan yang masuk hari ini.
+            </p>
+
+        </div>
 
 
-            <div class="stat-top">
+        <div class="tx-stat tx-stat-blue">
+
+            <div class="tx-stat-top">
+
+                <small>
+                    Sedang Diproses
+                </small>
+
+                <div class="tx-stat-icon">
+                    🫧
+                </div>
+
+            </div>
+
+            <h2>
+                {{ $transaksiAktif }}
+            </h2>
+
+            <p>
+                Laundry yang belum diselesaikan.
+            </p>
+
+        </div>
+
+
+        <div class="tx-stat tx-stat-green">
+
+            <div class="tx-stat-top">
+
+                <small>
+                    Sudah Lunas
+                </small>
+
+                <div class="tx-stat-icon">
+                    ✅
+                </div>
+
+            </div>
+
+            <h2>
+                {{ $totalLunas }}
+            </h2>
+
+            <p>
+                Transaksi yang telah dibayar.
+            </p>
+
+        </div>
+
+
+        <div class="tx-stat tx-stat-red">
+
+            <div class="tx-stat-top">
 
                 <small>
                     Belum Lunas
                 </small>
 
-                <div class="stat-icon">
+                <div class="tx-stat-icon">
                     💳
                 </div>
 
             </div>
 
-
             <h2>
                 {{ $belumLunas }}
             </h2>
 
-
             <p>
-                Transaksi menunggu pembayaran
-            </p>
 
+                Tagihan Rp
+                {{
+                    number_format(
+                        $nominalBelumLunas,
+                        0,
+                        ',',
+                        '.'
+                    )
+                }}
+
+            </p>
 
         </div>
 
 
+        <div class="tx-stat tx-stat-green">
 
-        <!-- PENDAPATAN -->
-
-        <div class="transaction-stat-card stat-income">
-
-
-            <div class="stat-top">
+            <div class="tx-stat-top">
 
                 <small>
-                    Pendapatan Lunas
+                    Total Pendapatan
                 </small>
 
-                <div class="stat-icon">
+                <div class="tx-stat-icon">
                     💰
                 </div>
 
             </div>
-
 
             <h2>
 
@@ -1161,27 +1166,22 @@
 
             </h2>
 
-
             <p>
-                Total transaksi yang sudah dibayar
+                Dari seluruh transaksi Lunas.
             </p>
 
-
         </div>
-
 
     </div>
 
 
-
     <!-- =====================================================
-         FORM TAMBAH TRANSAKSI
+         TAMBAH TRANSAKSI
     ====================================================== -->
 
-    <div class="transaction-panel">
+    <div class="tx-panel">
 
-
-        <div class="panel-title">
+        <div class="tx-panel-title">
 
             <div>
 
@@ -1190,7 +1190,7 @@
                 </h2>
 
                 <p>
-                    Masukkan data pesanan laundry pelanggan.
+                    Isi data pesanan pelanggan.
                 </p>
 
             </div>
@@ -1198,26 +1198,24 @@
         </div>
 
 
-
         <form
-            method="POST"
             action="{{ route('transaksi.store') }}"
+            method="POST"
+            id="transactionForm"
         >
 
             @csrf
 
 
-            <div class="transaction-form-grid">
-
+            <div class="tx-form-grid">
 
                 <!-- PELANGGAN -->
 
-                <div class="transaction-form-group">
+                <div class="tx-group">
 
                     <label>
                         👤 Pelanggan
                     </label>
-
 
                     <select
                         name="pelanggan_id"
@@ -1227,7 +1225,6 @@
                         <option value="">
                             -- Pilih Pelanggan --
                         </option>
-
 
                         @foreach($pelanggans as $pelanggan)
 
@@ -1245,7 +1242,9 @@
                                 {{ $pelanggan->nama }}
 
                                 @if($pelanggan->no_hp)
+
                                     - {{ $pelanggan->no_hp }}
+
                                 @endif
 
                             </option>
@@ -1257,15 +1256,13 @@
                 </div>
 
 
-
                 <!-- LAYANAN -->
 
-                <div class="transaction-form-group">
+                <div class="tx-group">
 
                     <label>
                         👕 Layanan
                     </label>
-
 
                     <select
                         name="layanan_id"
@@ -1280,12 +1277,10 @@
                             -- Pilih Layanan --
                         </option>
 
-
                         @foreach($layanans as $layanan)
 
                             <option
                                 value="{{ $layanan->id }}"
-
                                 data-harga="{{ $layanan->harga }}"
 
                                 {{
@@ -1299,6 +1294,7 @@
                                 {{ $layanan->nama_layanan }}
 
                                 -
+
                                 Rp
                                 {{
                                     number_format(
@@ -1318,22 +1314,21 @@
                 </div>
 
 
-
                 <!-- BERAT -->
 
-                <div class="transaction-form-group">
+                <div class="tx-group">
 
                     <label>
                         ⚖️ Berat Laundry (Kg)
                     </label>
 
-
                     <input
                         type="number"
                         name="berat"
                         id="berat"
-                        step="0.1"
                         min="0.1"
+                        max="1000"
+                        step="0.1"
                         value="{{ old('berat') }}"
                         placeholder="Contoh: 3.5"
                         required
@@ -1342,15 +1337,13 @@
                 </div>
 
 
+                <!-- PERKIRAAN SELESAI -->
 
-                <!-- TANGGAL SELESAI -->
-
-                <div class="transaction-form-group">
+                <div class="tx-group">
 
                     <label>
                         📅 Perkiraan Selesai
                     </label>
-
 
                     <input
                         type="date"
@@ -1361,19 +1354,18 @@
                 </div>
 
 
-
                 <!-- PENGAMBILAN -->
 
-                <div class="transaction-form-group">
+                <div class="tx-group">
 
                     <label>
                         🚚 Jenis Pengambilan
                     </label>
 
-
                     <select
                         name="jenis_pengambilan"
                         id="jenisPengambilan"
+                        required
                     >
 
                         <option
@@ -1389,9 +1381,8 @@
                                 : ''
                             }}
                         >
-                            Ambil Sendiri
+                            🏠 Ambil Sendiri
                         </option>
-
 
                         <option
                             value="kirim"
@@ -1403,7 +1394,7 @@
                                 : ''
                             }}
                         >
-                            Kirim ke Alamat
+                            🚚 Kirim ke Alamat
                         </option>
 
                     </select>
@@ -1411,11 +1402,10 @@
                 </div>
 
 
-
                 <!-- ALAMAT -->
 
                 <div
-                    class="transaction-form-group"
+                    class="tx-group"
                     id="alamatBox"
                     style="display:none;"
                 >
@@ -1424,29 +1414,28 @@
                         📍 Alamat Pengiriman
                     </label>
 
-
                     <textarea
                         name="alamat_kirim"
+                        id="alamatKirim"
                         rows="2"
-                        placeholder="Masukkan alamat pengiriman"
+                        placeholder="Masukkan alamat lengkap pengiriman"
                     >{{ old('alamat_kirim') }}</textarea>
 
                 </div>
 
 
-
                 <!-- CARA BAYAR -->
 
-                <div class="transaction-form-group">
+                <div class="tx-group">
 
                     <label>
-                        💳 Pembayaran
+                        💳 Cara Pembayaran
                     </label>
-
 
                     <select
                         name="cara_bayar"
                         id="caraBayar"
+                        required
                     >
 
                         <option
@@ -1464,7 +1453,6 @@
                         >
                             Langsung Bayar
                         </option>
-
 
                         <option
                             value="nanti"
@@ -1484,11 +1472,10 @@
                 </div>
 
 
-
-                <!-- METODE PEMBAYARAN -->
+                <!-- METODE -->
 
                 <div
-                    class="transaction-form-group"
+                    class="tx-group"
                     id="metodeBox"
                 >
 
@@ -1496,69 +1483,49 @@
                         💵 Metode Pembayaran
                     </label>
 
-
                     <select
                         name="metode_pembayaran"
                         id="metodePembayaran"
                     >
 
-                        <option
-                            value="Tunai"
+                        @foreach([
+                            'Tunai',
+                            'Transfer',
+                            'QRIS'
+                        ] as $metode)
 
-                            {{
-                                old(
-                                    'metode_pembayaran',
-                                    'Tunai'
-                                )
-                                === 'Tunai'
-                                ? 'selected'
-                                : ''
-                            }}
-                        >
-                            Tunai
-                        </option>
+                            <option
+                                value="{{ $metode }}"
 
+                                {{
+                                    old(
+                                        'metode_pembayaran',
+                                        'Tunai'
+                                    )
+                                    === $metode
+                                    ? 'selected'
+                                    : ''
+                                }}
+                            >
 
-                        <option
-                            value="Transfer"
+                                {{ $metode }}
 
-                            {{
-                                old('metode_pembayaran')
-                                === 'Transfer'
-                                ? 'selected'
-                                : ''
-                            }}
-                        >
-                            Transfer
-                        </option>
+                            </option>
 
-
-                        <option
-                            value="QRIS"
-
-                            {{
-                                old('metode_pembayaran')
-                                === 'QRIS'
-                                ? 'selected'
-                                : ''
-                            }}
-                        >
-                            QRIS
-                        </option>
+                        @endforeach
 
                     </select>
 
                 </div>
 
 
-
                 <!-- QRIS -->
 
                 <div
                     class="
-                        transaction-form-group
+                        tx-group
                         full
-                        qris-box
+                        tx-qris
                     "
                     id="qrisBox"
                 >
@@ -1572,7 +1539,11 @@
                     )
 
                         <img
-                            src="{{ asset('images/qris.png') }}"
+                            src="{{
+                                asset(
+                                    'images/qris.png'
+                                )
+                            }}"
                             alt="QRIS Tania Mutiara Laundry"
                         >
 
@@ -1584,12 +1555,12 @@
 
                     @else
 
-                        <div class="qris-placeholder">
+                        <div class="tx-qris-placeholder">
                             QRIS
                         </div>
 
                         <small>
-                            Tambahkan gambar QRIS ke
+                            Simpan gambar QRIS sebagai
                             public/images/qris.png
                         </small>
 
@@ -1598,20 +1569,13 @@
                 </div>
 
 
-
                 <!-- CATATAN -->
 
-                <div
-                    class="
-                        transaction-form-group
-                        full
-                    "
-                >
+                <div class="tx-group full">
 
                     <label>
                         📝 Catatan
                     </label>
-
 
                     <textarea
                         name="catatan"
@@ -1622,17 +1586,11 @@
                 </div>
 
 
-
                 <!-- TOTAL -->
 
-                <div
-                    class="
-                        transaction-form-group
-                        full
-                    "
-                >
+                <div class="tx-group full">
 
-                    <div class="total-preview-box">
+                    <div class="tx-total-box">
 
                         <small>
                             Estimasi Total Pembayaran
@@ -1646,38 +1604,33 @@
 
                 </div>
 
-
             </div>
-
 
 
             <button
                 type="submit"
                 class="
-                    transaction-btn
-                    btn-primary
-                    btn-save
+                    tx-btn
+                    tx-btn-primary
+                    tx-submit
                 "
+                id="saveTransaction"
             >
                 💾 Simpan Transaksi
             </button>
 
-
         </form>
 
-
     </div>
-
 
 
     <!-- =====================================================
          DAFTAR TRANSAKSI
     ====================================================== -->
 
-    <div class="transaction-panel">
+    <div class="tx-panel">
 
-
-        <div class="panel-title">
+        <div class="tx-panel-title">
 
             <div>
 
@@ -1686,7 +1639,7 @@
                 </h2>
 
                 <p>
-                    Cari, filter dan kelola seluruh transaksi laundry.
+                    Cari, filter dan kelola transaksi laundry.
                 </p>
 
             </div>
@@ -1694,56 +1647,47 @@
         </div>
 
 
-
-        <!-- =================================================
-             FILTER
-        ================================================== -->
+        <!-- FILTER -->
 
         <form
             action="{{ route('transaksi.index') }}"
             method="GET"
-            class="filter-box"
+            class="tx-filter"
         >
 
-
-            <!-- SEARCH -->
-
-            <div class="filter-group">
+            <div class="tx-filter-group">
 
                 <label>
-                    Cari Transaksi
+                    🔎 Cari
                 </label>
 
                 <input
                     type="text"
                     name="search"
-                    value="{{ request('search') }}"
-                    placeholder="Kode transaksi atau nama pelanggan..."
+                    value="{{ $search }}"
+                    placeholder="Kode, nama, HP atau layanan..."
                 >
 
             </div>
 
 
-
-            <!-- FILTER PEMBAYARAN -->
-
-            <div class="filter-group">
+            <div class="tx-filter-group">
 
                 <label>
-                    Pembayaran
+                    💳 Pembayaran
                 </label>
 
                 <select name="status_pembayaran">
 
                     <option value="">
-                        Semua Pembayaran
+                        Semua
                     </option>
 
                     <option
                         value="Lunas"
 
                         {{
-                            request('status_pembayaran')
+                            $statusPembayaran
                             === 'Lunas'
                             ? 'selected'
                             : ''
@@ -1756,7 +1700,7 @@
                         value="Belum Lunas"
 
                         {{
-                            request('status_pembayaran')
+                            $statusPembayaran
                             === 'Belum Lunas'
                             ? 'selected'
                             : ''
@@ -1770,21 +1714,17 @@
             </div>
 
 
-
-            <!-- FILTER STATUS -->
-
-            <div class="filter-group">
+            <div class="tx-filter-group">
 
                 <label>
-                    Status Laundry
+                    🫧 Status Laundry
                 </label>
 
                 <select name="status_laundry">
 
                     <option value="">
-                        Semua Status
+                        Semua
                     </option>
-
 
                     @foreach([
                         'Diterima',
@@ -1800,7 +1740,7 @@
                             value="{{ $filterStatus }}"
 
                             {{
-                                request('status_laundry')
+                                $statusLaundry
                                 === $filterStatus
                                 ? 'selected'
                                 : ''
@@ -1816,58 +1756,179 @@
             </div>
 
 
+            <div class="tx-filter-group">
 
-            <!-- ACTION FILTER -->
+                <label>
+                    🚚 Pengambilan
+                </label>
 
-            <div class="filter-actions">
+                <select name="jenis_pengambilan">
+
+                    <option value="">
+                        Semua
+                    </option>
+
+                    <option
+                        value="ambil_sendiri"
+
+                        {{
+                            $jenisPengambilan
+                            === 'ambil_sendiri'
+                            ? 'selected'
+                            : ''
+                        }}
+                    >
+                        Ambil Sendiri
+                    </option>
+
+                    <option
+                        value="kirim"
+
+                        {{
+                            $jenisPengambilan
+                            === 'kirim'
+                            ? 'selected'
+                            : ''
+                        }}
+                    >
+                        Kirim
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <div class="tx-filter-group">
+
+                <label>
+                    📅 Dari
+                </label>
+
+                <input
+                    type="date"
+                    name="tanggal_mulai"
+                    value="{{ $tanggalMulai }}"
+                >
+
+            </div>
+
+
+            <div class="tx-filter-group">
+
+                <label>
+                    📅 Sampai
+                </label>
+
+                <input
+                    type="date"
+                    name="tanggal_akhir"
+                    value="{{ $tanggalAkhir }}"
+                >
+
+            </div>
+
+
+            <div class="tx-filter-actions">
 
                 <button
                     type="submit"
                     class="
-                        transaction-btn
-                        btn-primary
+                        tx-btn
+                        tx-btn-primary
                     "
                 >
-                    🔍 Filter
+                    🔍 Terapkan Filter
                 </button>
 
 
                 @if(
-                    request('search')
+                    $search
                     ||
-                    request('status_pembayaran')
+                    $statusPembayaran
                     ||
-                    request('status_laundry')
+                    $statusLaundry
+                    ||
+                    $jenisPengambilan
+                    ||
+                    $tanggalMulai
+                    ||
+                    $tanggalAkhir
                 )
 
                     <a
-                        href="{{ route('transaksi.index') }}"
+                        href="{{
+                            route(
+                                'transaksi.index'
+                            )
+                        }}"
                         class="
-                            transaction-btn
-                            btn-secondary
+                            tx-btn
+                            tx-btn-secondary
                         "
                     >
-                        Reset
+                        ↻ Reset
                     </a>
 
                 @endif
 
             </div>
 
-
         </form>
 
 
+        <!-- HASIL -->
 
-        <!-- =================================================
-             TABLE
-        ================================================== -->
+        <div class="tx-filter-result">
 
-        <div class="transaction-table-wrapper">
+            <span>
+
+                📊 Menampilkan
+
+                <strong>
+                    {{ $totalHasilFilter }}
+                </strong>
+
+                dari
+
+                <strong>
+                    {{ $totalTransaksi }}
+                </strong>
+
+                transaksi.
+
+            </span>
 
 
-            <table class="transaction-table">
+            <span>
 
+                ⚖️ Total seluruh berat:
+
+                <strong>
+
+                    {{
+                        number_format(
+                            $totalBerat,
+                            1,
+                            ',',
+                            '.'
+                        )
+                    }}
+
+                    Kg
+
+                </strong>
+
+            </span>
+
+        </div>
+
+
+        <!-- TABLE -->
+
+        <div class="tx-table-wrapper">
+
+            <table class="tx-table">
 
                 <thead>
 
@@ -1875,6 +1936,10 @@
 
                         <th>
                             Kode
+                        </th>
+
+                        <th>
+                            Tanggal
                         </th>
 
                         <th>
@@ -1902,7 +1967,7 @@
                         </th>
 
                         <th>
-                            Status Laundry
+                            Status
                         </th>
 
                         <th>
@@ -1914,24 +1979,20 @@
                 </thead>
 
 
-
                 <tbody>
-
 
                 @forelse(
                     $transaksis
                     as $transaksi
                 )
 
-
                     <tr>
-
 
                         <!-- KODE -->
 
                         <td>
 
-                            <span class="transaction-code">
+                            <span class="tx-code">
 
                                 {{
                                     $transaksi
@@ -1943,12 +2004,28 @@
                         </td>
 
 
+                        <!-- TANGGAL -->
+
+                        <td>
+
+                            {{
+                                $transaksi
+                                    ->tanggal_masuk
+                                ? \Carbon\Carbon::parse(
+                                    $transaksi
+                                        ->tanggal_masuk
+                                )->format('d/m/Y')
+                                : '-'
+                            }}
+
+                        </td>
+
 
                         <!-- PELANGGAN -->
 
                         <td>
 
-                            <span class="customer-name">
+                            <span class="tx-customer">
 
                                 {{
                                     $transaksi
@@ -1959,8 +2036,7 @@
 
                             </span>
 
-
-                            <span class="customer-phone">
+                            <span class="tx-phone">
 
                                 {{
                                     $transaksi
@@ -1972,7 +2048,6 @@
                             </span>
 
                         </td>
-
 
 
                         <!-- LAYANAN -->
@@ -1989,25 +2064,29 @@
                         </td>
 
 
-
                         <!-- BERAT -->
 
                         <td>
 
                             {{
-                                $transaksi->berat
+                                number_format(
+                                    $transaksi->berat,
+                                    1,
+                                    ',',
+                                    '.'
+                                )
                             }}
+
                             Kg
 
                         </td>
-
 
 
                         <!-- TOTAL -->
 
                         <td>
 
-                            <span class="transaction-total">
+                            <span class="tx-total">
 
                                 Rp
                                 {{
@@ -2024,11 +2103,9 @@
                         </td>
 
 
-
                         <!-- PENGAMBILAN -->
 
                         <td>
-
 
                             @if(
                                 $transaksi
@@ -2038,8 +2115,8 @@
 
                                 <span
                                     class="
-                                        transaction-badge
-                                        badge-blue
+                                        tx-badge
+                                        tx-blue
                                     "
                                 >
                                     🚚 Kirim
@@ -2049,8 +2126,8 @@
 
                                 <span
                                     class="
-                                        transaction-badge
-                                        badge-orange
+                                        tx-badge
+                                        tx-orange
                                     "
                                 >
                                     🏠 Ambil Sendiri
@@ -2058,15 +2135,12 @@
 
                             @endif
 
-
                         </td>
-
 
 
                         <!-- PEMBAYARAN -->
 
                         <td>
-
 
                             @if(
                                 $transaksi
@@ -2076,21 +2150,14 @@
 
                                 <span
                                     class="
-                                        transaction-badge
-                                        badge-green
+                                        tx-badge
+                                        tx-green
                                     "
                                 >
                                     ✓ Lunas
                                 </span>
 
-
-                                <div
-                                    style="
-                                        margin-top:5px;
-                                        font-size:9px;
-                                        color:#64748b;
-                                    "
-                                >
+                                <span class="tx-phone">
 
                                     {{
                                         $transaksi
@@ -2098,90 +2165,78 @@
                                         ?? '-'
                                     }}
 
-                                </div>
-
+                                </span>
 
                             @else
 
-
                                 <span
                                     class="
-                                        transaction-badge
-                                        badge-red
+                                        tx-badge
+                                        tx-red
                                     "
                                 >
                                     Belum Lunas
                                 </span>
 
 
-                                <div class="payment-action">
+                                <form
+                                    method="POST"
 
+                                    action="{{
+                                        route(
+                                            'transaksi.bayar',
+                                            $transaksi
+                                        )
+                                    }}"
 
-                                    <form
-                                        method="POST"
-                                        action="{{
-                                            route(
-                                                'transaksi.bayar',
-                                                $transaksi
-                                            )
-                                        }}"
-                                        class="payment-form"
+                                    class="tx-payment-form"
+                                >
+
+                                    @csrf
+
+                                    <select
+                                        name="metode_pembayaran"
+                                        required
                                     >
 
-                                        @csrf
+                                        <option value="Tunai">
+                                            Tunai
+                                        </option>
 
+                                        <option value="Transfer">
+                                            Transfer
+                                        </option>
 
-                                        <select
-                                            name="metode_pembayaran"
-                                            required
-                                        >
+                                        <option value="QRIS">
+                                            QRIS
+                                        </option>
 
-                                            <option value="Tunai">
-                                                Tunai
-                                            </option>
+                                    </select>
 
-                                            <option value="Transfer">
-                                                Transfer
-                                            </option>
+                                    <button
+                                        type="submit"
+                                        class="
+                                            tx-btn
+                                            tx-btn-success
+                                        "
+                                    >
+                                        Bayar
+                                    </button>
 
-                                            <option value="QRIS">
-                                                QRIS
-                                            </option>
-
-                                        </select>
-
-
-                                        <button
-                                            type="submit"
-                                            class="
-                                                transaction-btn
-                                                btn-success
-                                            "
-                                        >
-                                            Bayar
-                                        </button>
-
-
-                                    </form>
-
-
-                                </div>
-
+                                </form>
 
                             @endif
 
-
                         </td>
-
 
 
                         <!-- STATUS -->
 
                         <td>
 
-
                             <form
                                 method="POST"
+
                                 action="{{
                                     route(
                                         'transaksi.status',
@@ -2192,10 +2247,9 @@
 
                                 @csrf
 
-
                                 <select
                                     name="status_laundry"
-                                    class="status-select"
+                                    class="tx-status-select"
                                     onchange="this.form.submit()"
                                 >
 
@@ -2220,30 +2274,25 @@
                                                 : ''
                                             }}
                                         >
+
                                             {{ $status }}
+
                                         </option>
 
                                     @endforeach
 
                                 </select>
 
-
                             </form>
 
-
                         </td>
-
 
 
                         <!-- AKSI -->
 
                         <td>
 
-
-                            <div class="transaction-action">
-
-
-                                <!-- DETAIL -->
+                            <div class="tx-actions">
 
                                 <a
                                     href="{{
@@ -2253,16 +2302,13 @@
                                         )
                                     }}"
                                     class="
-                                        transaction-btn
-                                        btn-info
+                                        tx-btn
+                                        tx-btn-info
                                     "
                                 >
                                     👁 Detail
                                 </a>
 
-
-
-                                <!-- EDIT -->
 
                                 <a
                                     href="{{
@@ -2272,19 +2318,17 @@
                                         )
                                     }}"
                                     class="
-                                        transaction-btn
-                                        btn-warning
+                                        tx-btn
+                                        tx-btn-warning
                                     "
                                 >
-                                    ✏️ Edit
+                                    ✏ Edit
                                 </a>
 
 
-
-                                <!-- DELETE -->
-
                                 <form
                                     method="POST"
+
                                     action="{{
                                         route(
                                             'transaksi.destroy',
@@ -2294,8 +2338,8 @@
 
                                     onsubmit="
                                         return confirm(
-                                            'Yakin ingin menghapus transaksi ini?'
-                                        )
+                                            'Yakin ingin menghapus transaksi {{ $transaksi->kode_transaksi }}?'
+                                        );
                                     "
                                 >
 
@@ -2303,46 +2347,45 @@
 
                                     @method('DELETE')
 
-
                                     <button
                                         type="submit"
                                         class="
-                                            transaction-btn
-                                            btn-danger
+                                            tx-btn
+                                            tx-btn-danger
                                         "
                                     >
                                         🗑 Hapus
                                     </button>
 
-
                                 </form>
-
 
                             </div>
 
-
                         </td>
-
 
                     </tr>
 
-
                 @empty
-
 
                     <tr>
 
                         <td
-                            colspan="9"
-                            class="empty-transaction"
+                            colspan="10"
+                            class="tx-empty"
                         >
 
                             @if(
-                                request('search')
+                                $search
                                 ||
-                                request('status_pembayaran')
+                                $statusPembayaran
                                 ||
-                                request('status_laundry')
+                                $statusLaundry
+                                ||
+                                $jenisPengambilan
+                                ||
+                                $tanggalMulai
+                                ||
+                                $tanggalAkhir
                             )
 
                                 🔍 Tidak ada transaksi
@@ -2358,40 +2401,31 @@
 
                     </tr>
 
-
                 @endforelse
-
 
                 </tbody>
 
-
             </table>
-
 
         </div>
 
-
     </div>
-
 
 </div>
 
-
 @endsection
-
 
 
 @push('scripts')
 
 <script>
-
 document.addEventListener(
     'DOMContentLoaded',
     function () {
 
         /*
         |--------------------------------------------------------------------------
-        | TOTAL OTOMATIS
+        | ELEMEN
         |--------------------------------------------------------------------------
         */
 
@@ -2400,18 +2434,67 @@ document.addEventListener(
                 'layanan'
             );
 
-
         const berat =
             document.getElementById(
                 'berat'
             );
-
 
         const totalPreview =
             document.getElementById(
                 'totalPreview'
             );
 
+        const jenisPengambilan =
+            document.getElementById(
+                'jenisPengambilan'
+            );
+
+        const alamatBox =
+            document.getElementById(
+                'alamatBox'
+            );
+
+        const alamatKirim =
+            document.getElementById(
+                'alamatKirim'
+            );
+
+        const caraBayar =
+            document.getElementById(
+                'caraBayar'
+            );
+
+        const metodeBox =
+            document.getElementById(
+                'metodeBox'
+            );
+
+        const metodePembayaran =
+            document.getElementById(
+                'metodePembayaran'
+            );
+
+        const qrisBox =
+            document.getElementById(
+                'qrisBox'
+            );
+
+        const transactionForm =
+            document.getElementById(
+                'transactionForm'
+            );
+
+        const saveTransaction =
+            document.getElementById(
+                'saveTransaction'
+            );
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | TOTAL OTOMATIS
+        |--------------------------------------------------------------------------
+        */
 
         function hitungTotal()
         {
@@ -2434,9 +2517,7 @@ document.addEventListener(
 
             const harga =
                 Number(
-                    option
-                        ?.dataset
-                        ?.harga
+                    option?.dataset?.harga
                     || 0
                 );
 
@@ -2449,12 +2530,14 @@ document.addEventListener(
 
 
             const total =
-                harga *
+                harga
+                *
                 jumlahBerat;
 
 
-            totalPreview.innerText =
-                'Rp ' +
+            totalPreview.textContent =
+                'Rp '
+                +
                 new Intl.NumberFormat(
                     'id-ID'
                 ).format(
@@ -2462,6 +2545,134 @@ document.addEventListener(
                 );
         }
 
+
+        /*
+        |--------------------------------------------------------------------------
+        | PENGIRIMAN
+        |--------------------------------------------------------------------------
+        */
+
+        function cekPengambilan()
+        {
+            if (
+                !jenisPengambilan
+                ||
+                !alamatBox
+            ) {
+                return;
+            }
+
+
+            const kirim =
+                jenisPengambilan.value
+                === 'kirim';
+
+
+            alamatBox.style.display =
+                kirim
+                    ? 'block'
+                    : 'none';
+
+
+            if (alamatKirim) {
+
+                alamatKirim.required =
+                    kirim;
+
+            }
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | QRIS
+        |--------------------------------------------------------------------------
+        */
+
+        function cekQris()
+        {
+            if (
+                !qrisBox
+                ||
+                !caraBayar
+                ||
+                !metodePembayaran
+            ) {
+                return;
+            }
+
+
+            const tampil =
+                caraBayar.value
+                === 'langsung'
+                &&
+                metodePembayaran.value
+                === 'QRIS';
+
+
+            qrisBox.style.display =
+                tampil
+                    ? 'block'
+                    : 'none';
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | PEMBAYARAN
+        |--------------------------------------------------------------------------
+        */
+
+        function cekPembayaran()
+        {
+            if (
+                !caraBayar
+                ||
+                !metodeBox
+                ||
+                !metodePembayaran
+            ) {
+                return;
+            }
+
+
+            const langsung =
+                caraBayar.value
+                === 'langsung';
+
+
+            metodeBox.style.display =
+                langsung
+                    ? 'block'
+                    : 'none';
+
+
+            metodePembayaran.required =
+                langsung;
+
+
+            if (!langsung) {
+
+                if (qrisBox) {
+
+                    qrisBox.style.display =
+                        'none';
+
+                }
+
+            } else {
+
+                cekQris();
+
+            }
+        }
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | EVENT
+        |--------------------------------------------------------------------------
+        */
 
         if (layanan) {
 
@@ -2483,44 +2694,6 @@ document.addEventListener(
         }
 
 
-
-        /*
-        |--------------------------------------------------------------------------
-        | JENIS PENGAMBILAN
-        |--------------------------------------------------------------------------
-        */
-
-        const jenisPengambilan =
-            document.getElementById(
-                'jenisPengambilan'
-            );
-
-
-        const alamatBox =
-            document.getElementById(
-                'alamatBox'
-            );
-
-
-        function cekPengambilan()
-        {
-            if (
-                !jenisPengambilan
-                ||
-                !alamatBox
-            ) {
-                return;
-            }
-
-
-            alamatBox.style.display =
-                jenisPengambilan.value
-                === 'kirim'
-                    ? 'block'
-                    : 'none';
-        }
-
-
         if (jenisPengambilan) {
 
             jenisPengambilan.addEventListener(
@@ -2528,104 +2701,6 @@ document.addEventListener(
                 cekPengambilan
             );
 
-        }
-
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | PEMBAYARAN
-        |--------------------------------------------------------------------------
-        */
-
-        const caraBayar =
-            document.getElementById(
-                'caraBayar'
-            );
-
-
-        const metodeBox =
-            document.getElementById(
-                'metodeBox'
-            );
-
-
-        const metodePembayaran =
-            document.getElementById(
-                'metodePembayaran'
-            );
-
-
-        const qrisBox =
-            document.getElementById(
-                'qrisBox'
-            );
-
-
-        function cekQris()
-        {
-            if (
-                !qrisBox
-                ||
-                !caraBayar
-                ||
-                !metodePembayaran
-            ) {
-                return;
-            }
-
-
-            qrisBox.style.display =
-                (
-                    caraBayar.value
-                    === 'langsung'
-
-                    &&
-
-                    metodePembayaran.value
-                    === 'QRIS'
-                )
-                    ? 'block'
-                    : 'none';
-        }
-
-
-        function cekPembayaran()
-        {
-            if (
-                !caraBayar
-                ||
-                !metodeBox
-            ) {
-                return;
-            }
-
-
-            if (
-                caraBayar.value
-                === 'nanti'
-            ) {
-
-                metodeBox.style.display =
-                    'none';
-
-
-                if (qrisBox) {
-
-                    qrisBox.style.display =
-                        'none';
-
-                }
-
-            } else {
-
-                metodeBox.style.display =
-                    'block';
-
-
-                cekQris();
-
-            }
         }
 
 
@@ -2649,10 +2724,37 @@ document.addEventListener(
         }
 
 
+        /*
+        |--------------------------------------------------------------------------
+        | CEGAH DOUBLE CLICK SIMPAN
+        |--------------------------------------------------------------------------
+        */
+
+        if (
+            transactionForm
+            &&
+            saveTransaction
+        ) {
+
+            transactionForm.addEventListener(
+                'submit',
+                function () {
+
+                    saveTransaction.disabled =
+                        true;
+
+                    saveTransaction.textContent =
+                        '⏳ Menyimpan...';
+
+                }
+            );
+
+        }
+
 
         /*
         |--------------------------------------------------------------------------
-        | INITIAL STATE
+        | INITIAL
         |--------------------------------------------------------------------------
         */
 
@@ -2664,7 +2766,6 @@ document.addEventListener(
 
     }
 );
-
 </script>
 
 @endpush
